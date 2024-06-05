@@ -1,6 +1,6 @@
-package domain;
+package domain.clasesBase;
 
-public class Lesson {
+public class Leccion {
     private int id;
     private String title;
     private Object context;

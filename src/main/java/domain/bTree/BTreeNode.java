@@ -1,4 +1,4 @@
-package domain;
+package domain.bTree;
 
 public class BTreeNode {
     public Object data;

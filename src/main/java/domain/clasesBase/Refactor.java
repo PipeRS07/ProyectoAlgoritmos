@@ -1,6 +1,6 @@
-package domain;
+package domain.clasesBase;
 
-public class Course {
+public class Refactor {
     private int id;
     private String name;
     private String description;

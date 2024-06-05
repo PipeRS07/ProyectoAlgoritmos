@@ -1,4 +1,4 @@
-package domain;
+package domain.clasesBase;
 
 public class MaterialDeEstudio {
 

@@ -1,4 +1,4 @@
-package domain;
+package domain.bTree;
 
 public class BTree implements Tree {
     public BTreeNode root; //unica entrada al arbol

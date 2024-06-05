@@ -1,4 +1,4 @@
-package domain;
+package domain.bTree;
 
 public class TreeException extends Exception {
     public TreeException(String message) {

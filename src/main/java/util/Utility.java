@@ -1,6 +1,6 @@
 package util;
 
-import domain.BTree;
+import domain.bTree.BTree;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.SinglyLinkedList;
 import domain.queue.LinkedQueue;

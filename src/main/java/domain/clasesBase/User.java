@@ -1,10 +1,10 @@
-package domain;
+package domain.clasesBase;
 
 public abstract class User {
     private int id;
     private String name;
     private String email;
-    private Object role;  //(student,instructor, administrative)
+    private String role;  //(student,instructor, administrative)
     private String contrasenia;
 
     public User(int id, String name, String email, String contrasenia) {
@@ -14,7 +14,7 @@ public abstract class User {
         this.contrasenia = contrasenia;
     }
 
-    public User(int id, String name, String email, Object role, String contrasenia) {
+    public User(int id, String name, String email, String role, String contrasenia) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -46,11 +46,11 @@ public abstract class User {
         this.email = email;
     }
 
-    public Object getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Object role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
@@ -60,5 +60,9 @@ public abstract class User {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+
+    public int size() {
+        return 4+name.length()+this.role.length()+this.contrasenia.length()+this.email.length();
     }
 }

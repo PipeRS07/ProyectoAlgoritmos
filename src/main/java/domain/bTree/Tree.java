@@ -1,4 +1,4 @@
-package domain;
+package domain.bTree;
 
 public interface Tree {
     //devuelve el número de elementos en el árbol

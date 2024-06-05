@@ -1,4 +1,4 @@
-package domain;
+package domain.clasesBase;
 
 import java.util.Date;
 
