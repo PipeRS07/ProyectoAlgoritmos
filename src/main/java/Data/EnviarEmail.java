@@ -1,5 +1,9 @@
 package Data;
 
+import domain.clasesBase.Administrador;
+import domain.clasesBase.User;
+import domain.clasesBase.Usuario;
+
 public class EnviarEmail {
 
     private final String correoRemitente;
@@ -14,6 +18,8 @@ public class EnviarEmail {
         this.servidor = "smtp.gmail.com";
         this.puerto = "587";
     }
+
+
 //    public void enviarCorreo(String correoDestinatario1, String asunto1, String contenido1, String nombrePDF){
 //
 //        // Configurar destinatario, asunto y contenido del correo

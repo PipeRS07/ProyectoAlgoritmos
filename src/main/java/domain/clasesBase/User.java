@@ -65,4 +65,15 @@ public abstract class User {
     public int size() {
         return 4+name.length()+this.role.length()+this.contrasenia.length()+this.email.length();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                ", contrasenia='" + contrasenia + '\'' +
+                '}';
+    }
 }
