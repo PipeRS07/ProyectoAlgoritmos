@@ -5,4 +5,6 @@ module org.example.proyectoalgoritmos {
 
     opens org.example.proyectoalgoritmos to javafx.fxml;
     exports org.example.proyectoalgoritmos;
+    exports controller;
+    opens controller to javafx.fxml;
 }

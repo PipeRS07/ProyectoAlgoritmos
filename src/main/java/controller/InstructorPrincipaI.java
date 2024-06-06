@@ -1,6 +1,6 @@
-package org.example.proyectoalgoritmos;
+package controller;
 
-public class Prueba
+public class InstructorPrincipaI
 {
     @javafx.fxml.FXML
     public void initialize() {
