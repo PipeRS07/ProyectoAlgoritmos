@@ -4,6 +4,7 @@ import domain.clasesBase.Administrador;
 import domain.clasesBase.Estudiante;
 import domain.clasesBase.Instructor;
 import domain.clasesBase.User;
+import domain.list.CircularDoublyLinkedList;
 
 public class Fabrica {
 
@@ -31,5 +32,12 @@ public class Fabrica {
             return new Estudiante(id, name, email, role, contrasenia);
         }
         return null;
+    }
+
+    public static void fabricaTDA(Object usuariosEnElSistema, User user) {
+        if(usuariosEnElSistema instanceof CircularDoublyLinkedList){
+            ((CircularDoublyLinkedList) usuariosEnElSistema).add(user);
+        }
+
     }
 }

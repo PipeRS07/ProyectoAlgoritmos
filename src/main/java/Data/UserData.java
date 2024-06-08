@@ -1,7 +1,8 @@
 package Data;
 
 import domain.clasesBase.User;
-import domain.clasesBase.Usuario;
+import domain.list.CircularDoublyLinkedList;
+import domain.list.CircularLinkedList;
 import util.Encriptacion;
 import util.Fabrica;
 import util.Ruta;
@@ -24,6 +25,8 @@ public class UserData {
         init();
     }
 
+
+
     private void init() throws IOException {
         this.tamanioRegistro=304;
         File file = new File(Ruta.RUTAUSUARIO);
@@ -37,7 +40,7 @@ public class UserData {
         }
     }
 
-    public boolean registrarUser(int posicion, User usuario) throws IOException {
+    private boolean registrarUser(int posicion, User usuario) throws IOException {
         boolean respuesta =false;
         if(posicion>= 0 && posicion <= cantidadDeRegistros){
             //si el tamaño del registro es adecuado
@@ -52,6 +55,14 @@ public class UserData {
             }
         }
         return respuesta;
+    }
+
+    public boolean agregarAlFinal(User usuario) throws IOException {
+        if (registrarUser(this.cantidadDeRegistros, usuario)) {
+            ++cantidadDeRegistros;
+            return true;
+        }
+        return false;
     }
 
 
@@ -101,11 +112,13 @@ public class UserData {
         return null;
     }
 
-    public boolean agregarAlFinal(User usuario) throws IOException {
-        if (registrarUser(this.cantidadDeRegistros, usuario)) {
-            ++cantidadDeRegistros;
-            return true;
+
+
+
+    public void cargarUsuarios(Object usuariosEnElSistema) throws IOException {
+        for (int i = 0; i < cantidadDeRegistros; i++) {
+            Fabrica.fabricaTDA(usuariosEnElSistema, getUsuarios().get(i));
         }
-        return false;
+
     }
 }

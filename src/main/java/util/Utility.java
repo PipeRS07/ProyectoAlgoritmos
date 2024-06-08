@@ -1,11 +1,15 @@
 package util;
 
+import Data.UserData;
+import domain.HashTable.HashTable;
 import domain.bTree.BTree;
 import domain.list.CircularDoublyLinkedList;
+import domain.list.CircularLinkedList;
 import domain.list.SinglyLinkedList;
 import domain.queue.LinkedQueue;
 import domain.stack.LinkedStack;
 
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
@@ -15,15 +19,27 @@ import static java.lang.StringTemplate.STR;
 
 public class Utility {
 
+
+    public static CircularLinkedList usuariosEnElSistema;
+    public static HashTable circularLinkedList;
+    private static UserData userData;
+
+
+    //public static AVL arbol avl
     //static init
     static {
+        try {
+            userData= new UserData();
+            usuariosEnElSistema = new CircularLinkedList();
+            userData.cargarUsuarios(usuariosEnElSistema);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
     }
-    public static String MD2="MD2";
-    public static String MD5="MD5";
-    public static String SHA1="SHA-1";
-    public static String SHA256="SHA-256";
-    public static String SHA384="SHA-384";
-    public static String SHA512="SHA-512";
+
 
 
     private static String convertirAHexadecimal(byte[] digest){
@@ -111,7 +127,7 @@ public class Utility {
         return 2; //Unknown
     }
 
-    private static String instanceOf(Object a, Object b) {
+    public static String instanceOf(Object a, Object b) {
         if(a instanceof Integer && b instanceof Integer) return "Integer";
         if(a instanceof String && b instanceof String) return "String";
         if(a instanceof Character && b instanceof Character) return "Character";
@@ -120,8 +136,7 @@ public class Utility {
         if(a instanceof LinkedQueue && b instanceof LinkedQueue) return "LinkedQueue";
         if(a instanceof CircularDoublyLinkedList && b instanceof CircularDoublyLinkedList) return "CircularDoublyLinkedList";
         if(a instanceof LinkedStack && b instanceof LinkedStack) return "LinkedStack";
-
-
+        if(a instanceof CircularLinkedList && b instanceof CircularLinkedList) return "CircularLinkedList";
         return "Unknown";
     }
 }
