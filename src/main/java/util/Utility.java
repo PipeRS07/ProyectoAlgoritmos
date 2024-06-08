@@ -22,6 +22,7 @@ public class Utility {
 
     public static CircularDoublyLinkedList usuariosRegistrados;
     public static CircularLinkedList usuariosEnELSistema;
+
     public static HashTable circularLinkedList;
     private static UserData userData;
 
@@ -33,7 +34,8 @@ public class Utility {
         try {
             userData = new UserData();
             usuariosRegistrados = new CircularDoublyLinkedList();
-            userData.cargarUsuarios(usuariosRegistrados);
+            userData.cargarObjetos(usuariosRegistrados);
+            //userData.cargarObjetos(con el otro tda );
             usuariosEnELSistema= new CircularLinkedList();
         } catch (IOException e) {
             throw new RuntimeException(e);
