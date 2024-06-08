@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelloController">
+   <center>
+      <VBox prefHeight="251.0" prefWidth="499.0">
+        <MenuBar>
+          <Menu text="Sistema">
+            <MenuItem onAction="#handleSeguridad" text="Seguridad del Sistema" />
+          </Menu>
+          <Menu text="Mantenimiento">
+            <MenuItem onAction="#handleUsuarios" text="Usuarios" />
+            <MenuItem onAction="#handleCursos" text="Cursos" />
+            <MenuItem onAction="#handleLecciones" text="Lecciones" />
+            <MenuItem onAction="#handleInscripciones" text="Inscripciones" />
+          </Menu>
+          <Menu text="Mi Aprendizaje">
+            <MenuItem onAction="#handleMisCursos" text="Mis Cursos" />
+            <MenuItem onAction="#handleProgreso" text="Progreso" />
+          </Menu>
+          <Menu text="Reportes">
+            <MenuItem onAction="#handleInformes" text="Informes" />
+            <MenuItem onAction="#handleAnalisis" text="Análisis" />
+          </Menu>
+        </MenuBar>
+      
+        <!-- Aquí puedes añadir más contenido, como una vista de bienvenida, o cualquier otro componente -->
+        <HBox alignment="CENTER">
+          <Label style="-fx-font-size: 16px;" text="Bienvenido a la Plataforma de Aprendizaje en Línea" />
+        </HBox>
+      </VBox>
+   </center>
+</BorderPane>

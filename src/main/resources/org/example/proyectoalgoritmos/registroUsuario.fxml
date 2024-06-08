@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #cdf2d6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroUsuario">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #cdf2d6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroUsuarioController">
 
     <children>
         <Label layoutX="100.0" layoutY="50.0" text="Nombre" />
