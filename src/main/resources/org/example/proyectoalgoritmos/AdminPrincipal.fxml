@@ -6,7 +6,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #122f51;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminPrincipal">
+<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #122f51;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminPrincipalController">
 
     <MenuBar>
         <!-- Menús del administrador -->
