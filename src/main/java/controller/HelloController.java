@@ -28,13 +28,12 @@ public class HelloController {
 
     @FXML
     private void handleUsuarios(ActionEvent event) {
-        showAlert("Mantenimiento de Usuarios", "Aquí puede gestionar los usuarios.");
+        loadPage("userView.fxml");
     }
 
     @FXML
-    private void handleCursos(ActionEvent event) {
-        showAlert("Mantenimiento de Cursos", "Aquí puede gestionar los cursos.");
-    }
+    private void handleCursos(ActionEvent event) { loadPage("managementCourse.fxml");
+  }
 
     @FXML
     private void handleLecciones(ActionEvent event) {
@@ -48,7 +47,6 @@ public class HelloController {
 
     @FXML
     private void handleMisCursos(ActionEvent event) {
-        showAlert("Mi Aprendizaje - Mis Cursos", "Aquí puede ver sus cursos inscritos.");
     }
 
     @FXML

@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ingresoSistemaController">
    <center>
       <GridPane alignment="CENTER" hgap="10" vgap="10">
@@ -26,6 +25,7 @@
       
           <Label fx:id="messageLabel" style="-fx-text-fill: red;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          <Button onAction="#registOnAction" text="Registrarse" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <Label text="Usuario" />
           <columnConstraints>
               <ColumnConstraints />
               <ColumnConstraints />

@@ -2,23 +2,16 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import org.example.proyectoalgoritmos.HelloApplication;
 
 import java.io.IOException;
 
-public class ingresoSistemaController {
-    @javafx.fxml.FXML
-    private TextField usernameField;
-    @javafx.fxml.FXML
-    private PasswordField passwordField;
+public class ManagementCourseController {
+
     @javafx.fxml.FXML
     private BorderPane bp;
-    @javafx.fxml.FXML
-    private Label messageLabel;
 
     private void loadPage(String page){
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
@@ -28,14 +21,24 @@ public class ingresoSistemaController {
             throw new RuntimeException(e);
         }
     }
-
     @javafx.fxml.FXML
-    public void registOnAction(ActionEvent actionEvent) {
-        loadPage("registrarUsuario.fxml");
+    public void searchOnAction(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
-    public void inicioSecionnAction(ActionEvent actionEvent) {
-        loadPage("hello-view.fxml");
+    public void editOnAction(ActionEvent actionEvent) {
+        loadPage("editarCurso.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void removeOnAction(ActionEvent actionEvent) {loadPage("eliminarCurso.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void addOnAction(ActionEvent actionEvent) {loadPage("registroCurso.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void showOnAction(ActionEvent actionEvent) {loadPage("mostrarCursos.fxml");
     }
 }

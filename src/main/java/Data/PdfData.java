@@ -1,6 +1,6 @@
 package Data;
 
-public class PdfData {
+public class  PdfData {
 
     //* para instanciar
 //    PdfData pdf = new PdfData(nombre((String) this.jCURL.getSelectedItem()));

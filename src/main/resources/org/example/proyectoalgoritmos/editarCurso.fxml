@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.editCourseController">
+    <Label style="-fx-font-size: 18px;" text="Crear Nuevo Curso" />
+
+    <HBox spacing="10">
+        <Label text="Nombre:" />
+        <TextField fx:id="nameField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Descripción:" />
+        <TextField fx:id="descriptionField" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Duración:" />
+        <TextField fx:id="courseLengthField" />
+    </HBox>
+   <HBox spacing="10">
+      <children>
+         <Label text="ID Instructor" />
+         <TextField fx:id="courseLengthField1" />
+      </children>
+   </HBox>
+
+    <HBox spacing="10">
+        <Label text="Nivel de Dificultad:" />
+      <ComboBox fx:id="comboBox" prefHeight="25.0" prefWidth="114.0" />
+    </HBox>
+
+    <HBox prefHeight="22.0" prefWidth="135.0" spacing="10">
+        <Button onAction="#handleCreateCourse" text="Guardar" />
+        <Button onAction="#regresarOnAction" text="Cancelar" />
+    </HBox>
+</VBox>

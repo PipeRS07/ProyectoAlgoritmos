@@ -31,7 +31,7 @@ public class Utility {
         try {
             userData= new UserData();
             usuariosEnElSistema = new CircularLinkedList();
-            userData.cargarUsuarios(usuariosEnElSistema);
+//            userData.cargarUsuarios(usuariosEnElSistema);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
