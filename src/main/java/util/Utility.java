@@ -1,13 +1,16 @@
 package util;
 
+import Data.CursoData;
 import Data.UserData;
 import domain.HashTable.HashTable;
+import domain.bTree.AVLTree;
 import domain.bTree.BTree;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.CircularLinkedList;
 import domain.list.SinglyLinkedList;
 import domain.queue.LinkedQueue;
 import domain.stack.LinkedStack;
+
 
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -25,6 +28,8 @@ public class Utility {
 
     public static HashTable circularLinkedList;
     private static UserData userData;
+    private static CursoData cursoData;
+    public static AVLTree cursosEnElSistema;
 
 
 
@@ -33,10 +38,13 @@ public class Utility {
     static {
         try {
             userData = new UserData();
+            cursoData = new CursoData();
             usuariosRegistrados = new CircularDoublyLinkedList();
+            cursosEnElSistema = new AVLTree();
             userData.cargarObjetos(usuariosRegistrados);
             //userData.cargarObjetos(con el otro tda );
             usuariosEnELSistema= new CircularLinkedList();
+            cursoData.cargarCursos(cursosEnElSistema);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -125,6 +133,10 @@ public class Utility {
             case "BTree":
                 BTree bt1 = (BTree)a; BTree Bt2 = (BTree)b;
                 return bt1==Bt2?0:-1;
+            case "AVLTree":
+                AVLTree avl1 = (AVLTree) a;
+                AVLTree avl2 = (AVLTree) b;
+                return avl1 == avl2 ? 0 : -1;
         }
         return 2; //Unknown
     }
@@ -139,6 +151,7 @@ public class Utility {
         if(a instanceof CircularDoublyLinkedList && b instanceof CircularDoublyLinkedList) return "CircularDoublyLinkedList";
         if(a instanceof LinkedStack && b instanceof LinkedStack) return "LinkedStack";
         if(a instanceof CircularLinkedList && b instanceof CircularLinkedList) return "CircularLinkedList";
+        if (a instanceof AVLTree && b instanceof AVLTree) return "AVLTree";
         return "Unknown";
     }
 }

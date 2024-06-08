@@ -61,6 +61,10 @@ public class Curso {
         this.siglas = siglas;
     }
 
+    public int size() {
+        return 100 * 2 + descripcion.length() * 2 + 10 * 2 + dificultad.length() * 2 + 10 * 2;
+    }
+
     @Override
     public String toString() {
         return "Curso{" +
