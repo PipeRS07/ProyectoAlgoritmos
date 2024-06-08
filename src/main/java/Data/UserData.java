@@ -1,8 +1,6 @@
 package Data;
 
 import domain.clasesBase.User;
-import domain.list.CircularDoublyLinkedList;
-import domain.list.CircularLinkedList;
 import util.Encriptacion;
 import util.Fabrica;
 import util.Ruta;
@@ -115,9 +113,9 @@ public class UserData {
 
 
 
-    public void cargarUsuarios(Object usuariosEnElSistema) throws IOException {
+    public void cargarObjetos(Object TDA) throws IOException {
         for (int i = 0; i < cantidadDeRegistros; i++) {
-            Fabrica.fabricaTDA(usuariosEnElSistema, getUsuarios().get(i));
+            Fabrica.fabricaTDA(TDA, getUsuarios().get(i));
         }
 
     }

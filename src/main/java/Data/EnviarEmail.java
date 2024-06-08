@@ -1,9 +1,5 @@
 package Data;
 
-import domain.clasesBase.Administrador;
-import domain.clasesBase.User;
-import domain.clasesBase.Usuario;
-
 public class EnviarEmail {
 
     private final String correoRemitente;

@@ -20,24 +20,24 @@ import static java.lang.StringTemplate.STR;
 public class Utility {
 
 
-    public static CircularDoublyLinkedList usuariosRegistrados;
-    public static CircularLinkedList usuariosEnELSistema;
+    public static CircularLinkedList usuariosEnElSistema;
     public static HashTable circularLinkedList;
     private static UserData userData;
-
 
 
     //public static AVL arbol avl
     //static init
     static {
         try {
-            userData = new UserData();
-            usuariosRegistrados = new CircularDoublyLinkedList();
-            userData.cargarUsuarios(usuariosRegistrados);
-            usuariosEnELSistema= new CircularLinkedList();
+            userData= new UserData();
+            usuariosEnElSistema = new CircularLinkedList();
+            userData.cargarUsuarios(usuariosEnElSistema);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
+
     }
 
 
