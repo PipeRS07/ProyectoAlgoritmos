@@ -10,8 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import util.Fabrica;
-import util.Ruta;
 
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -40,9 +38,9 @@ public class LoginController {
      * Inicializa los usuarios con roles y contraseñas encriptadas.
      */
     private void initializeUsers() {
-        users.add(Fabrica.fabricaUsuarios(1, "admin", "admin@example.com", Ruta.USUADMIN, encryptPassword("admin123")));
-        users.add(Fabrica.fabricaUsuarios(2, "instructor", "instructor@example.com", "Instructor", encryptPassword("instr123")));
-        users.add(Fabrica.fabricaUsuarios(3, "usuario", "usuario@example.com", "Usuario", encryptPassword("user123")));
+//        users.add(Fabrica.fabricaUsuarios(1, "admin", "admin@example.com", Ruta.USUADMIN, encryptPassword("admin123")));
+//        users.add(Fabrica.fabricaUsuarios(2, "instructor", "instructor@example.com", "Instructor", encryptPassword("instr123")));
+//        users.add(Fabrica.fabricaUsuarios(3, "usuario", "usuario@example.com", "Usuario", encryptPassword("user123")));
     }
 
     /**

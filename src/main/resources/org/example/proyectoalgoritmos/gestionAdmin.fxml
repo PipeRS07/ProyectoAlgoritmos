@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminInscripcionController">
+   <bottom>
+      <Pane prefHeight="444.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="39.0" layoutY="48.0" prefHeight="310.0" prefWidth="646.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.45282928694957" minWidth="77.88678924788707" prefWidth="108.67923919905894" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.7735965195057" minWidth="88.75471690508276" prefWidth="88.75471690508276" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.43400166865655" minWidth="101.43398417727144" prefWidth="149.43400166865655" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.84909129321011" minWidth="57.05658256663855" prefWidth="82.41507029711636" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="81.50947169368067" minWidth="18.113176671072665" prefWidth="52.52831752039697" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0943275742278" minWidth="17.207512990993052" prefWidth="96.0943275742278" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints />
+                </rowConstraints>
+                <children>
+                    <Text text="Gestión de Inscripciones" GridPane.columnSpan="6">
+                        <font>
+                            <Font size="20" />
+                        </font>
+                    </Text>
+            
+                                            <!-- Filtros -->
+                    <Label text="Filtrar por Curso:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <ComboBox fx:id="courseFilterComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            
+                                            <Label text="Filtrar por Usuario:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <ComboBox fx:id="userFilterComboBox" prefHeight="25.0" prefWidth="88.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            
+                                            <Label text="Filtrar por Fecha:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            
+                                            <Label text="Filtrar por Estado:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <ComboBox fx:id="statusFilterComboBox" prefHeight="25.0" prefWidth="87.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            
+                                            <Button onAction="#handleFilterInscriptions" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px;" text="Filtrar" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            
+                                            <!-- Tabla -->
+                    <TableView fx:id="inscriptionsTable" prefHeight="197.0" prefWidth="494.0" GridPane.columnSpan="6" GridPane.rowIndex="3">
+                        <columns>
+                            <TableColumn fx:id="courseColumn" text="Curso" />
+                            <TableColumn fx:id="userColumn" text="Usuario" />
+                            <TableColumn fx:id="dateColumn" text="Fecha" />
+                            <TableColumn fx:id="statusColumn" text="Estado" />
+                        </columns>
+                    </TableView>
+            
+                                            <!-- Botones -->
+                    <Button onAction="#handleApprove" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-size: 14px;" text="Aprobar" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                    <Button onAction="#handleReject" style="-fx-background-color: #E53935; -fx-text-fill: white; -fx-font-size: 14px;" text="Rechazar" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <DatePicker fx:id="dateFilterTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </bottom>
+</BorderPane>

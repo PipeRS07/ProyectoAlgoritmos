@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuUsuarioController">
+    <center>
+        <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0">
+            <children>
+                <Button onAction="#registroOnAction" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Registrar Usuario" />
+                <Button onAction="#inicioSesionOnAction" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;" text="Inicio de Sesión" />
+                <Button onAction="#actualizaPerfilOnAction" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-font-size: 14px;" text="Actualizar Perfil" />
+            <Button onAction="#mostrarOnAction" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Mostrar Información" />
+            </children>
+        </HBox>
+    </center>
+</BorderPane>

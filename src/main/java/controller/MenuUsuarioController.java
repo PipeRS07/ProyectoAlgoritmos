@@ -7,12 +7,11 @@ import org.example.proyectoalgoritmos.HelloApplication;
 
 import java.io.IOException;
 
-public class ManagementCourseController {
-
+public class MenuUsuarioController {
     @javafx.fxml.FXML
     private BorderPane bp;
 
-    private void loadPage(String page){
+    private void loadPage(String page) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
         try {
             this.bp.setCenter(fxmlLoader.load());
@@ -20,24 +19,22 @@ public class ManagementCourseController {
             throw new RuntimeException(e);
         }
     }
+
+
     @javafx.fxml.FXML
-    public void searchOnAction(ActionEvent actionEvent) {
+    public void mostrarOnAction(ActionEvent actionEvent) {loadPage("mantenimientoUsuario.fxml");
     }
 
     @javafx.fxml.FXML
-    public void editOnAction(ActionEvent actionEvent) {
-        loadPage("editarCurso.fxml");
+    public void registroOnAction(ActionEvent actionEvent) {loadPage("registrarUsuario.fxml");
     }
 
     @javafx.fxml.FXML
-    public void removeOnAction(ActionEvent actionEvent) {loadPage("eliminarCurso.fxml");
+    public void inicioSesionOnAction(ActionEvent actionEvent) {loadPage("inicioSesionUsuario.fxml");
     }
 
     @javafx.fxml.FXML
-    public void addOnAction(ActionEvent actionEvent) {loadPage("registroCurso.fxml");
-    }
-
-    @javafx.fxml.FXML
-    public void showOnAction(ActionEvent actionEvent) {loadPage("mostrarCursos.fxml");
+    public void actualizaPerfilOnAction(ActionEvent actionEvent) {
+        loadPage("actualizarUsuario.fxml");
     }
 }

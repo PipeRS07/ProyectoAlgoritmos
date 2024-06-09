@@ -1,0 +1,29 @@
+/*
+    Created on 12 march 2024, 19:50:23
+    Author: Profesor Gilberth Chaves A <gchavesav@ucr.ac.cr>
+*/
+
+    .fixed-size-button {
+        -fx-min-width: 100px; /* Ancho mínimo del botón */
+        -fx-min-height: 50px; /* Altura mínima del botón */
+        -fx-max-width: 100px; /* Ancho máximo del botón */
+        -fx-max-height: 50px; /* Altura máxima del botón */
+    }
+
+    .button:hover {
+        -fx-background-color: brown;
+        -fx-scale-y: 1.1;
+    }
+
+    .button:pressed {
+        -fx-scale-y: 0.9;
+        -fx-scale-x: 0.9;
+    }
+
+
+    .menu-bar {
+        -fx-background-color: grey ;
+        -fx-opacity: 5;
+        -fx-border-width: 10.0;
+
+    }
