@@ -13,6 +13,8 @@ public class Curso {
     private String dificultad;
     private String siglas;
 
+    private BST evaluaciones;
+
 
     public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas) {
         this.nombre = nombre;
@@ -20,6 +22,7 @@ public class Curso {
         this.duracion = duracion;
         this.dificultad = dificultad;
         this.siglas = siglas;
+        this.evaluaciones = new BST();
     }
 
     public String getNombre() {
