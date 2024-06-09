@@ -67,12 +67,13 @@ public class HelloController {
 
     @FXML
     private void handleProgreso(ActionEvent event) {
+        loadPage("aprendizajeLinea.fxml");
         showAlert("Mi Aprendizaje - Progreso", "Aquí puede ver su progreso.");
     }
 
     @FXML
     private void handleInformes(ActionEvent event) {
-        showAlert("Reportes - Informes", "Aquí puede generar informes.");
+        loadPage("reporte.fxml");
     }
 
     @FXML

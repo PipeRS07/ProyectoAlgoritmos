@@ -26,7 +26,7 @@ public class Utility {
 
     public static HashTable circularLinkedList;
     private static UserData userData;
-    public static User usuarioactivo=null;
+    public static User UserActivo =null;
 
 
 

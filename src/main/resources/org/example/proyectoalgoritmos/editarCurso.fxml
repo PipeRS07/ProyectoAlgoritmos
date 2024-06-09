@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="bp" prefHeight="321.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.editCourseController">
+<BorderPane fx:id="bp" prefHeight="321.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.editCourseController">
    <center>
       <VBox alignment="CENTER" spacing="10">
          <HBox spacing="10">
@@ -22,6 +22,12 @@
               <Label text="Nombre:" />
               <TextField fx:id="nameField" />
           </HBox>
+         <HBox spacing="10">
+            <children>
+               <Label text="ID" />
+               <TextField fx:id="nameField2" />
+            </children>
+         </HBox>
       
                 <HBox spacing="10">
               <Label text="Descripción:" />

@@ -20,7 +20,7 @@ class UserDataTest {
                 System.out.println(data.getUsuarioPorNombre("Nigelaaaa"));
                 System.out.println(data.getUsuarioPorNombre("Veroa"));
                 EnviarEmail enviarEmail = new EnviarEmail();
-                enviarEmail.enviarCorreo("jfelipe070703@gmail.com", "", "", "");
+                enviarEmail.enviarCorreo("veronicaagueroaguilar@gmail.com", "", "", "");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (NoSuchAlgorithmException e) {

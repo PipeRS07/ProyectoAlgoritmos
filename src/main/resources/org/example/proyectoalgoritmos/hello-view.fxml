@@ -15,8 +15,6 @@
         <Menu mnemonicParsing="false" text="Home">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#Home" text="Home" />
-            <MenuItem mnemonicParsing="false" onAction="#Exit" text="Exit" />
-                  <MenuItem mnemonicParsing="false" onAction="#Registro" text="Registro" />
           </items>
         </Menu>
             <Menu text="Mantenimiento">
@@ -34,6 +32,12 @@
                </items>
             </Menu>
             <Menu text="Reportes">
+               <items>
+                  <MenuItem onAction="#handleInformes" text="Informes" />
+                  <MenuItem onAction="#handleAnalisis" text="Análisis" />
+               </items>
+            </Menu>
+            <Menu text="Cerrar Sesión">
                <items>
                   <MenuItem onAction="#handleInformes" text="Informes" />
                   <MenuItem onAction="#handleAnalisis" text="Análisis" />

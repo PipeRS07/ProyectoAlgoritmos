@@ -61,47 +61,6 @@ public class LeccionesMantenimientoController {
     public void eliminarUsuario(ActionEvent actionEvent) {
     }
 
-    @Deprecated
-    private void handleSeguridad(ActionEvent event) {
-        loadPage("Login.fxml");
-    }
-
-    @Deprecated
-    private void handleUsuarios(ActionEvent event) {
-        loadPage("mantenimientoUsuario.fxml");
-    }
-
-    @Deprecated
-    private void handleCursos(ActionEvent event) { loadPage("managementCourse.fxml");
-    }
-
-    @Deprecated
-    private void handleLecciones(ActionEvent event) {
-        loadPage("mantenimientoLecciones.fxml");    }
-
-    @Deprecated
-    private void handleInscripciones(ActionEvent event) {
-        loadPage("menuInscripciones.fxml");
-    }
-
-    @Deprecated
-    private void handleMisCursos(ActionEvent event) {
-    }
-
-    @Deprecated
-    private void handleProgreso(ActionEvent event) {
-        showAlert("Mi Aprendizaje - Progreso", "Aquí puede ver su progreso.");
-    }
-
-    @Deprecated
-    private void handleInformes(ActionEvent event) {
-        showAlert("Reportes - Informes", "Aquí puede generar informes.");
-    }
-
-    @Deprecated
-    private void handleAnalisis(ActionEvent event) {
-        showAlert("Reportes - Análisis", "Aquí puede realizar análisis.");
-    }
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

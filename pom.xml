@@ -11,7 +11,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<junit.version>5.10.0</junit.version>  </properties>
+    <junit.version>5.10.0</junit.version>  </properties>
 
   <dependencies>
 
@@ -64,7 +64,7 @@
         <configuration>
           <source>21</source>
           <target>21</target>
-            <compilerArgs>--enable-preview</compilerArgs>
+          <compilerArgs>--enable-preview</compilerArgs>
         </configuration>
       </plugin>
       <plugin>
