@@ -1,5 +1,6 @@
 package domain.list;
 
+import domain.clasesBase.User;
 import util.Utility;
 
 public class CircularDoublyLinkedList implements List {
