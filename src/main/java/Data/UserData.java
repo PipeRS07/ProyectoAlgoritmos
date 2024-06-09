@@ -66,21 +66,30 @@ public class UserData {
 
     public ArrayList<User> getUsuarios() throws IOException {
         //el metodo retorna la lista de los usuarios que están guardados en el archivo
-        ArrayList<User> usuarios= new ArrayList<>();
-        int id=0;
-        String name="";
-        String email="";
-        String role="";
-        String contrasenia="";
+        ArrayList<User> usuarios = new ArrayList<>();
+        int id;
+        String name;
+        String email;
+        String role;
+        String contrasenia;
+
         for (int i = 0; i < cantidadDeRegistros; i++) {
-            this.raf.seek(i*tamanioRegistro);
-            id=raf.readInt();
-            name= raf.readUTF();
-            email= raf.readUTF();
-            role= raf.readUTF();
-            contrasenia= raf.readUTF();
-            if(Fabrica.fabricaUsuarios(id, name, email, role, contrasenia)!=null)
-                usuarios.add(Fabrica.fabricaUsuarios(id, name, email, role, contrasenia));
+            this.raf.seek(i * tamanioRegistro);
+            id = raf.readInt();
+            name = raf.readUTF();
+            email = raf.readUTF();
+            role = raf.readUTF();
+            contrasenia = raf.readUTF();
+
+            // Crear un objeto User temporal con los datos leídos
+            User tempUser = new User(id, name, email, role, contrasenia);
+
+            // Utilizar el método fabricaUsuarios que toma un User como parámetro
+            User usuario = Fabrica.fabricaUsuarios(tempUser);
+
+            if (usuario != null) {
+                usuarios.add(usuario);
+            }
         }
         return usuarios;
     }

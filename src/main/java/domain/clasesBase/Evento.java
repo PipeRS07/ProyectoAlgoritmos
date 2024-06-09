@@ -5,10 +5,10 @@ import java.time.LocalDateTime;
 
 public class Evento {
     private LocalDate fechaYHora;
-    private Usuario usuario;
+    private User usuario;
     private String descripcion;
 
-    public Evento(Usuario usuario, String descripcion) {
+    public Evento(User usuario, String descripcion) {
         this.usuario = usuario;
         this.descripcion = descripcion;
         this.fechaYHora = LocalDate.now();
@@ -22,11 +22,11 @@ public class Evento {
         this.fechaYHora = fechaYHora;
     }
 
-    public Usuario getUsuario() {
+    public User getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(User usuario) {
         this.usuario = usuario;
     }
 
