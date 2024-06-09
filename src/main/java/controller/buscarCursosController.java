@@ -2,25 +2,15 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
 
 import java.io.IOException;
 
-public class CourseRegistrationController {
-    @javafx.fxml.FXML
-    private TextField courseNameField;
-    @javafx.fxml.FXML
-    private TextField courseNameField2;
-    @javafx.fxml.FXML
-    private TextField courseNameField3;
-    @javafx.fxml.FXML
-    private TextArea descriptionField;
+public class buscarCursosController
+{
     @javafx.fxml.FXML
     private BorderPane bp;
-
 
     private void loadPage(String page) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
@@ -31,11 +21,15 @@ public class CourseRegistrationController {
         }
     }
     @javafx.fxml.FXML
-    public void handleRegisterCourse(ActionEvent actionEvent) {
+    public void initialize() {
     }
 
     @javafx.fxml.FXML
-    public void atrasDeRegistroCursoOnAction(ActionEvent actionEvent) {
+    public void buscarBuscarCursosOnAction(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void atrasBuscarCursosOnAcction(ActionEvent actionEvent) {
         loadPage("managementCourse.fxml");
     }
 }

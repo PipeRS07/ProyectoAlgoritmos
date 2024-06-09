@@ -42,4 +42,8 @@ public class editCourseController {
         }
     }
 
+    @javafx.fxml.FXML
+    public void atrasDeEditasrCursoOnAction(ActionEvent actionEvent) {
+        loadPage("managementCourse.fxml");
+    }
 }
