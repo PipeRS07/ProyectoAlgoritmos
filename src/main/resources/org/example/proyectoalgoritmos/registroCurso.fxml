@@ -2,57 +2,56 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseRegistrationController">
+<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.registraCourseController">
    <center>
       <GridPane>
           <padding>
               <Insets bottom="20" left="20" right="20" top="20" />
           </padding>
-      
-          <Label text="Registro de Curso" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
-      
-          <Label text="Nombre del Curso:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-      
-          <Label text="Descripción:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-          <TextArea fx:id="descriptionField" prefHeight="87.0" prefWidth="469.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      
-          <Label text="Duración (horas):" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-      
-          <Button onAction="#handleRegisterCourse" text="Registrar" GridPane.columnSpan="2" GridPane.rowIndex="13" />
-         <Label text="Nivel" GridPane.rowIndex="6" />
-         <Label text="ID Instructor " GridPane.rowIndex="10" />
-         <TextField fx:id="courseNameField2" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-          <TextField fx:id="courseNameField" GridPane.columnIndex="3" GridPane.rowIndex="10" />
-         <TextField fx:id="courseNameField3" prefWidth="356.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-         <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+
+          <Label text="Registro de Curso" GridPane.columnSpan="2" />
+
+          <Label text="Id" GridPane.rowIndex="1" />
+
+          <Label text="UserId" GridPane.rowIndex="3" />
+
+          <Button onAction="#RegisterCourse" text="Registrar" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+         <Label GridPane.rowIndex="11" />
+         <TextField fx:id="id" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+         <Label text="ID Curso (int)" GridPane.rowIndex="2" />
+         <TextField fx:id="idCurso" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         <TextField fx:id="idUser" prefHeight="25.0" prefWidth="354.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+         <DatePicker fx:id="fecha" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+         <Label text="Fecha" GridPane.rowIndex="9" />
          <columnConstraints>
             <ColumnConstraints />
             <ColumnConstraints />
             <ColumnConstraints maxWidth="9.962242126464844" minWidth="5.4339599609375" prefWidth="9.962242126464844" />
-            <ColumnConstraints maxWidth="463.69813239375037" minWidth="459.169850228223" prefWidth="459.169850228223" />
-            <ColumnConstraints />
+            <ColumnConstraints maxWidth="463.69813239375037" minWidth="206.49061887041086" prefWidth="209.2075988508796" />
+            <ColumnConstraints maxWidth="253.58486938476562" minWidth="5.4339599609375" prefWidth="250.86788940429688" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints />
+            <RowConstraints maxHeight="37.132080078125" minHeight="0.0" prefHeight="32.603759765625" />
+            <RowConstraints maxHeight="69.73585156623739" minHeight="29.88678127355365" prefHeight="37.132091800612386" />
+            <RowConstraints maxHeight="31.698126603123512" minHeight="0.0" prefHeight="21.735853586981193" />
+            <RowConstraints maxHeight="43.47169967765447" minHeight="16.301876240584704" prefHeight="24.452827320526666" />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints maxHeight="12.67926025390625" minHeight="4.5283203125" prefHeight="12.67926025390625" />
-            <RowConstraints maxHeight="38.0377212149599" minHeight="25.358476964041415" prefHeight="25.358476964041415" />
+            <RowConstraints maxHeight="17.207550048828125" minHeight="4.5283203125" prefHeight="17.207550048828125" />
+            <RowConstraints maxHeight="31.698126364110777" minHeight="4.5283203125" prefHeight="15.396224709412735" />
+            <RowConstraints maxHeight="38.0377212149599" minHeight="7.245271263788027" prefHeight="7.245271263788027" />
+            <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
             <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
             <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
             <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />

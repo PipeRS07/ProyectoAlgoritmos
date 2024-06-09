@@ -30,7 +30,7 @@ public class HelloController {
         }
     }
 
-    @FXML
+    @Deprecated
     void Exit(ActionEvent event) {
         System.exit(0);
     }
@@ -89,8 +89,23 @@ public class HelloController {
         alert.showAndWait();
     }
 
-    @FXML
+    @Deprecated
     public void Registro(ActionEvent actionEvent) {
         loadPage("ingresoSistema.fxml");
+    }
+
+    @Deprecated
+    public void registraseOnAction(ActionEvent actionEvent) {
+        loadPage("registroCurso.fxml");
+
+    }
+
+    @FXML
+    public void cerrarSesionOnAction(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    public void registrarCurso(ActionEvent actionEvent) {
     }
 }

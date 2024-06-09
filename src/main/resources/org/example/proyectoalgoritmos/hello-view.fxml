@@ -37,10 +37,15 @@
                   <MenuItem onAction="#handleAnalisis" text="Análisis" />
                </items>
             </Menu>
-            <Menu text="Cerrar Sesión">
+            <Menu onAction="#cerrarSesionOnAction" text="Cerrar Sesión">
                <items>
                   <MenuItem onAction="#handleInformes" text="Informes" />
                   <MenuItem onAction="#handleAnalisis" text="Análisis" />
+               </items>
+            </Menu>
+            <Menu text="Registrar curso">
+               <items>
+                  <MenuItem onAction="#registrarCurso" text="Registrar" />
                </items>
             </Menu>
       </menus>

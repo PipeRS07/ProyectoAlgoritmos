@@ -16,6 +16,8 @@ public class CourseRegistrationController {
     private TextArea descriptionField;
     @javafx.fxml.FXML
     private BorderPane bp;
+    @javafx.fxml.FXML
+    private TextField courseNameField21;
 
     @javafx.fxml.FXML
     public void handleRegisterCourse(ActionEvent actionEvent) {
