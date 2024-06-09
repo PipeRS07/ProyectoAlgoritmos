@@ -82,7 +82,8 @@ public class UserData {
             contrasenia = raf.readUTF();
 
             // Crear un objeto User temporal con los datos leídos
-            User tempUser = new User(id, name, email, role, contrasenia);
+
+            User tempUser = Fabrica.fabricaUsuarios(id, name, email, role, contrasenia);
 
             // Utilizar el método fabricaUsuarios que toma un User como parámetro
             User usuario = Fabrica.fabricaUsuarios(tempUser);

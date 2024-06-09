@@ -1,6 +1,8 @@
 module org.example.proyectoalgoritmos {
     requires javafx.controls;
     requires javafx.fxml;
+    requires activation;
+    requires javax.mail;
 
 
     opens org.example.proyectoalgoritmos to javafx.fxml;

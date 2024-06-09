@@ -1,9 +1,12 @@
 package controller;
 
+import domain.clasesBase.Administrador;
 import javafx.event.ActionEvent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import util.Ruta;
+import util.Utility;
 
 public class inicioSecionController {
     @javafx.fxml.FXML
@@ -17,5 +20,10 @@ public class inicioSecionController {
 
     @javafx.fxml.FXML
     public void RegisterUserOnAction(ActionEvent actionEvent) {
+
+
+
     }
+
+
 }

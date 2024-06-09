@@ -13,6 +13,7 @@ public class Curso {
     private String dificultad;
     private String siglas;
 
+
     public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
