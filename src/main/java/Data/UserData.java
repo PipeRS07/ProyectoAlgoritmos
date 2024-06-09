@@ -1,9 +1,11 @@
 package Data;
 
 import domain.clasesBase.User;
+import domain.list.ListException;
 import util.Encriptacion;
 import util.Fabrica;
 import util.Ruta;
+import util.Utility;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +25,12 @@ public class UserData {
         init();
     }
 
-
+    public void guardarUsuarios() throws ListException, IOException {
+        int size= Utility.usuariosRegistrados.size();
+        for (int i = 0; i < size; i++) {
+            registrarUser(i, (User) Utility.usuariosRegistrados.getNode(i).data );
+        }
+    }
 
     private void init() throws IOException {
         this.tamanioRegistro=304;
@@ -64,6 +71,7 @@ public class UserData {
     }
 
 
+
     public ArrayList<User> getUsuarios() throws IOException {
         //el metodo retorna la lista de los usuarios que están guardados en el archivo
         ArrayList<User> usuarios = new ArrayList<>();
@@ -95,36 +103,37 @@ public class UserData {
         return usuarios;
     }
 
-    public User getUsuarioPorContrasenia(String contrasenia) throws NoSuchAlgorithmException, IOException {
-        // El método retorna un usuario en caso de que lo encuentre
-        // Busca un usuario por la contrasenia
-        String contraEncriptada = Encriptacion.obtenerContraseniaCifrada(contrasenia);
-        ArrayList<User> usuarios = this.getUsuarios();
-        for (int i = 0; i < usuarios.size(); i++) {
-            if (usuarios.get(i).getContrasenia().equals(contraEncriptada)) {
-                return usuarios.get(i);
-            }
-        }
-        return null;
-    }
-
-    public User getUsuarioPorNombre(String nombre) throws NoSuchAlgorithmException, IOException {
-        // El método retorna un usuario en caso de que lo encuentre
-        // Busca un usuario por el nombre
-        ArrayList<User> usuarios = this.getUsuarios();
-        for (int i = 0; i < usuarios.size(); i++) {
-            if (usuarios.get(i).getName().equals(nombre)) {
-                return usuarios.get(i);
-            }
-        }
-        return null;
-    }
+//    public User getUsuarioPorContrasenia(String contrasenia) throws NoSuchAlgorithmException, IOException {
+//        // El método retorna un usuario en caso de que lo encuentre
+//        // Busca un usuario por la contrasenia
+//        String contraEncriptada = Encriptacion.obtenerContraseniaCifrada(contrasenia);
+//        ArrayList<User> usuarios = this.getUsuarios();
+//        for (int i = 0; i < usuarios.size(); i++) {
+//            if (usuarios.get(i).getContrasenia().equals(contraEncriptada)) {
+//                return usuarios.get(i);
+//            }
+//        }
+//        return null;
+//    }
+//
+//    public User getUsuarioPorNombre(String nombre) throws NoSuchAlgorithmException, IOException {
+//        // El método retorna un usuario en caso de que lo encuentre
+//        // Busca un usuario por el nombre
+//        ArrayList<User> usuarios = this.getUsuarios();
+//        for (int i = 0; i < usuarios.size(); i++) {
+//            if (usuarios.get(i).getName().equals(nombre)) {
+//                return usuarios.get(i);
+//            }
+//        }
+//        return null;
+//    }
 
 
     public void cargarObjetos(Object TDA) throws IOException {
-        for (int i = 0; i < cantidadDeRegistros; i++) {
-            Fabrica.fabricaTDA(TDA, getUsuarios().get(i));
+        ArrayList<User> usuarios= getUsuarios();
+        for (int i = 0; i < usuarios.size(); i++) {
+            Fabrica.fabricaTDA(TDA, usuarios.get(i));
         }
-
     }
+
 }
