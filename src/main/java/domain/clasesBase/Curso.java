@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Curso {
 
     private String nombre;
+    private int id;
     private String descripcion;
     private LocalDate duracion;
     private String dificultad;
@@ -16,13 +17,31 @@ public class Curso {
     private BST evaluaciones;
 
 
+    public Curso(String nombre, int id, String descripcion, LocalDate duracion, String dificultad, String siglas) {
+        this.nombre = nombre;
+        this.id=id;
+        this.descripcion = descripcion;
+        this.duracion = duracion;
+        this.dificultad = dificultad;
+        this.siglas = siglas;
+        this.evaluaciones = new BST();
+    }
+
+    public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas, BST evaluaciones) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.duracion = duracion;
+        this.dificultad = dificultad;
+        this.siglas = siglas;
+        this.evaluaciones = evaluaciones;
+    }
+
     public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.dificultad = dificultad;
         this.siglas = siglas;
-        this.evaluaciones = new BST();
     }
 
     public String getNombre() {
@@ -35,6 +54,21 @@ public class Curso {
 
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public BST getEvaluaciones() {
+        return evaluaciones;
+    }
+
+    public void setEvaluaciones(BST evaluaciones) {
+        this.evaluaciones = evaluaciones;
     }
 
     public void setDescripcion(String descripcion) {

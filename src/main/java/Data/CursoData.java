@@ -1,6 +1,8 @@
 package Data;
 
 import domain.clasesBase.Curso;
+import domain.clasesBase.TreeException;
+import domain.clasesBase.User;
 import util.Fabrica;
 
 import java.io.File;
@@ -11,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import domain.bTree.AVLTree;
 import util.Ruta;
+import util.Utility;
 
 public class CursoData {
     private RandomAccessFile raf;
@@ -22,6 +25,13 @@ public class CursoData {
 
     public CursoData() throws IOException {
         init();
+    }
+    
+    public void guardarCursos() throws TreeException, IOException {
+        for (int i = 0; i < Utility.cursosRegistrados.size(); i++) {
+            registrarCurso(i, (Curso) (Utility.cursosRegistrados.root.data));
+            Utility.cursosRegistrados.remove(Utility.cursosRegistrados.root.data);
+        }
     }
 
     private void init() throws IOException {
@@ -35,6 +45,13 @@ public class CursoData {
         }
     }
 
+    public boolean agregarAlFinal(Curso curso) throws IOException {
+        if (registrarCurso(this.cantidadDeRegistros, curso)) {
+            ++cantidadDeRegistros;
+            return true;
+        }
+        return false;
+    }
     private boolean registrarCurso(int posicion, Curso curso) throws IOException {
         boolean respuesta = false;
         if (posicion >= 0 && posicion <= cantidadDeRegistros) {
@@ -69,13 +86,7 @@ public class CursoData {
         return new String(s).trim();
     }
 
-    public boolean agregarAlFinal(Curso curso) throws IOException {
-        if (registrarCurso(this.cantidadDeRegistros, curso)) {
-            ++cantidadDeRegistros;
-            return true;
-        }
-        return false;
-    }
+   
 
     public ArrayList<Curso> getCursos() throws IOException {
         ArrayList<Curso> cursos = new ArrayList<>();
@@ -97,19 +108,21 @@ public class CursoData {
         return cursos;
     }
 
-    public Curso getCursoPorNombre(String nombre) throws IOException {
-        ArrayList<Curso> cursos = this.getCursos();
-        for (Curso curso : cursos) {
-            if (curso.getNombre().equals(nombre)) {
-                return curso;
-            }
-        }
-        return null;
-    }
+//    public Curso getCursoPorNombre(String nombre) throws IOException {
+//        ArrayList<Curso> cursos = this.getCursos();
+//        for (Curso curso : cursos) {
+//            if (curso.getNombre().equals(nombre)) {
+//                return curso;
+//            }
+//        }
+//        return null;
+//    }
 
-    public void cargarCursos(Object cursosEnElSistema) throws IOException {
-        for (Curso curso : getCursos()) {
-            Fabrica.fabricaTDA(cursosEnElSistema, curso);
+
+    public void cargarObjetos(Object TDA) throws IOException {
+        ArrayList<Curso> cursos= getCursos();
+        for (int i = 0; i < cursos.size(); i++) {
+            Fabrica.fabricaTDA(TDA, cursos.get(i));
         }
     }
 
