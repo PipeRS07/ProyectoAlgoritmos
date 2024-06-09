@@ -27,7 +27,7 @@ public class CursoData {
         init();
     }
     
-    public void guardarCursos() throws TreeException, IOException {
+    public void guardarCursos() throws TreeException, IOException, domain.bTree.TreeException {
         for (int i = 0; i < Utility.cursosRegistrados.size(); i++) {
             registrarCurso(i, (Curso) (Utility.cursosRegistrados.root.data));
             Utility.cursosRegistrados.remove(Utility.cursosRegistrados.root.data);

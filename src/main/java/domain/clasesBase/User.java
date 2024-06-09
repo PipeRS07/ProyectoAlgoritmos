@@ -1,5 +1,7 @@
 package domain.clasesBase;
 
+import java.util.Objects;
+
 public class User {
     private int id;
     private String name;
@@ -64,6 +66,19 @@ public class User {
 
     public int size() {
         return 4+name.length()+this.role.length()+this.contrasenia.length()+this.email.length();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(role, user.role) && Objects.equals(contrasenia, user.contrasenia);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, role, contrasenia);
     }
 
     @Override

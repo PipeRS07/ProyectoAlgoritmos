@@ -2,7 +2,9 @@ package util;
 
 import Data.UserData;
 import domain.HashTable.HashTable;
+import domain.bTree.AVLTree;
 import domain.bTree.BTree;
+import domain.bTree.Tree;
 import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.CircularLinkedList;
@@ -25,8 +27,10 @@ public class Utility {
     public static CircularLinkedList usuariosEnELSistema;
 
     public static HashTable circularLinkedList;
+    public static AVLTree cursosRegistrados;
     private static UserData userData;
     public static User usuarioactivo=null;
+
 
 
 
@@ -43,6 +47,7 @@ public class Utility {
             throw new RuntimeException(e);
         }
     }
+
 
 
 
