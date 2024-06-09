@@ -30,12 +30,13 @@ public class ingresoSistemaController {
     }
 
     @javafx.fxml.FXML
-    public void registOnAction(ActionEvent actionEvent) {
+    public void registrarseOnAction(ActionEvent actionEvent) {
         loadPage("registrarUsuario.fxml");
     }
 
     @javafx.fxml.FXML
     public void inicioSecionnAction(ActionEvent actionEvent) {
+
         loadPage("hello-view.fxml");
     }
 }

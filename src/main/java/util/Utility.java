@@ -3,6 +3,7 @@ package util;
 import Data.UserData;
 import domain.HashTable.HashTable;
 import domain.bTree.BTree;
+import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.CircularLinkedList;
 import domain.list.SinglyLinkedList;
@@ -25,6 +26,7 @@ public class Utility {
 
     public static HashTable circularLinkedList;
     private static UserData userData;
+    public static User UserActivo =null;
 
 
 
