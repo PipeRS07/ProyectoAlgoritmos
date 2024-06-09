@@ -20,6 +20,8 @@ public class CourseRegistrationController {
     private TextArea descriptionField;
     @javafx.fxml.FXML
     private BorderPane bp;
+    @javafx.fxml.FXML
+    private TextField courseNameField21;
 
 
     private void loadPage(String page) {

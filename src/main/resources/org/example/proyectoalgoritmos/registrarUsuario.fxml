@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="bp" prefHeight="321.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroUsuarioController">
+<BorderPane fx:id="bp" prefHeight="321.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroUsuarioController">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -12,22 +12,24 @@
                 <padding>
                     <Insets bottom="20" left="20" right="20" top="20" />
                 </padding>
-            
+
                       <Label text="Registro de Usuario" GridPane.columnIndex="1" GridPane.columnSpan="2" />
-            
+
                       <Label text="Nombre de Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            
-                      <Label text="Correo Electrónico:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            
-                      <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                <PasswordField fx:id="passwordField" prefHeight="14.0" prefWidth="148.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            
-                      <Label GridPane.rowIndex="4" />
-            
-                      <Button onAction="#RegisterUserOnAction" text="Registrar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-               <Button mnemonicParsing="false" onAction="#atrasOnAction" text="Atrás" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                      <Label text="Correo Electrónico:" GridPane.rowIndex="3" />
+                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                      <Label text="Contraseña:" GridPane.rowIndex="4" />
+                <PasswordField fx:id="passwordField" prefHeight="14.0" prefWidth="148.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                      <Label GridPane.rowIndex="5" />
+
+                      <Button onAction="#RegisterUserOnAction" text="Registrar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+               <Button mnemonicParsing="false" onAction="#atrasOnAction" text="Atrás" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+               <TextField fx:id="idUser" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <Label text="Cedula" GridPane.rowIndex="2" />
                <columnConstraints>
                   <ColumnConstraints maxWidth="120.45285541810117" minWidth="110.49057514466367" prefWidth="120.45285541810117" />
                   <ColumnConstraints maxWidth="143.09433964165407" minWidth="133.13205936821657" prefWidth="134.03774067276797" />
@@ -35,9 +37,10 @@
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints maxHeight="36.22641140050678" minHeight="29.88678127355365" prefHeight="36.22641140050678" />
-                  <RowConstraints maxHeight="30.792467203544277" minHeight="14.490571556756777" prefHeight="30.792467203544277" />
+                  <RowConstraints maxHeight="34.35849147863178" minHeight="29.415095578143124" prefHeight="29.415095578143124" />
+                  <RowConstraints maxHeight="34.88679352838746" minHeight="16.358491478631777" prefHeight="30.32075598809425" />
+                  <RowConstraints maxHeight="36.22641140050678" minHeight="19.69811434828972" prefHeight="24.92452901892497" />
+                  <RowConstraints maxHeight="36.69811434828972" minHeight="14.490571556756777" prefHeight="36.69811434828972" />
                   <RowConstraints maxHeight="13.584887886522708" minHeight="2.716967964647722" prefHeight="2.716967964647722" />
                   <RowConstraints />
                   <RowConstraints />

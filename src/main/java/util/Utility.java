@@ -1,10 +1,8 @@
 package util;
 
-import Data.CursoData;
 import Data.UserData;
 import domain.HashTable.HashTable;
 import domain.bTree.BTree;
-import domain.clasesBase.AVL;
 import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.CircularLinkedList;
@@ -16,7 +14,6 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Random;
 
 import static java.lang.StringTemplate.STR;
@@ -26,32 +23,27 @@ public class Utility {
 
     public static CircularDoublyLinkedList usuariosRegistrados;
     public static CircularLinkedList usuariosEnELSistema;
-    public static AVL cursosRegistrados;
-
 
     public static HashTable circularLinkedList;
     private static UserData userData;
-    private static CursoData cursoData;
     public static User usuarioactivo=null;
 
 
+
+    //public static AVL arbol avl
+    //static init
     static {
         try {
             userData = new UserData();
-            cursoData = new CursoData();
-
             usuariosRegistrados = new CircularDoublyLinkedList();
             userData.cargarObjetos(usuariosRegistrados);
-
+            //userData.cargarObjetos(con el otro tda );
             usuariosEnELSistema= new CircularLinkedList();
-
-            cursosRegistrados= new AVL();
-            userData.cargarObjetos(cursosRegistrados);
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 
     private static String convertirAHexadecimal(byte[] digest){

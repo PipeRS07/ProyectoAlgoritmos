@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="bp" prefHeight="321.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.editCourseController">
+<BorderPane fx:id="bp" prefHeight="321.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.editCourseController">
    <center>
       <VBox alignment="CENTER" spacing="10">
          <HBox spacing="10">
@@ -17,6 +22,12 @@
               <Label text="Nombre:" />
               <TextField fx:id="nameField" />
           </HBox>
+         <HBox spacing="10">
+            <children>
+               <Label text="ID" />
+               <TextField fx:id="nameField2" />
+            </children>
+         </HBox>
       
                 <HBox spacing="10">
               <Label text="Descripción:" />
@@ -42,7 +53,6 @@
                 <HBox prefHeight="22.0" prefWidth="135.0" spacing="10">
               <Button onAction="#handleCreateCourse" text="Guardar" />
               <Button onAction="#regresarOnAction" text="Cancelar" />
-            <Button mnemonicParsing="false" onAction="#atrasDeEditasrCursoOnAction" text="Atrás" />
           </HBox>
       </VBox>
    </center>

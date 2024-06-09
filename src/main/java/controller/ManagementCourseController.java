@@ -34,7 +34,7 @@ public class ManagementCourseController {
     }
 
     @javafx.fxml.FXML
-    public void addOnAction(ActionEvent actionEvent) {loadPage("registroCurso.fxml");
+    public void addOnAction(ActionEvent actionEvent) {loadPage("crearCurso.fxml");
     }
 
     @javafx.fxml.FXML

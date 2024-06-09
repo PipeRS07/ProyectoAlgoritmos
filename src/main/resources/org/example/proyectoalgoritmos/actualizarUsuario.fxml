@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ActualizarUsuarioController">
    <children>
       <VBox layoutX="64.0" layoutY="60.0" prefHeight="245.0" prefWidth="477.0" spacing="10">
          <children>
             <Label text="Gestión de Perfil" />
             <TextField fx:id="nombrePerfilField" promptText="Nuevo Nombre" />
+            <TextField fx:id="nombrePerfilField1" promptText="ID" />
             <PasswordField fx:id="contraseñaPerfilField" promptText="Nueva Contraseña" />
             <TextField fx:id="correoPerfilField" promptText="Nuevo Correo" />
             <Button onAction="#actualizarPerfil" text="Actualizar Perfil">

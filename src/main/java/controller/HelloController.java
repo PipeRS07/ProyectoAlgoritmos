@@ -30,7 +30,7 @@ public class HelloController {
         }
     }
 
-    @FXML
+    @Deprecated
     void Exit(ActionEvent event) {
         System.exit(0);
     }
@@ -67,12 +67,13 @@ public class HelloController {
 
     @FXML
     private void handleProgreso(ActionEvent event) {
+        loadPage("aprendizajeLinea.fxml");
         showAlert("Mi Aprendizaje - Progreso", "Aquí puede ver su progreso.");
     }
 
     @FXML
     private void handleInformes(ActionEvent event) {
-        showAlert("Reportes - Informes", "Aquí puede generar informes.");
+        loadPage("reporte.fxml");
     }
 
     @FXML
@@ -88,8 +89,23 @@ public class HelloController {
         alert.showAndWait();
     }
 
-    @FXML
+    @Deprecated
     public void Registro(ActionEvent actionEvent) {
         loadPage("ingresoSistema.fxml");
+    }
+
+    @Deprecated
+    public void registraseOnAction(ActionEvent actionEvent) {
+        loadPage("registroCurso.fxml");
+
+    }
+
+    @FXML
+    public void cerrarSesionOnAction(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    public void registrarCurso(ActionEvent actionEvent) {
     }
 }
