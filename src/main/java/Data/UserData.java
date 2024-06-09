@@ -111,8 +111,6 @@ public class UserData {
     }
 
 
-
-
     public void cargarObjetos(Object TDA) throws IOException {
         for (int i = 0; i < cantidadDeRegistros; i++) {
             Fabrica.fabricaTDA(TDA, getUsuarios().get(i));
