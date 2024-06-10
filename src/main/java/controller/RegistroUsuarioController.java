@@ -1,5 +1,6 @@
 package controller;
 
+import Data.EnviarEmail;
 import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.ListException;
@@ -77,6 +78,8 @@ public class RegistroUsuarioController {
             if (Utility.usuariosRegistrados.isEmpty()) {
                 Utility.usuariosRegistrados.add(newUser);
                 Utility.usuariosEnELSistema.add(newUser);
+                EnviarEmail enviarEmail = new EnviarEmail();
+                enviarEmail.enviarCorreoSinAdjunto(newUser.getEmail(), "Confirmacion de ingreso al sismtema", "¡Hola! "+newUser.getName()+"\nBienvenido a nuestra plataforma de aprendizaje!!");
                 System.out.println("Usuario agregado correctamente a la lista de usuarios registrados: " + newUser);
                 showAlert("Éxito", "Usuario registrado correctamente", Alert.AlertType.INFORMATION);
                 //   enviarNotificacionRegistro(newUser, password);
@@ -87,6 +90,8 @@ public class RegistroUsuarioController {
             // Agregar el nuevo usuario a la lista de usuarios registrados
             Utility.usuariosRegistrados.add(newUser);
             Utility.usuariosEnELSistema.add(newUser);
+            EnviarEmail enviarEmail = new EnviarEmail();
+            enviarEmail.enviarCorreoSinAdjunto(newUser.getEmail(), "Confirmacion de ingreso al sismtema", "Bienvenido a nuestra plataforma de aprendizaje");
             System.out.println("Usuario agregado correctamente a la lista de usuarios registrados: " + newUser);
             showAlert("Éxito", "Usuario registrado correctamente", Alert.AlertType.INFORMATION);
             //  enviarNotificacionRegistro(newUser, password);
