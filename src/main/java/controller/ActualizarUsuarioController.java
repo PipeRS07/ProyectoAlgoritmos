@@ -5,14 +5,17 @@ import domain.clasesBase.User;
 import domain.list.ListException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import org.example.proyectoalgoritmos.HelloApplication;
 import util.Encriptacion;
 import util.Ruta;
 import util.Utility;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 public class ActualizarUsuarioController {
@@ -130,6 +133,20 @@ public class ActualizarUsuarioController {
         rol.setValue(null); // Limpiar la selección del ComboBox
         contraseñaPerfilField.setText("");
         buscar.setText("");
+    }
+    private void loadPage(String page) {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
+        try {
+            this.bp.setCenter(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @FXML
+    public void atrasOnAction(ActionEvent actionEvent) {
+        loadPage("menuUsuario.fxml");
     }
 
 }

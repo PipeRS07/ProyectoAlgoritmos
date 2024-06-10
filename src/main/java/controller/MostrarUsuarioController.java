@@ -1,14 +1,19 @@
 package controller;
 
 import domain.clasesBase.User;
+import domain.list.CircularDoublyLinkedList;
+import domain.list.DoublyLinkedList;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import util.Utility;
 
 public class MostrarUsuarioController {
     @FXML
@@ -23,6 +28,7 @@ public class MostrarUsuarioController {
     private TableColumn<User, String> usernameColumn;
     @FXML
     private TableColumn<User, String> emailColumn;
+    private Alert alert;
     @FXML
     public void initialize() {
         // Enlaza las columnas con los atributos de User

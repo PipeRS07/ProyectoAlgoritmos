@@ -1,51 +1,43 @@
 package controller;
 
-import domain.clasesBase.Curso;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import util.Utility;
+import org.example.proyectoalgoritmos.HelloApplication;
 
 import java.io.IOException;
 
 public class editCourseController {
-
-    @FXML
+    @javafx.fxml.FXML
+    private TextField courseLengthField1;
+    @javafx.fxml.FXML
+    private TextField nameField;
+    @javafx.fxml.FXML
+    private TextField courseLengthField;
+    @javafx.fxml.FXML
+    private TextField descriptionField;
+    @javafx.fxml.FXML
+    private ComboBox comboBox;
+    @javafx.fxml.FXML
     private BorderPane bp;
+    @javafx.fxml.FXML
+    private TextField nameField1;
+    @javafx.fxml.FXML
+    private TextField nameField2;
 
-    @FXML
-    private TextField nameCursoField;
-
-    @FXML
-    private TextField descripcionField;
-
-    @FXML
-    private TextField duracionPerfilField;
-
-    @FXML
-    private ComboBox<?> levelEditarCursoOnAction;
-
-    @FXML
-    void actualizarEditarCursoOnAction(ActionEvent event) {
+    @javafx.fxml.FXML
+    public void handleCreateCourse(ActionEvent actionEvent) {
 
     }
 
-    @FXML
-    void atrasEditarCurso(ActionEvent event) {
-        loadPage("managementCourse.fxml");
+    @javafx.fxml.FXML
+    public void regresarOnAction(ActionEvent actionEvent) {
+        loadPage("couseView.fxml");
     }
-
-    @FXML
-    void buscarEditarOnAction(ActionEvent event) {
-
-    }
-
     private void loadPage(String page) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(page));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
         try {
             this.bp.setCenter(fxmlLoader.load());
         } catch (IOException e) {
@@ -53,11 +45,8 @@ public class editCourseController {
         }
     }
 
-    private void showAlert(String title, String message, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    @javafx.fxml.FXML
+    public void atrasDeEditarCursoOnAction(ActionEvent actionEvent) {
+        loadPage("managementCourse.fxml");
     }
 }
