@@ -20,13 +20,13 @@ public class CursoData {
     private int cantidadDeRegistros;
     private int tamanioRegistro;
 
-    // nombre:100, descripcion:200, duracion:10 (YYYY-MM-DD), dificultad:50, siglas:10
+    // nombre:100, descripcion:200, duracion:10 (en horas), dificultad:50, siglas:10
     // 100*2 + 200*2 + 10*2 + 50*2 + 10*2 = 740 bytes
 
     public CursoData() throws IOException {
         init();
     }
-    
+
     public void guardarCursos() throws TreeException, IOException, domain.bTree.TreeException {
         for (int i = 0; i < Utility.cursosRegistrados.size(); i++) {
             registrarCurso(i, (Curso) (Utility.cursosRegistrados.root.data));
@@ -52,6 +52,7 @@ public class CursoData {
         }
         return false;
     }
+
     private boolean registrarCurso(int posicion, Curso curso) throws IOException {
         boolean respuesta = false;
         if (posicion >= 0 && posicion <= cantidadDeRegistros) {
@@ -59,7 +60,7 @@ public class CursoData {
                 this.raf.seek(posicion * this.tamanioRegistro);
                 writeFixedString(raf, curso.getNombre(), 100);
                 writeFixedString(raf, curso.getDescripcion(), 200);
-                writeFixedString(raf, curso.getDuracion().format(DateTimeFormatter.ISO_LOCAL_DATE), 10);
+                writeFixedString(raf, curso.getDuracion(), 10); // Cambiado a String
                 writeFixedString(raf, curso.getDificultad(), 50);
                 writeFixedString(raf, curso.getSiglas(), 10);
                 respuesta = true;
@@ -86,20 +87,18 @@ public class CursoData {
         return new String(s).trim();
     }
 
-   
-
     public ArrayList<Curso> getCursos() throws IOException {
         ArrayList<Curso> cursos = new ArrayList<>();
         String nombre;
         String descripcion;
-        LocalDate duracion;
+        String duracion; // Cambiado a String
         String dificultad;
         String siglas;
         for (int i = 0; i < cantidadDeRegistros; i++) {
             this.raf.seek(i * tamanioRegistro);
             nombre = readFixedString(raf, 100);
             descripcion = readFixedString(raf, 200);
-            duracion = LocalDate.parse(readFixedString(raf, 10), DateTimeFormatter.ISO_LOCAL_DATE);
+            duracion = readFixedString(raf, 10); // Cambiado a String
             dificultad = readFixedString(raf, 50);
             siglas = readFixedString(raf, 10);
             if (Fabrica.fabricaCursos(nombre, descripcion, duracion, dificultad, siglas) != null)
@@ -108,19 +107,8 @@ public class CursoData {
         return cursos;
     }
 
-//    public Curso getCursoPorNombre(String nombre) throws IOException {
-//        ArrayList<Curso> cursos = this.getCursos();
-//        for (Curso curso : cursos) {
-//            if (curso.getNombre().equals(nombre)) {
-//                return curso;
-//            }
-//        }
-//        return null;
-//    }
-
-
     public void cargarObjetos(Object TDA) throws IOException {
-        ArrayList<Curso> cursos= getCursos();
+        ArrayList<Curso> cursos = getCursos();
         for (int i = 0; i < cursos.size(); i++) {
             Fabrica.fabricaTDA(TDA, cursos.get(i));
         }

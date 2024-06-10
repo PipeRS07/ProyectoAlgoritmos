@@ -1,5 +1,6 @@
 package controller;
 
+import domain.bTree.TreeException;
 import domain.clasesBase.Curso;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,10 +33,8 @@ public class CourseRegistrationController {
     @FXML
     private ComboBox<String> levelComboBox;
 
-
     @FXML
     public void initialize() {
-
         levelComboBox.getItems().addAll("low", "medium", "high");
     }
 
@@ -63,8 +62,11 @@ public class CourseRegistrationController {
         }
 
         try {
-            LocalDate duration = LocalDate.parse(durationText, DateTimeFormatter.ISO_LOCAL_DATE);
-            Curso newCourse = new Curso(courseName, description, duration, level, courseId);
+            int duration = Integer.parseInt(durationText); // Validar que la duración sea un número entero
+            if (duration < 0) {
+                throw new NumberFormatException();
+            }
+            Curso newCourse = new Curso(courseName, description, durationText, level, courseId);
 
             if (Utility.cursosRegistrados.contains(newCourse)) {
                 showAlert("Error", "El curso con este ID ya está registrado.", Alert.AlertType.ERROR);
@@ -72,8 +74,10 @@ public class CourseRegistrationController {
                 Utility.cursosRegistrados.add(newCourse);
                 showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
             }
-        } catch (Exception e) {
-            showAlert("Error", "Formato de duración inválido. Use YYYY-MM-DD.", Alert.AlertType.ERROR);
+        } catch (NumberFormatException e) {
+            showAlert("Error", "Formato de duración inválido. Use un número entero positivo.", Alert.AlertType.ERROR);
+        } catch (domain.clasesBase.TreeException e) {
+            throw new RuntimeException(e);
         }
     }
 

@@ -44,7 +44,7 @@ public class Fabrica {
         return null;
     }
 
-    public static Curso fabricaCursos(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas) {
+    public static Curso fabricaCursos(String nombre, String descripcion, String duracion, String dificultad, String siglas) {
         return new Curso(nombre, descripcion, duracion, dificultad, siglas);
     }
 
