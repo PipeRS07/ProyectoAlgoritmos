@@ -1,5 +1,6 @@
 package controller;
 
+import Data.EnviarEmail;
 import domain.clasesBase.User;
 import domain.list.ListException;
 import javafx.event.ActionEvent;
@@ -49,14 +50,13 @@ public class ingresoSistemaController {
             User aux = null;
        //comparo entre todos los usuarios registrados si existe uno con la misma contraseña y el mismo usuario
             for (int i = 0; i < Utility.usuariosRegistrados.size(); i++) {
-
                 aux=(User) Utility.usuariosRegistrados.getNode(i+1).data;
-
                 if(Integer.toString(aux.getId()).equals(name) && aux.getContrasenia().equals(contrasenia)){
                     Fabrica.fabricaUsuarios(aux);
                     Utility.usuariosEnELSistema.add(aux);
                     Utility.usuarioactivo=aux;
                     bandera=true;
+
                 }
             }
         }catch (ListException e) {
@@ -65,8 +65,9 @@ public class ingresoSistemaController {
             throw new RuntimeException(e);
         }
         //valido si el usuario y la contraseña corresponden a un usuario registrado para cargar la pagina
-        if(bandera)
-        loadPage("hello-view.fxml");
+        if(bandera) {
+            loadPage("hello-view.fxml");
+        }
 
 
     }

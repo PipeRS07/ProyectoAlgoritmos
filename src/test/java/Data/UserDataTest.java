@@ -17,8 +17,7 @@ class UserDataTest {
                 data = new UserData();
                 data.agregarAlFinal( new Administrador(21, "Nigel",  "email", Ruta.USUADMIN, util.Encriptacion.obtenerContraseniaCifrada("1")));
                 data.agregarAlFinal(new Instructor(31, "Veroa", "@gmailgg", Ruta.USUINSTRUCTOR, "hola123"));
-                System.out.println(data.getUsuarioPorNombre("Nigelaaaa"));
-                System.out.println(data.getUsuarioPorNombre("Veroa"));
+
                 EnviarEmail enviarEmail = new EnviarEmail();
                 enviarEmail.enviarCorreo("veronicaagueroaguilar@gmail.com", "", "", "");
             } catch (IOException e) {

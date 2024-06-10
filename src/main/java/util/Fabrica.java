@@ -9,8 +9,6 @@ import java.time.LocalDate;
 
 public class Fabrica {
 
-
-
     public static User fabricaUsuarios(int id, String name, String email, String role, String contrasenia){
         if(role.equals(Ruta.USUADMIN)){
             return new Administrador(id, name, email, role, contrasenia);
