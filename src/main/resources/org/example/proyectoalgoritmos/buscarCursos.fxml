@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -8,9 +9,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.buscarCursosController">
+<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx/fxml/1" fx:controller="controller.buscarCursosController">
    <bottom>
-      <TableView prefHeight="325.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <TableView fx:id="cursosTableView" prefHeight="325.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <columns>
+            <TableColumn fx:id="colNombre" text="Nombre"/>
+            <TableColumn fx:id="colDescripcion" text="Descripción"/>
+            <TableColumn fx:id="colDuracion" text="Duración"/>
+            <TableColumn fx:id="colDificultad" text="Dificultad"/>
+            <TableColumn fx:id="colSiglas" text="Siglas"/>
+         </columns>
+      </TableView>
    </bottom>
    <top>
       <Pane prefHeight="83.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -20,9 +29,9 @@
                   <Font size="13.0" />
                </font>
             </Text>
-            <TextField layoutX="139.0" layoutY="29.0" />
-            <Button layoutX="503.0" layoutY="29.0" mnemonicParsing="false" onAction="#atrasBuscarCursosOnAcction" text="Atrás" />
-            <Button layoutX="188.0" layoutY="57.0" mnemonicParsing="false" onAction="#buscarBuscarCursosOnAction" text="Buscar" />
+            <TextField fx:id="searchField" layoutX="139.0" layoutY="29.0" />
+            <Button layoutX="503.0" layoutY="29.0" mnemonicParsing="false" onAction="#atrasBuscarCursosOnAction" text="Atrás" />
+            <Button layoutX="188.0" layoutY="57.0" mnemonicParsing="false" onAction="#buscarMostrarCursos" text="Buscar" />
          </children>
       </Pane>
    </top>
