@@ -3,6 +3,7 @@ package controller;
 import domain.bTree.AVLTree;
 import domain.clasesBase.BTreeNode;
 import domain.clasesBase.Curso;
+import domain.clasesBase.TreeException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,7 +70,13 @@ public class buscarCursosController {
             return;
         }
 
-        Curso cursoEncontrado = buscarCursoPorNombre(cursoNombre, Utility.cursosRegistrados.root);
+        Curso cursoEncontrado = null;
+        try {
+            cursoEncontrado = (Curso) Utility.cursosRegistrados.findNode(cursoNombre).data;
+           // System.out.println(cursoEncontrado);
+        } catch (TreeException e) {
+            throw new RuntimeException(e);
+        }
         if (cursoEncontrado != null) {
             actualizarTableView(cursoEncontrado);
         } else {
