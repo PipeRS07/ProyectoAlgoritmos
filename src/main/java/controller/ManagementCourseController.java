@@ -22,6 +22,7 @@ public class ManagementCourseController {
     }
     @javafx.fxml.FXML
     public void searchOnAction(ActionEvent actionEvent) {
+        loadPage("buscarCursos.fxml");
     }
 
     @javafx.fxml.FXML
@@ -34,7 +35,8 @@ public class ManagementCourseController {
     }
 
     @javafx.fxml.FXML
-    public void addOnAction(ActionEvent actionEvent) {loadPage("crearCurso.fxml");
+    public void addOnAction(ActionEvent actionEvent) {
+        loadPage("registroCurso.fxml");
     }
 
     @javafx.fxml.FXML

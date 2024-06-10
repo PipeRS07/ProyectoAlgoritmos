@@ -36,8 +36,13 @@ public class CourseRegistrationController {
     public void handleRegisterCourse(ActionEvent actionEvent) {
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void atrasDeRegistroCursoOnAction(ActionEvent actionEvent) {
+        loadPage("managementCourse.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void atrásDeCrearCurso(ActionEvent actionEvent) {
         loadPage("managementCourse.fxml");
     }
 }

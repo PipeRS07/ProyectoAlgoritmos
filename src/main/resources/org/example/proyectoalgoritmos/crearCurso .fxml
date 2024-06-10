@@ -23,25 +23,27 @@
             <Label text="Nombre del Curso:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
             <Label text="Descripción:" GridPane.rowIndex="3" />
-            <TextArea fx:id="descriptionField" prefHeight="87.0" prefWidth="469.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextArea fx:id="descriptionField" prefHeight="87.0" prefWidth="469.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
 
             <Label text="Duración (horas):" GridPane.rowIndex="4" />
 
             <Button onAction="#handleRegisterCourse" text="Registrar" GridPane.columnSpan="2" GridPane.rowIndex="14" />
             <Label text="Nivel" GridPane.rowIndex="7" />
             <Label text="ID Instructor " GridPane.rowIndex="11" />
-            <TextField fx:id="courseNameField2" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="courseNameField" GridPane.columnIndex="3" GridPane.rowIndex="11" />
-            <TextField fx:id="courseNameField3" prefWidth="356.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <TextField fx:id="courseNameField2" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="courseNameField" GridPane.columnIndex="4" GridPane.rowIndex="11" />
+            <TextField fx:id="courseNameField3" prefWidth="356.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <ComboBox prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
             <Label text="Id " GridPane.rowIndex="2" />
-            <TextField fx:id="courseNameField21" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="courseNameField21" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+         <Button mnemonicParsing="false" onAction="#atrásDeCrearCurso" text="Atrás" GridPane.columnIndex="4" GridPane.rowIndex="14" />
             <columnConstraints>
                 <ColumnConstraints />
                 <ColumnConstraints />
                 <ColumnConstraints maxWidth="9.962242126464844" minWidth="5.4339599609375" prefWidth="9.962242126464844" />
+                <ColumnConstraints maxWidth="9.962242126464844" minWidth="5.4339599609375" prefWidth="9.962242126464844" />
                 <ColumnConstraints maxWidth="463.69813239375037" minWidth="459.169850228223" prefWidth="459.169850228223" />
-                <ColumnConstraints />
+            <ColumnConstraints />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints />
@@ -59,6 +61,7 @@
                 <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
                 <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
                 <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
+            <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
             </rowConstraints>
         </GridPane>
     </center>

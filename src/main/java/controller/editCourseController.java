@@ -24,6 +24,8 @@ public class editCourseController {
     private BorderPane bp;
     @javafx.fxml.FXML
     private TextField nameField1;
+    @javafx.fxml.FXML
+    private TextField nameField2;
 
     @javafx.fxml.FXML
     public void handleCreateCourse(ActionEvent actionEvent) {
@@ -43,7 +45,7 @@ public class editCourseController {
     }
 
     @javafx.fxml.FXML
-    public void atrasDeEditasrCursoOnAction(ActionEvent actionEvent) {
+    public void atrasDeEditarCursoOnAction(ActionEvent actionEvent) {
         loadPage("managementCourse.fxml");
     }
 }

@@ -53,6 +53,7 @@
                 <HBox prefHeight="22.0" prefWidth="135.0" spacing="10">
               <Button onAction="#handleCreateCourse" text="Guardar" />
               <Button onAction="#regresarOnAction" text="Cancelar" />
+            <Button mnemonicParsing="false" onAction="#atrasDeEditarCursoOnAction" text="Atrás" />
           </HBox>
       </VBox>
    </center>
