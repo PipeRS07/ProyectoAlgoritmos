@@ -49,6 +49,7 @@ public class CourseRegistrationController {
 
     @FXML
     public void handleRegisterCourse(ActionEvent actionEvent) {
+
         String courseId = courseNameField21.getText();
         String courseName = courseNameField2.getText();
         String description = descriptionField.getText();
@@ -56,29 +57,45 @@ public class CourseRegistrationController {
         String level = levelComboBox.getValue();
         String instructorId = courseNameField.getText();
 
+        // Validar que los campos no estén vacíos
         if (courseId.isEmpty() || courseName.isEmpty() || description.isEmpty() || durationText.isEmpty() || level == null || instructorId.isEmpty()) {
             showAlert("Error", "Por favor complete todos los campos.", Alert.AlertType.ERROR);
             return;
         }
 
         try {
-            int duration = Integer.parseInt(durationText); // Validar que la duración sea un número entero
+
+            int duration = Integer.parseInt(durationText);
             if (duration < 0) {
                 throw new NumberFormatException();
             }
+
+            // Crear un nuevo curso
             Curso newCourse = new Curso(courseName, description, durationText, level, courseId);
 
+            // Verificar si el curso ya está registrado en el AVL
             if (Utility.cursosRegistrados.contains(newCourse)) {
                 showAlert("Error", "El curso con este ID ya está registrado.", Alert.AlertType.ERROR);
             } else {
+                // Agregar el nuevo curso al AVL
                 Utility.cursosRegistrados.add(newCourse);
                 showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
+                clearFields();  // Limpiar los campos del formulario después del registro exitoso
             }
         } catch (NumberFormatException e) {
             showAlert("Error", "Formato de duración inválido. Use un número entero positivo.", Alert.AlertType.ERROR);
         } catch (domain.clasesBase.TreeException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void clearFields() {
+        courseNameField21.clear();
+        courseNameField2.clear();
+        descriptionField.clear();
+        courseNameField3.clear();
+        courseNameField.clear();
+        levelComboBox.setValue(null);
     }
 
     @FXML
