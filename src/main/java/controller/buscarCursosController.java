@@ -1,5 +1,6 @@
 package controller;
 
+import domain.bTree.AVLTree;
 import domain.clasesBase.BTreeNode;
 import domain.clasesBase.Curso;
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
 import util.Utility;
@@ -22,18 +24,9 @@ public class buscarCursosController {
 
     @FXML
     private TableView<Curso> cursosTableView;
-    @FXML
-    private TableColumn colDescripcion;
-    @FXML
-    private TableColumn colSiglas;
-    @FXML
-    private TableColumn colNombre;
-    @FXML
-    private TableColumn colDuracion;
+
     @FXML
     private BorderPane bp;
-    @FXML
-    private TableColumn colDificultad;
 
     private void loadPage(String page) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
@@ -42,6 +35,28 @@ public class buscarCursosController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void initialize() {
+        TableColumn<Curso, String> idColumn = new TableColumn<>("ID");
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn<Curso, String> nameColumn = new TableColumn<>("Nombre");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+
+        TableColumn<Curso, String> descriptionColumn = new TableColumn<>("Descripción");
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+
+        TableColumn<Curso, String> durationColumn = new TableColumn<>("Duración");
+        durationColumn.setCellValueFactory(new PropertyValueFactory<>("duracion"));
+
+        TableColumn<Curso, String> difficultyColumn = new TableColumn<>("Dificultad");
+        difficultyColumn.setCellValueFactory(new PropertyValueFactory<>("dificultad"));
+
+        TableColumn<Curso, String> siglasColumn = new TableColumn<>("Siglas");
+        siglasColumn.setCellValueFactory(new PropertyValueFactory<>("siglas"));
+
+        cursosTableView.getColumns().addAll(idColumn, nameColumn, descriptionColumn, durationColumn, difficultyColumn, siglasColumn);
     }
 
     @FXML
@@ -67,7 +82,6 @@ public class buscarCursosController {
         if (node == null) {
             return null;
         }
-
         Curso curso = (Curso) node.data;
         int comparacion = nombre.compareToIgnoreCase(curso.getNombre());
 
@@ -85,6 +99,7 @@ public class buscarCursosController {
         cursosTableView.getItems().clear();
         cursosTableView.getItems().add(curso);
     }
+
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);

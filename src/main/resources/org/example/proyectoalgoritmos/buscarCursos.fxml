@@ -13,11 +13,12 @@
    <bottom>
       <TableView fx:id="cursosTableView" prefHeight="325.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn fx:id="colNombre" text="Nombre"/>
-            <TableColumn fx:id="colDescripcion" text="Descripción"/>
-            <TableColumn fx:id="colDuracion" text="Duración"/>
-            <TableColumn fx:id="colDificultad" text="Dificultad"/>
-            <TableColumn fx:id="colSiglas" text="Siglas"/>
+            <TableColumn fx:id="idColumn" text="ID"/>
+            <TableColumn fx:id="nameColumn" text="Nombre"/>
+            <TableColumn fx:id="descriptionColumn" text="Descripción"/>
+            <TableColumn fx:id="durationColumn" text="Duración"/>
+            <TableColumn fx:id="difficultyColumn" text="Dificultad"/>
+            <TableColumn fx:id="siglasColumn" text="Siglas"/>
          </columns>
       </TableView>
    </bottom>

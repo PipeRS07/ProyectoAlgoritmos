@@ -3,6 +3,7 @@ package util;
 import Data.CursoData;
 import Data.UserData;
 import domain.HashTable.HashTable;
+import domain.bTree.AVLTree;
 import domain.bTree.BTree;
 import domain.clasesBase.AVL;
 import domain.clasesBase.User;

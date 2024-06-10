@@ -1,60 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="bp" prefHeight="321.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.editCourseController">
-   <center>
-      <VBox alignment="CENTER" spacing="10">
-         <HBox spacing="10">
-            <children>
-               <TextField fx:id="nameField1" visible="false" />
-                <Label style="-fx-font-size: 18px;" text="Modificar curso" />
-            </children>
-         </HBox>
-      
-                <HBox spacing="10">
-              <Label text="Nombre:" />
-              <TextField fx:id="nameField" />
-          </HBox>
-         <HBox spacing="10">
-            <children>
-               <Label text="ID" />
-               <TextField fx:id="nameField2" />
-            </children>
-         </HBox>
-      
-                <HBox spacing="10">
-              <Label text="Descripción:" />
-              <TextField fx:id="descriptionField" />
-          </HBox>
-      
-                <HBox spacing="10">
-              <Label text="Duración:" />
-              <TextField fx:id="courseLengthField" />
-          </HBox>
-         <HBox spacing="10">
-            <children>
-               <Label text="ID Instructor" />
-               <TextField fx:id="courseLengthField1" />
-            </children>
-         </HBox>
-      
-                <HBox spacing="10">
-              <Label text="Nivel de Dificultad:" />
-            <ComboBox fx:id="comboBox" prefHeight="25.0" prefWidth="114.0" />
-          </HBox>
-      
-                <HBox prefHeight="22.0" prefWidth="135.0" spacing="10">
-              <Button onAction="#handleCreateCourse" text="Guardar" />
-              <Button onAction="#regresarOnAction" text="Cancelar" />
-            <Button mnemonicParsing="false" onAction="#atrasDeEditarCursoOnAction" text="Atrás" />
-          </HBox>
-      </VBox>
-   </center>
+<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ActualizarUsuarioController">
+   <top>
+      <HBox>
+         <children>
+            <Pane prefHeight="331.0" prefWidth="381.0">
+               <children>
+                  <VBox layoutX="43.0" layoutY="114.0" prefHeight="103.0" prefWidth="300.0">
+                     <TextField fx:id="nameCursoField" promptText="Nombre" />
+                     <TextField fx:id="descripcionField" promptText="Descripcion" />
+                     <TextField fx:id="duracionPerfilField" promptText="Duracion" />
+                     <ComboBox onAction="#levelEditarCursoOnAction" prefWidth="150.0" promptText="Level" />
+                  </VBox>
+                  <!-- Otros campos según sea necesario -->
+                  <Button layoutX="275.0" layoutY="217.0" onAction="#actualizarEditarCursoOnAction" text="Actualizar" />
+                  <Text layoutX="43.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar Curso" />
+                  <TextField fx:id="buscar" layoutX="43.0" layoutY="71.0" promptText="Buscar por Id" />
+                  <Button layoutX="260.0" layoutY="71.0" onAction="#buscarEditarOnAction" text="Buscar" />
+                  <Button layoutX="274.0" layoutY="249.0" onAction="#atrasEditarCurso" prefHeight="17.0" prefWidth="69.0" text="Atrás" />
+               </children>
+            </Pane>
+         </children></HBox>
+   </top>
 </BorderPane>
