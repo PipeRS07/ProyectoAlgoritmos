@@ -1,41 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagementCourseController">
    <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="718.0">
           <children>
-            <Pane layoutX="53.0" layoutY="26.0" prefHeight="348.0" prefWidth="477.0">
+            <Pane layoutX="53.0" layoutY="34.0" prefHeight="359.0" prefWidth="657.0">
                <children>
-                    <Text layoutX="122.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mantenimiento de Cursos" wrappingWidth="300.0">
+                    <Text layoutX="143.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mantenimiento de Cursos" wrappingWidth="379.6981201171875">
                         <font>
-                            <Font size="20.0" />
+                            <Font name="Elephant" size="27.0" />
                         </font>
                     </Text>
-                    <GridPane layoutX="103.0" layoutY="222.0" prefHeight="150.0" prefWidth="400.0">
-                        <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
-                        </columnConstraints>
-                        <rowConstraints>
-                            <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        </rowConstraints>
-                    </GridPane>
-                      <Button layoutX="366.0" layoutY="132.0" onAction="#removeOnAction" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px;" text="Suprimir" />
-                      <Button layoutX="257.0" layoutY="132.0" onAction="#editOnAction" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-font-size: 14px;" text="Modificar" />
-                      <Button layoutX="31.0" layoutY="132.0" onAction="#searchOnAction" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Buscar" />
-                      <Button layoutX="144.0" layoutY="132.0" onAction="#addOnAction" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;" text="Agregar" />
-                      <Button layoutX="205.0" layoutY="192.0" onAction="#showOnAction" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-size: 14px;" text="Mostrar" />
+                  <ImageView fitHeight="49.0" fitWidth="60.0" layoutX="292.0" layoutY="124.0">
+                     <image>
+                        <Image url="@images/noun-edit-6793061.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="54.0" fitWidth="67.0" layoutX="136.0" layoutY="116.0">
+                     <image>
+                        <Image url="@images/noun-plus-53573.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="51.0" fitWidth="59.0" layoutX="-30.0" layoutY="117.0">
+                     <image>
+                        <Image url="@images/noun-search-world-2410987.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="55.0" fitWidth="70.0" layoutX="581.0" layoutY="119.0">
+                     <image>
+                        <Image url="@images/noun-remove-6904588.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="446.0" layoutY="125.0">
+                     <image>
+                        <Image url="@images/noun-show-3179265.png" />
+                     </image>
+                  </ImageView>
+                  <HBox layoutX="-46.0" layoutY="179.0" prefHeight="100.0" prefWidth="697.0">
+                     <children>
+                            <Button onAction="#searchOnAction" prefHeight="35.0" prefWidth="124.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Buscar" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="64.28506660461426" />
+                            <Button onAction="#addOnAction" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;" text="Agregar" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="64.28506660461426" />
+                            <Button onAction="#editOnAction" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-font-size: 14px;" text="Modificar" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="64.28506660461426" />
+                            <Button onAction="#showOnAction" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-size: 14px;" text="Mostrar" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="64.28506660461426" />
+                            <Button onAction="#removeOnAction" prefHeight="33.0" prefWidth="92.0" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px;" text="Suprimir" />
+                     </children>
+                  </HBox>
                </children>
             </Pane>
           </children>

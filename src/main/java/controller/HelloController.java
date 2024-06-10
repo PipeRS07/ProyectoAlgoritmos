@@ -63,6 +63,8 @@ public class HelloController {
 
     @FXML
     private void handleMisCursos(ActionEvent event) {
+        showAlert("Mis cursos", "Aquí puede ver sus curso.");
+
     }
 
     @FXML
@@ -107,5 +109,10 @@ public class HelloController {
 
     @FXML
     public void registrarCurso(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void inicioAdmiOnAction(ActionEvent actionEvent) {
+        loadPage("inicioSesionAdmin.fxml");
     }
 }
