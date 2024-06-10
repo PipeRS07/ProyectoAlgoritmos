@@ -74,11 +74,24 @@ public class CourseRegistrationController {
             Curso newCourse = new Curso(courseName, description, durationText, level, courseId);
 
             // Verificar si el curso ya está registrado en el AVL
-            if (Utility.cursosRegistrados.contains(newCourse)) {
-                showAlert("Error", "El curso con este ID ya está registrado.", Alert.AlertType.ERROR);
-            } else {
+
+            if (!Utility.cursosRegistrados.isEmpty()) {
+                if (Utility.cursosRegistrados.contains(newCourse)){
+                    showAlert("Error", "El curso con este ID ya está registrado.", Alert.AlertType.ERROR);
+
+                }else {
+                    // Agregar el nuevo curso al AVL
+                    Utility.cursosRegistrados.add(newCourse);
+                    System.out.println("Cursos registrados"+Utility.cursosRegistrados);
+                    System.err.println("root\n\n"+Utility.cursosRegistrados.root.data);
+                    showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
+                    clearFields();  // Limpiar los campos del formulario después del registro exitoso
+                }
+            }else  {
                 // Agregar el nuevo curso al AVL
                 Utility.cursosRegistrados.add(newCourse);
+                System.out.println("Cursos registrados"+Utility.cursosRegistrados);
+                System.err.println("root\n\n"+Utility.cursosRegistrados.root.data);
                 showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
                 clearFields();  // Limpiar los campos del formulario después del registro exitoso
             }
