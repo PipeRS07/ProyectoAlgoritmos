@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
+import util.Encriptacion;
 import util.Fabrica;
 import util.Ruta;
 import util.Utility;
@@ -66,10 +67,11 @@ public class RegistroUsuarioController {
 
         try {
             // Encriptar la contraseña
-            String encryptedPassword = Utility.obtenerContraseniaCifrada(password, "SHA-256");
+            String encryptedPassword = Encriptacion.obtenerContraseniaCifrada(password);
 
             // Crear un nuevo usuario
-            User newUser = new User(Integer.parseInt(cedula), username, email, encryptedPassword);
+
+            User newUser = Fabrica.fabricaUsuarios(Integer.parseInt(cedula), username, email, Ruta.USUESTUDIANTE, encryptedPassword);
 
             // Verificar si la lista de usuarios registrados está vacía antes de intentar acceder a un nodo
             if (Utility.usuariosRegistrados.isEmpty()) {
