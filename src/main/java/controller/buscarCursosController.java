@@ -22,10 +22,12 @@ public class buscarCursosController
     }
     @javafx.fxml.FXML
     public void initialize() {
+
     }
 
     @javafx.fxml.FXML
     public void buscarBuscarCursosOnAction(ActionEvent actionEvent) {
+
     }
 
     @javafx.fxml.FXML

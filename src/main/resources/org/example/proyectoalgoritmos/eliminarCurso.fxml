@@ -5,7 +5,7 @@
 
 <BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.eliminarCoursesController">
    <center>
-      <AnchorPane prefHeight="154.0" prefWidth="356.0">
+      <AnchorPane prefHeight="111.0" prefWidth="356.0">
       
           <!-- Eliminación de curso -->
           <VBox spacing="10" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20" />

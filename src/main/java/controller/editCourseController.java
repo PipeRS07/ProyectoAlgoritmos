@@ -29,6 +29,7 @@ public class editCourseController {
 
     @javafx.fxml.FXML
     public void handleCreateCourse(ActionEvent actionEvent) {
+
     }
 
     @javafx.fxml.FXML

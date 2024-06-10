@@ -25,6 +25,7 @@
                 return 1+size(node.left)+size(node.right);
         }
 
+
         @Override
         public void clear() {
             root = null;
