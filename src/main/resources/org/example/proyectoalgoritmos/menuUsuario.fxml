@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuUsuarioController">
-    <center>
-        <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0">
-            <children>
-                <Button onAction="#registroOnAction" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Registrar Usuario" />
-                <Button onAction="#inicioSesionOnAction" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;" text="Inicio de Sesión" />
-                <Button onAction="#actualizaPerfilOnAction" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-font-size: 14px;" text="Actualizar Perfil" />
-            <Button onAction="#mostrarOnAction" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Mostrar Información" />
-            </children>
-        </HBox>
-    </center>
+<BorderPane fx:id="bp" prefHeight="1042.0" prefWidth="943.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuUsuarioController">
+   <center>
+      <Pane prefHeight="1042.0" prefWidth="911.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="126.0" fitWidth="163.0" layoutX="27.0" layoutY="147.0">
+               <image>
+                  <Image url="@images/add.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="122.0" fitWidth="144.0" layoutX="359.0" layoutY="152.0">
+               <image>
+                  <Image url="@images/setting.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="117.0" fitWidth="151.0" layoutX="723.0" layoutY="162.0">
+               <image>
+                  <Image url="@images/example.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="140.0" layoutY="-46.0" prefHeight="200.0" prefWidth="200.0" />
+            <Text layoutX="258.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mantenimiento de Usuarios" wrappingWidth="426.79248046875">
+               <font>
+                  <Font name="Elephant" size="30.0" />
+               </font>
+            </Text>
+            <HBox layoutX="8.0" layoutY="282.0" prefHeight="100.0" prefWidth="927.0">
+               <children>
+                      <Button onAction="#registroOnAction" prefHeight="38.0" prefWidth="227.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Registrar Usuario" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="87.83232688903809" />
+                      <Button onAction="#actualizaPerfilOnAction" prefHeight="38.0" prefWidth="281.0" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-font-size: 14px;" text="Actualizar Perfil" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="87.83232688903809" />
+                  <Button onAction="#mostrarOnAction" prefHeight="37.0" prefWidth="301.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;" text="Mostrar Información" />
+               </children>
+            </HBox>
+            <HBox layoutX="90.0" layoutY="362.0" prefHeight="100.0" prefWidth="200.0" />
+         </children>
+      </Pane>
+   </center>
 </BorderPane>

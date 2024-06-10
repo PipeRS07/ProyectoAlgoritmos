@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuInscripcionesController">
     <center>
-        <HBox alignment="CENTER" spacing="20.0" prefHeight="400.0" prefWidth="600.0">
-            <children>
-                <Button onAction="#handleStudentEnrollment" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Inscripción de Estudiantes" />
-                <Button onAction="#handleAdminEnrollmentManagement" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;" text="Gestión de Inscripciones" />
-                <Button onAction="#handleEnrollmentCancellation" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-font-size: 14px;" text="Cancelación de Inscripciones" />
-            </children>
-        </HBox>
+        <HBox alignment="CENTER" prefHeight="394.0" prefWidth="824.0" spacing="20.0">
+         <children>
+            <Pane prefHeight="485.0" prefWidth="824.0">
+               <children>
+                  <ImageView fitHeight="141.0" fitWidth="179.0" layoutX="344.0" layoutY="172.0">
+                     <image>
+                        <Image url="@images/noun-remove-user-750582.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="147.0" fitWidth="179.0" layoutX="656.0" layoutY="170.0">
+                     <image>
+                        <Image url="@images/noun-accept-user-750580.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="140.0" fitWidth="173.0" layoutX="31.0" layoutY="173.0">
+                     <image>
+                        <Image url="@images/noun-artist-750597.png" />
+                     </image>
+                  </ImageView>
+                  <HBox layoutX="38.0" layoutY="317.0" prefHeight="100.0" prefWidth="824.0">
+                     <children>
+                            <Button onAction="#handleAdminEnrollmentManagement" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;" text="Gestión de Inscripciones" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="125.88682675361633" />
+                            <Button onAction="#handleEnrollmentCancellation" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-font-size: 14px;" text="Cancelación de Inscripciones" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="125.88682675361633" />
+                            <Button onAction="#handleStudentEnrollment" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Inscripción de Estudiantes" />
+                     </children>
+                  </HBox>
+                  <Text layoutX="116.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mantenimiento de Inscripciones" wrappingWidth="591.6226196289062">
+                     <font>
+                        <Font name="Elephant" size="35.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children></HBox>
     </center>
 </BorderPane>

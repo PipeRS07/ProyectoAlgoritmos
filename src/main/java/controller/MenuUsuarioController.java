@@ -26,10 +26,10 @@ public class MenuUsuarioController {
     }
 
     @javafx.fxml.FXML
-    public void registroOnAction(ActionEvent actionEvent) {loadPage("registrarUsuario.fxml");
+    public void registroOnAction(ActionEvent actionEvent) {loadPage("CrearUsuario.fxml");
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void inicioSesionOnAction(ActionEvent actionEvent) {loadPage("inicioSesionUsuario.fxml");
     }
 

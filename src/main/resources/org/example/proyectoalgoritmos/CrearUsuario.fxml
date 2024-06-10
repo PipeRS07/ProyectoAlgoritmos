@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane fx:id="bp" prefHeight="321.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CrearUsuarioController">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="92.0" layoutY="51.0" prefHeight="266.0" prefWidth="398.0">
+                <padding>
+                    <Insets bottom="20" left="20" right="20" top="20" />
+                </padding>
+
+                      <Label text="Registro de Usuario" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+
+                      <Label text="Nombre:" GridPane.rowIndex="2" />
+                <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                      <Label text="Correo Electrónico:" GridPane.rowIndex="4" />
+                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                      <Label text="Contraseña:" GridPane.rowIndex="5" />
+                <PasswordField fx:id="passwordField" prefHeight="14.0" prefWidth="148.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                      <Label GridPane.rowIndex="6" />
+
+                      <Button onAction="#RegisterUserOnAction" text="Registrar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+               <Button mnemonicParsing="false" onAction="#atrasOnAction" text="Atrás" GridPane.rowIndex="9" />
+               <TextField fx:id="cedulaField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               <Label text="Cedula" GridPane.rowIndex="3" />
+               <columnConstraints>
+                  <ColumnConstraints maxWidth="120.45285541810117" minWidth="110.49057514466367" prefWidth="120.45285541810117" />
+                  <ColumnConstraints maxWidth="143.09433964165407" minWidth="133.13205936821657" prefWidth="134.03774067276797" />
+                  <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+                  <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints maxHeight="34.35849147863178" minHeight="29.415095578143124" prefHeight="29.415095578143124" />
+                  <RowConstraints maxHeight="34.88679352838746" minHeight="16.358491478631777" prefHeight="30.32075598809425" />
+                  <RowConstraints maxHeight="36.22641140050678" minHeight="19.69811434828972" prefHeight="24.92452901892497" />
+                  <RowConstraints maxHeight="36.69811434828972" minHeight="14.490571556756777" prefHeight="36.69811434828972" />
+                  <RowConstraints maxHeight="13.584887886522708" minHeight="2.716967964647722" prefHeight="2.716967964647722" />
+                  <RowConstraints maxHeight="13.584887886522708" minHeight="2.716967964647722" prefHeight="2.716967964647722" />
+                  <RowConstraints maxHeight="28.075472708485194" minHeight="2.716967964647722" prefHeight="28.075472708485194" />
+                  <RowConstraints maxHeight="25.358491478631777" minHeight="0.0" prefHeight="23.5471706587295" />
+                  <RowConstraints maxHeight="23.5471706587295" minHeight="0.0" prefHeight="0.0" />
+                  <RowConstraints maxHeight="23.5471706587295" minHeight="0.0" prefHeight="0.0" />
+                  <RowConstraints maxHeight="23.5471706587295" minHeight="0.0" prefHeight="0.0" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

@@ -1,6 +1,5 @@
 package controller;
 
-import domain.clasesBase.Administrador;
 import domain.clasesBase.User;
 import domain.list.ListException;
 import javafx.event.ActionEvent;
@@ -10,13 +9,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
 import util.Fabrica;
-import util.Ruta;
 import util.Utility;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-public class inicioSecionController {
+public class inicioSecionAdmiController {
     @javafx.fxml.FXML
     private TextField usernameField;
     @javafx.fxml.FXML
@@ -60,9 +58,8 @@ public class inicioSecionController {
         }
         //valido si el usuario y la contraseña corresponden a un usuario registrado para cargar la pagina
         if(bandera)
-            loadPage("hello-view.fxml");
+            loadPage("registroGeneral.fxml");
 
 
     }
-
 }

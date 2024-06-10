@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -37,15 +39,19 @@
                   <MenuItem onAction="#handleAnalisis" text="Análisis" />
                </items>
             </Menu>
-            <Menu onAction="#cerrarSesionOnAction" text="Cerrar Sesión">
-               <items>
-                  <MenuItem onAction="#handleInformes" text="Informes" />
-                  <MenuItem onAction="#handleAnalisis" text="Análisis" />
-               </items>
-            </Menu>
             <Menu text="Registrar curso">
                <items>
                   <MenuItem onAction="#registrarCurso" text="Registrar" />
+               </items>
+            </Menu>
+            <Menu text="Administrador ">
+               <items>
+                  <MenuItem onAction="#inicioAdmiOnAction" text="Inicio Sesión" />
+               </items>
+            </Menu>
+            <Menu onAction="#cerrarSesionOnAction" text="Cerrar Sesión">
+               <items>
+                  <MenuItem onAction="#handleInformes" text="¿Esta Seguro?" />
                </items>
             </Menu>
       </menus>
@@ -59,6 +65,21 @@
             <Font name="Arial" size="40.0" />
           </font>
         </Text>
+            <Text layoutX="225.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Transforma tu experiencia educativa y lleva tu aprendizaje al siguiente nivel!">
+               <font>
+                  <Font name="Blackadder ITC" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="28.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Bienvenido a la Plataforma de Aprendizaje en Línea!">
+               <font>
+                  <Font name="Elephant" size="36.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="329.0" fitWidth="524.0" layoutX="238.0" layoutY="207.0">
+               <image>
+                  <Image url="@images/pngwing.com.png" />
+               </image>
+            </ImageView>
       </children>
     </AnchorPane>
   </center>
