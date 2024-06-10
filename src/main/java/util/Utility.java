@@ -5,7 +5,9 @@ import Data.UserData;
 import domain.HashTable.HashTable;
 import domain.bTree.AVLTree;
 import domain.bTree.BTree;
+import domain.bTree.BTreeNode;
 import domain.clasesBase.AVL;
+import domain.clasesBase.Curso;
 import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.CircularLinkedList;
@@ -125,6 +127,10 @@ public class Utility {
             case "BTree":
                 BTree bt1 = (BTree)a; BTree Bt2 = (BTree)b;
                 return bt1==Bt2?0:-1;
+            case "BtreNodeString":
+                BTreeNode avl1 = (BTreeNode) a; String str = (String) b;
+                Curso c = (Curso) avl1.data;
+                return c.getNombre().equals(str)?0:-1;
         }
         return 2; //Unknown
     }
@@ -139,6 +145,7 @@ public class Utility {
         if(a instanceof CircularDoublyLinkedList && b instanceof CircularDoublyLinkedList) return "CircularDoublyLinkedList";
         if(a instanceof LinkedStack && b instanceof LinkedStack) return "LinkedStack";
         if(a instanceof CircularLinkedList && b instanceof CircularLinkedList) return "CircularLinkedList";
+        if(a instanceof BTreeNode && b instanceof String) return "BtreNodeString";
         return "Unknown";
     }
 }

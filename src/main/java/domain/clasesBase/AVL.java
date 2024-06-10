@@ -330,6 +330,25 @@
             return result;
         }
 
+        public BTreeNode findNode(String element) throws TreeException {
+            if (isEmpty()) {
+                throw new TreeException("Binary Search Tree is empty");
+            }
+            return findNode(root, element);
+        }
 
+        private BTreeNode findNode(BTreeNode node, String element) {
+            if (node == null) {
+                return null; // Si el nodo es null, el elemento no está en el árbol
+            }
+            if (Utility.compare(node.data, element) == 0) {
+                return node; // Nodo encontrado
+            }
+            if (Utility.compare(element, node.data) < 0) {
+                return findNode(node.left, element); // Buscar en el subárbol izquierdo
+            } else {
+                return findNode(node.right, element); // Buscar en el subárbol derecho
+            }
+        }
 
     }
