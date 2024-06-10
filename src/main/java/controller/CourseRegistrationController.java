@@ -1,13 +1,20 @@
 package controller;
 
+import domain.clasesBase.Curso;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
+import util.Utility;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CourseRegistrationController {
     @javafx.fxml.FXML
@@ -22,7 +29,15 @@ public class CourseRegistrationController {
     private BorderPane bp;
     @javafx.fxml.FXML
     private TextField courseNameField21;
+    @FXML
+    private ComboBox<String> levelComboBox;
 
+
+    @FXML
+    public void initialize() {
+
+        levelComboBox.getItems().addAll("low", "medium", "high");
+    }
 
     private void loadPage(String page) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
@@ -32,17 +47,46 @@ public class CourseRegistrationController {
             throw new RuntimeException(e);
         }
     }
-    @javafx.fxml.FXML
+
+    @FXML
     public void handleRegisterCourse(ActionEvent actionEvent) {
+        String courseId = courseNameField21.getText();
+        String courseName = courseNameField2.getText();
+        String description = descriptionField.getText();
+        String durationText = courseNameField3.getText();
+        String level = levelComboBox.getValue();
+        String instructorId = courseNameField.getText();
+
+        if (courseId.isEmpty() || courseName.isEmpty() || description.isEmpty() || durationText.isEmpty() || level == null || instructorId.isEmpty()) {
+            showAlert("Error", "Por favor complete todos los campos.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        try {
+            LocalDate duration = LocalDate.parse(durationText, DateTimeFormatter.ISO_LOCAL_DATE);
+            Curso newCourse = new Curso(courseName, description, duration, level, courseId);
+
+            if (Utility.cursosRegistrados.contains(newCourse)) {
+                showAlert("Error", "El curso con este ID ya está registrado.", Alert.AlertType.ERROR);
+            } else {
+                Utility.cursosRegistrados.add(newCourse);
+                showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
+            }
+        } catch (Exception e) {
+            showAlert("Error", "Formato de duración inválido. Use YYYY-MM-DD.", Alert.AlertType.ERROR);
+        }
     }
 
-    @Deprecated
-    public void atrasDeRegistroCursoOnAction(ActionEvent actionEvent) {
+    @FXML
+    public void atrasDeCrearCurso(ActionEvent actionEvent) {
         loadPage("managementCourse.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void atrásDeCrearCurso(ActionEvent actionEvent) {
-        loadPage("managementCourse.fxml");
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

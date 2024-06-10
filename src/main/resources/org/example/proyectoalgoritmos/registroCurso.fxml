@@ -17,7 +17,7 @@
               <Insets bottom="20" left="20" right="20" top="20" />
           </padding>
 
-          <Label text="Registro de Curso" GridPane.columnSpan="2" />
+          <Label prefHeight="17.0" prefWidth="131.0" text="Registro de Curso" GridPane.columnSpan="2" />
 
           <Label text="Id" GridPane.rowIndex="1" />
 
