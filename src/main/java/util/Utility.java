@@ -46,7 +46,7 @@ public class Utility {
             usuariosEnELSistema= new CircularLinkedList();
 
             cursosRegistrados= new AVL();
-            userData.cargarObjetos(cursosRegistrados);
+            cursoData.cargarObjetos(cursosRegistrados);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
