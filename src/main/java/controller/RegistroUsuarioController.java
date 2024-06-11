@@ -18,6 +18,7 @@ import util.Utility;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -65,7 +66,6 @@ public class RegistroUsuarioController {
             showAlert("Error", "Todos los campos son obligatorios", Alert.AlertType.ERROR);
             return;
         }
-
         try {
             // Encriptar la contraseña
             String encryptedPassword = Encriptacion.obtenerContraseniaCifrada(password);
@@ -78,14 +78,26 @@ public class RegistroUsuarioController {
             if (Utility.usuariosRegistrados.isEmpty()) {
                 Utility.usuariosRegistrados.add(newUser);
                 Utility.usuariosEnELSistema.add(newUser);
+
+                // Obtener la fecha y hora actual del momento en que se envía el correo
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                String formattedDate = now.format(formatter);
+
                 EnviarEmail enviarEmail = new EnviarEmail();
-                enviarEmail.enviarCorreoSinAdjunto(newUser.getEmail(), "Confirmacion de ingreso al sismtema", "¡Hola! "+newUser.getName()+"\nBienvenido a nuestra plataforma de aprendizaje!!");
+                enviarEmail.enviarCorreoSinAdjunto(newUser.getEmail(),
+                        "Confirmacion de ingreso al sistema",
+                        "¡Hola! " + newUser.getName() +
+                                "\nUsuario: " + newUser.getId() +
+                                "\nTu contraseña: " + password +
+                                "\nFecha y hora: " + formattedDate +
+                                "\nBienvenido a nuestra plataforma de aprendizaje!!");
+
                 System.out.println("Usuario agregado correctamente a la lista de usuarios registrados: " + newUser);
                 showAlert("Éxito", "Usuario registrado correctamente", Alert.AlertType.INFORMATION);
-                //   enviarNotificacionRegistro(newUser, password);
+                // enviarNotificacionRegistro(newUser, password);
                 clearFields();
-                return;
-            }
+                return;}
 
             // Agregar el nuevo usuario a la lista de usuarios registrados
             Utility.usuariosRegistrados.add(newUser);
@@ -126,47 +138,47 @@ public class RegistroUsuarioController {
     }
 
 
-//    private void enviarNotificacionRegistro(User usuario, String contraseniaOriginal) {
-//        String asunto = "Registro en la plataforma";
-//        String cuerpo = String.format(
-//                "Hola %s,\n\nTe has registrado exitosamente en la plataforma.\n\nFecha y hora: %s\nNombre de Usuario: %s\nUsuario (Cédula): %d\nContraseña: %s\n\nSaludos,\nEl equipo de la plataforma",
-//                usuario.getName(),
-//                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
-//                usuario.getName(),
-//                usuario.getId(), // Suponiendo que el ID es el número de cédula
-//                contraseniaOriginal
-//        );
-//
-//        // Configuración del servidor de correo
-//        String host = "smtp.gmail.com"; // Host SMTP de Gmail
-//        String from = "veronicaagueroaguilar@gmail.com"; // Cambia esto a tu dirección de correo
-//        final String username = "veronicaagueroaguilar@gmail.com"; // Cambia esto a tu dirección de correo
-//        final String password = "tucontraseña"; // Cambia esto a tu contraseña o contraseña de aplicación
-//
-//        Properties props = new Properties();
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.starttls.enable", "true");
-//        props.put("mail.smtp.host", host);
-//        props.put("mail.smtp.port", "587");
-//
-//        Session session = Session.getInstance(props, new Authenticator() {
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(username, password);
-//            }
-//        });
-//
-//        try {
-//            Message message = new MimeMessage(session);
-//            message.setFrom(new InternetAddress(from));
-//            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(usuario.getEmail()));
-//            message.setSubject(asunto);
-//            message.setText(cuerpo);
-//
-//            Transport.send(message);
-//
-//            System.out.println("Notificación enviada a: " + usuario.getEmail());
-//        } catch (MessagingException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    private void enviarNotificacionRegistro(User usuario, String contraseniaOriginal) {
+        String asunto = "Registro en la plataforma";
+        String cuerpo = String.format(
+                "Hola %s,\n\nTe has registrado exitosamente en la plataforma.\n\nFecha y hora: %s\nNombre de Usuario: %s\nUsuario (Cédula): %d\nContraseña: %s\n\nSaludos,\nEl equipo de la plataforma",
+                usuario.getName(),
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
+                usuario.getName(),
+                usuario.getId(), // Suponiendo que el ID es el número de cédula
+                contraseniaOriginal
+        );
+
+        // Configuración del servidor de correo
+        String host = "smtp.gmail.com"; // Host SMTP de Gmail
+        String from = "veronicaagueroaguilar@gmail.com"; // Cambia esto a tu dirección de correo
+        final String username = "veronicaagueroaguilar@gmail.com"; // Cambia esto a tu dirección de correo
+        final String password = "tucontraseña"; // Cambia esto a tu contraseña o contraseña de aplicación
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(usuario.getEmail()));
+            message.setSubject(asunto);
+            message.setText(cuerpo);
+
+            Transport.send(message);
+
+            System.out.println("Notificación enviada a: " + usuario.getEmail());
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

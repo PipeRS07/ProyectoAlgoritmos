@@ -63,6 +63,7 @@ public class inicioSecionController {
             loadPage("hello-view.fxml");
 
 
+
     }
 
 }

@@ -90,8 +90,12 @@ public class EnviarEmail {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(correoRemitente, contraseñaRemitente);
+
+
+
             }
         });
+
 
         try {
             MimeMessage mensaje = new MimeMessage(sesion);
