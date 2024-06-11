@@ -15,11 +15,8 @@ class UserDataTest {
         UserData data;
             try {
                 data = new UserData();
-                data.agregarAlFinal( new Administrador(21, "Nigel",  "email", Ruta.USUADMIN, util.Encriptacion.obtenerContraseniaCifrada("1")));
-                data.agregarAlFinal(new Instructor(31, "Veroa", "@gmailgg", Ruta.USUINSTRUCTOR, "hola123"));
-
-                EnviarEmail enviarEmail = new EnviarEmail();
-                enviarEmail.enviarCorreo("veronicaagueroaguilar@gmail.com", "", "", "");
+                data.agregarAlFinal( new Administrador(1, "Admin",  "jfelipe070703@gmail.com", Ruta.USUADMIN, util.Encriptacion.obtenerContraseniaCifrada("123")));
+                
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (NoSuchAlgorithmException e) {

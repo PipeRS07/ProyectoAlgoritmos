@@ -13,6 +13,7 @@ public class Curso {
     private String duracion; // Cambiado a String
     private String dificultad;
     private String siglas;
+    private Instructor instructor;
 
     private BST evaluaciones;
 
@@ -33,6 +34,15 @@ public class Curso {
         this.dificultad = dificultad;
         this.siglas = siglas;
         this.evaluaciones = evaluaciones;
+
+
+    }
+
+    public Curso(String nombre, String descripcion, String duracion, String dificultad) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.duracion = duracion;
+        this.dificultad = dificultad;
     }
 
     public Curso(String nombre, String descripcion, String duracion, String dificultad, String siglas) {

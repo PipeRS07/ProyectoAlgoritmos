@@ -337,6 +337,7 @@
             return findNode(root, element);
         }
 
+
         private BTreeNode findNode(BTreeNode node, String element) {
             if (node == null) {
                 return null; // Si el nodo es null, el elemento no está en el árbol

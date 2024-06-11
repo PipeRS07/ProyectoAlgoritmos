@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
+import util.Ruta;
+import util.Utility;
 
 import java.io.IOException;
 
@@ -26,7 +28,10 @@ public class MenuUsuarioController {
     }
 
     @javafx.fxml.FXML
-    public void registroOnAction(ActionEvent actionEvent) {loadPage("CrearUsuario.fxml");
+    public void registroOnAction(ActionEvent actionEvent) {
+        if(Utility.usuarioactivo.getRole().equals(Ruta.USUADMIN)) {
+            loadPage("CrearUsuario.fxml");
+        }
     }
 
     @Deprecated
