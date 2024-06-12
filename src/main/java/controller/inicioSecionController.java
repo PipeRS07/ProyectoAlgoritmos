@@ -32,6 +32,10 @@ public class inicioSecionController {
             throw new RuntimeException(e);
         }
     }
+    private void clearFields() {
+        usernameField.clear();
+        passwordField.clear();
+    }
 
     @javafx.fxml.FXML
     public void RegisterUserOnAction(ActionEvent actionEvent) {
@@ -53,6 +57,7 @@ public class inicioSecionController {
                     bandera=true;
                 }
             }
+            clearFields();
         }catch (ListException e) {
             throw new RuntimeException(e);
         } catch (NoSuchAlgorithmException e) {

@@ -9,4 +9,10 @@ module org.example.proyectoalgoritmos {
     exports org.example.proyectoalgoritmos;
     exports controller;
     opens controller to javafx.fxml;
+
+    requires javafx.graphics;
+
+    opens domain.clasesBase to javafx.base;
+
+
 }

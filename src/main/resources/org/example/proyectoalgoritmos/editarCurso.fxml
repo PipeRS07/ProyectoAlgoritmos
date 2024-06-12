@@ -7,41 +7,46 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bp" prefHeight="321.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.editCourseController">
+<BorderPane fx:id="bp" prefHeight="370.0" prefWidth="466.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.editCourseController">
    <center>
-      <VBox alignment="CENTER" spacing="10">
+      <VBox alignment="CENTER" prefHeight="355.0" prefWidth="408.0" spacing="10">
          <HBox spacing="10">
             <children>
                <TextField fx:id="nameField1" visible="false" />
-                <Label style="-fx-font-size: 18px;" text="Modificar curso" />
+                <Label style="-fx-font-size: 18px;" text="Modificar curso">
+                  <font>
+                     <Font name="Impact" size="11.773585319519043" />
+                  </font></Label>
+            </children>
+         </HBox>
+         <HBox spacing="10">
+            <children>
+               <Label text="Sigla" />
+               <TextField fx:id="id" prefHeight="25.0" prefWidth="213.0" promptText="Sigla Curso" />
+               <Button onAction="#handleCreateCourse" text="Buscar " />
             </children>
          </HBox>
       
                 <HBox spacing="10">
               <Label text="Nombre:" />
-              <TextField fx:id="nameField" />
+              <TextField fx:id="nameField" prefHeight="25.0" prefWidth="192.0" promptText="Nombre" />
           </HBox>
-         <HBox spacing="10">
-            <children>
-               <Label text="ID" />
-               <TextField fx:id="nameField2" />
-            </children>
-         </HBox>
       
                 <HBox spacing="10">
               <Label text="Descripción:" />
-              <TextField fx:id="descriptionField" />
+              <TextField fx:id="descriptionField" prefHeight="25.0" prefWidth="169.0" promptText="Descripción" />
           </HBox>
       
                 <HBox spacing="10">
               <Label text="Duración:" />
-              <TextField fx:id="courseLengthField" />
+              <TextField fx:id="courseLengthField" prefHeight="25.0" prefWidth="180.0" promptText="Duración" />
           </HBox>
          <HBox spacing="10">
             <children>
                <Label text="ID Instructor" />
-               <TextField fx:id="courseLengthField1" />
+               <TextField fx:id="courseLengthField1" prefHeight="25.0" prefWidth="164.0" promptText="Instructor" />
             </children>
          </HBox>
       
@@ -51,10 +56,10 @@
           </HBox>
       
                 <HBox prefHeight="22.0" prefWidth="135.0" spacing="10">
-              <Button onAction="#handleCreateCourse" text="Guardar" />
-              <Button onAction="#regresarOnAction" text="Cancelar" />
-            <Button mnemonicParsing="false" onAction="#atrasDeEditarCursoOnAction" text="Atrás" />
+              <Button onAction="#limpiarOnAction" prefHeight="25.0" prefWidth="153.0" text="Limpiar" />
+              <Button onAction="#actualizaOnAction" prefHeight="25.0" prefWidth="195.0" text="Guardar" />
           </HBox>
+         <Button mnemonicParsing="false" onAction="#atrasDeEditarCursoOnAction" prefHeight="25.0" prefWidth="93.0" text="Atrás" />
       </VBox>
    </center>
 </BorderPane>

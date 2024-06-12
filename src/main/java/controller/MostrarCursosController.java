@@ -1,11 +1,13 @@
 package controller;
 
-import domain.bTree.TreeException;
 import domain.clasesBase.BTreeNode;
 import domain.clasesBase.Curso;
+import domain.clasesBase.TreeException;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -16,41 +18,33 @@ import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
 import util.Utility;
 
-
 import java.io.IOException;
-import java.util.List;
-
 
 public class MostrarCursosController {
-    @javafx.fxml.FXML
-    private TableView<Curso> tableView;
-    @javafx.fxml.FXML
-    private BorderPane bp;
-    @javafx.fxml.FXML
+
+    @FXML
     private TextField searchField;
 
+    @FXML
+    private BorderPane bp;
 
-    public void initialize() {
-        TableColumn<Curso, String> idColumn = new TableColumn<>("ID");
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+    @FXML
+    private TableView<Curso> tableView;
 
-        TableColumn<Curso, String> nameColumn = new TableColumn<>("Nombre");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+    private ObservableList<Curso> cursosData = FXCollections.observableArrayList();
 
-        TableColumn<Curso, String> descriptionColumn = new TableColumn<>("Descripción");
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-
-        TableColumn<Curso, String> durationColumn = new TableColumn<>("Duración");
-        durationColumn.setCellValueFactory(new PropertyValueFactory<>("duracion"));
-
-        TableColumn<Curso, String> difficultyColumn = new TableColumn<>("Dificultad");
-        difficultyColumn.setCellValueFactory(new PropertyValueFactory<>("dificultad"));
-
-        TableColumn<Curso, String> siglasColumn = new TableColumn<>("Siglas");
-        siglasColumn.setCellValueFactory(new PropertyValueFactory<>("siglas"));
-
-        tableView.getColumns().addAll(idColumn, nameColumn, descriptionColumn, durationColumn, difficultyColumn, siglasColumn);
-    }
+    @FXML
+    private TableColumn<Curso, String> DuracionColumn;
+    @FXML
+    private TableColumn<Curso, String> DescripcionColumn;
+    @FXML
+    private TableColumn<Curso, String> nivelColumn;
+    @FXML
+    private TableColumn<Curso, String> nameColumn;
+    @FXML
+    private TableColumn<Curso, String> InstructorColumn;
+    @FXML
+    private TableColumn<Curso, String> idColumn;
 
     private void loadPage(String page) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
@@ -61,46 +55,51 @@ public class MostrarCursosController {
         }
     }
 
-    @javafx.fxml.FXML
-    public void atrasDeMostrarCursosOnAction(ActionEvent actionEvent) {
-        loadPage("managementCourse.fxml");
+    @FXML
+    public void initialize() {
+        // Bind the columns to the attributes of Curso
+        idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getSiglas())));
+        nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        DescripcionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescripcion()));
+        DuracionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getDuracion())));
+        nivelColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDificultad()));
+        InstructorColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+
+        // Set the items of the TableView to the observable list
+        tableView.setItems(cursosData);
     }
 
-    @javafx.fxml.FXML
+
+    @FXML
     public void buscarMostrarCursos(ActionEvent actionEvent) {
-        System.out.println(Utility.cursosRegistrados);
         String cursoNombre = searchField.getText().trim();
         if (cursoNombre.isEmpty()) {
             mostrarAlerta("Error", "El campo de búsqueda está vacío");
             return;
         }
-        Curso cursoEncontrado = buscarCursoPorNombre(cursoNombre, Utility.cursosRegistrados.root);
+
+        Curso cursoEncontrado = null;
+
+        try {
+            BTreeNode node = Utility.cursosRegistrados.findNode(cursoNombre);
+            if (node == null) {
+                mostrarAlerta("Información", "El curso no está registrado");
+                return;
+            }
+            cursoEncontrado = (Curso) node.data;
+        } catch (TreeException e) {
+            mostrarAlerta("Error", "Ocurrió un error al buscar el curso: " + e.getMessage());
+            return;
+        }
+
         if (cursoEncontrado != null) {
             actualizarTableView(cursoEncontrado);
-        } else {
-            mostrarAlerta("Información", "El curso no está registrado");
-        }
-    }
-    private Curso buscarCursoPorNombre(String nombre, BTreeNode node) {
-        if (node == null) {
-            return null;
-        }
-        Curso curso = (Curso) node.data;
-        int comparacion = nombre.compareToIgnoreCase(curso.getNombre());
-
-        if (comparacion == 0) {
-            return curso;
-        } else if (comparacion < 0) {
-            return buscarCursoPorNombre(nombre, node.left);
-        } else {
-            return buscarCursoPorNombre(nombre, node.right);
         }
     }
 
     private void actualizarTableView(Curso curso) {
-        ObservableList<Curso> cursosObservableList = FXCollections.observableArrayList();
-        cursosObservableList.add(curso);
-        tableView.setItems(cursosObservableList);
+        cursosData.clear();
+        cursosData.add(curso);
     }
 
     private void mostrarAlerta(String titulo, String mensaje) {
@@ -110,4 +109,38 @@ public class MostrarCursosController {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+
+    @FXML
+    public void atrasBuscarCursosOnAction(ActionEvent actionEvent) {
+        loadPage("managementCourse.fxml");
+    }
+
+    @FXML
+    public void eliminarCursosOnAction(ActionEvent actionEvent) {
+        // Obtener el curso seleccionado en el TableView
+        Curso cursoSeleccionado = tableView.getSelectionModel().getSelectedItem();
+
+        // Si no se seleccionó ningún curso, mostrar una alerta
+        if (cursoSeleccionado == null) {
+            mostrarAlerta("Error", "No se ha seleccionado ningún curso para eliminar");
+            return;
+        }
+
+        // Eliminar el curso de la lista observable
+        cursosData.remove(cursoSeleccionado);
+
+        // También puedes eliminar el curso del árbol si es necesario
+        try {
+            Utility.cursosRegistrados.remove(cursoSeleccionado);
+        } catch (TreeException e) {
+            mostrarAlerta("Error", "Ocurrió un error al eliminar el curso del árbol: " + e.getMessage());
+        }
+
+        // Refrescar el TableView
+        tableView.refresh();
+
+        // Mostrar una confirmación
+        mostrarAlerta("Información", "El curso ha sido eliminado correctamente");
+    }
+
 }

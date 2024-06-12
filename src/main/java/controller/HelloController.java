@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import org.example.proyectoalgoritmos.HelloApplication;
+import util.Utility;
 
 import java.io.IOException;
 
@@ -30,6 +31,20 @@ public class HelloController {
         }
     }
 
+    @FXML
+    public void cerrarSesionOnAction(ActionEvent actionEvent) {
+        try {
+            Utility.guardar();
+
+
+            showAlert("Cerrar Sesión", "Sesión cerrada correctamente. Los datos han sido guardados.");
+        } catch (Exception e) {
+            showAlert("Error", "Ocurrió un error al intentar guardar los datos.");
+            e.printStackTrace();
+        } finally {
+            System.exit(0);
+        }
+    }
     @Deprecated
     void Exit(ActionEvent event) {
         System.exit(0);
@@ -102,10 +117,7 @@ public class HelloController {
 
     }
 
-    @FXML
-    public void cerrarSesionOnAction(ActionEvent actionEvent) {
 
-    }
 
     @FXML
     public void registrarCurso(ActionEvent actionEvent) {

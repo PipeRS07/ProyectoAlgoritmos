@@ -6,6 +6,7 @@ import domain.HashTable.HashTable;
 import domain.bTree.AVLTree;
 import domain.bTree.BTree;
 import domain.bTree.BTreeNode;
+import domain.bTree.TreeException;
 import domain.clasesBase.AVL;
 import domain.clasesBase.Curso;
 import domain.clasesBase.User;
@@ -131,8 +132,22 @@ public class Utility {
                 BTreeNode avl1 = (BTreeNode) a; String str = (String) b;
                 Curso c = (Curso) avl1.data;
                 return c.getNombre().equals(str)?0:-1;
+            case "User":
+                User u = (User)a; User u1 = (User)b;
+                return u==u1?0:-1;
+            case "CursoString":
+                Curso cu1 = (Curso)a; String cu2 = (String) b;
+                return cu1.getNombre().equalsIgnoreCase(cu2)?0:-1;
+            case "Curso":
+                Curso cur1 = (Curso)a; Curso cur2 = (Curso) b;
+                return cur1.getNombre().equalsIgnoreCase(cur2.getNombre()) ?0: cur1.getId()==cur2.getId()?0:-1;
+
         }
         return 2; //Unknown
+    }
+    public static void guardar() throws IOException, TreeException, domain.bTree.TreeException, domain.clasesBase.TreeException {
+        cursoData.guardarCursos();
+        userData.getUsuarios();
     }
 
     public static String instanceOf(Object a, Object b) {
@@ -146,6 +161,12 @@ public class Utility {
         if(a instanceof LinkedStack && b instanceof LinkedStack) return "LinkedStack";
         if(a instanceof CircularLinkedList && b instanceof CircularLinkedList) return "CircularLinkedList";
         if(a instanceof BTreeNode && b instanceof String) return "BtreNodeString";
+        if(a instanceof User && b instanceof User) return "User";
+        if(a instanceof Curso && b instanceof String) return "CursoString";
+        if(a instanceof Curso && b instanceof Curso) return "Curso";
+
+
+
         return "Unknown";
     }
 }

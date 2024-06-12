@@ -107,6 +107,7 @@ public class ActualizarUsuarioController {
                 rol.setValue(usuarioEncontrado.getRole());
                 // No mostrar la contraseña por motivos de seguridad
                 contraseñaPerfilField.clear();
+
             } else {
                 // Mostrar un mensaje de error si el usuario no se encontró
                 showAlert("Error", "El usuario no se encuentra registrado", Alert.AlertType.ERROR);
@@ -116,6 +117,7 @@ public class ActualizarUsuarioController {
             showAlert("Error", "Ingrese un ID válido", Alert.AlertType.ERROR);
         }
     }
+
 
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
@@ -144,7 +146,8 @@ public class ActualizarUsuarioController {
     }
 
 
-    @FXML
+
+    @Deprecated
     public void atrasOnAction(ActionEvent actionEvent) {
         loadPage("menuUsuario.fxml");
     }
