@@ -2,8 +2,11 @@ package controller;
 
 import Data.EnviarEmail;
 import domain.clasesBase.User;
+import domain.list.CircularDoublyLinkedList;
 import domain.list.ListException;
+import domain.list.Node;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -25,6 +28,13 @@ public class ingresoSistemaController {
     private BorderPane bp;
     @javafx.fxml.FXML
     private Label messageLabel;
+    private CircularDoublyLinkedList usuarios;
+
+
+    @FXML
+    public void initialize() {
+        usuarios= Utility.usuariosRegistrados;
+    }
 
     private void loadPage(String page){
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
@@ -41,19 +51,26 @@ public class ingresoSistemaController {
     }
 
     @javafx.fxml.FXML
-    public void inicioSecionnAction(ActionEvent actionEvent) {
+    public void inicioSecionnAction(ActionEvent actionEvent) throws ListException {
+
         //la bandera permite saber si el usuario esta registrado para poder cargarle la pagina
         boolean bandera=false;
         try {
             String contrasenia = util.Encriptacion.obtenerContraseniaCifrada(passwordField.getText());
-            String name = this.usernameField.getText();
-            User aux = null;
+            String idText = this.usernameField.getText();
+
+            User aux ;
+            int size =usuarios.size();
+
+
        //comparo entre todos los usuarios registrados si existe uno con la misma contraseña y el mismo usuario
-            for (int i = 0; i < Utility.usuariosRegistrados.size(); i++) {
-                aux=(User) Utility.usuariosRegistrados.getNode(i+1).data;
-                if(Integer.toString(aux.getId()).equals(name) && aux.getContrasenia().equals(contrasenia)){
+            for (int i = 0; i < size; i++) {
+
+                aux=(User) usuarios.getNode(i+1).data;
+
+                if(Integer.toString(aux.getId()).equals(idText) && aux.getContrasenia().equals(contrasenia)){
                     Fabrica.fabricaUsuarios(aux);
-                    Utility.usuariosEnELSistema.add(aux);
+                    util.Utility.usuariosEnELSistema.add(aux);
                     Utility.usuarioactivo=aux;
                     bandera=true;
 
