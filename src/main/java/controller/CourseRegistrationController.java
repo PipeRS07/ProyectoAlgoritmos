@@ -5,10 +5,7 @@ import domain.clasesBase.Curso;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
 import util.Utility;
@@ -16,22 +13,25 @@ import util.Utility;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class CourseRegistrationController {
     @javafx.fxml.FXML
     private TextField courseNameField;
     @javafx.fxml.FXML
-    private TextField courseNameField2;
-    @javafx.fxml.FXML
-    private TextField courseNameField3;
-    @javafx.fxml.FXML
     private TextArea descriptionField;
     @javafx.fxml.FXML
     private BorderPane bp;
-    @javafx.fxml.FXML
-    private TextField courseNameField21;
     @FXML
     private ComboBox<String> levelComboBox;
+    @FXML
+    private DatePicker fechaInicioRegistroCurso;
+    @FXML
+    private DatePicker fechaFinalRegistroCurso;
+    @FXML
+    private TextField courseIdField;
+    @FXML
+    private TextField instructorNameRegistroCursoField;
 
     @FXML
     public void initialize() {
@@ -49,64 +49,71 @@ public class CourseRegistrationController {
 
     @FXML
     public void handleRegisterCourse(ActionEvent actionEvent) {
-
-        String courseId = courseNameField21.getText();
-        String courseName = courseNameField2.getText();
+        String courseId = courseIdField.getText();
+        String courseName = courseNameField.getText();
         String description = descriptionField.getText();
-        String durationText = courseNameField3.getText();
+
+        // Obtener las fechas de inicio y final
+        LocalDate startDate = fechaInicioRegistroCurso.getValue();
+        LocalDate endDate = fechaFinalRegistroCurso.getValue();
+
+        if (startDate == null || endDate == null) {
+            showAlert("Error", "Por favor seleccione las fechas de inicio y final.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        // Calcular la duración en días
+        long duration = ChronoUnit.DAYS.between(startDate, endDate);
+        if (duration < 0) {
+            showAlert("Error", "La fecha de finalización no puede ser anterior a la fecha de inicio.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        String durationText = String.valueOf(duration);
         String level = levelComboBox.getValue();
-        String instructorId = courseNameField.getText();
+        String instructorId = instructorNameRegistroCursoField.getText();
 
         // Validar que los campos no estén vacíos
-        if (courseId.isEmpty() || courseName.isEmpty() || description.isEmpty() || durationText.isEmpty() || level == null || instructorId.isEmpty()) {
+        if (courseId.isEmpty() || courseName.isEmpty() || description.isEmpty() || level == null || instructorId.isEmpty()) {
             showAlert("Error", "Por favor complete todos los campos.", Alert.AlertType.ERROR);
             return;
         }
 
         try {
-
-            int duration = Integer.parseInt(durationText);
-            if (duration < 0) {
-                throw new NumberFormatException();
-            }
-
             // Crear un nuevo curso
             Curso newCourse = new Curso(courseName, description, durationText, level, courseId);
 
             // Verificar si el curso ya está registrado en el AVL
-
             if (!Utility.cursosRegistrados.isEmpty()) {
-                if (Utility.cursosRegistrados.contains(newCourse)){
+                if (Utility.cursosRegistrados.contains(newCourse)) {
                     showAlert("Error", "El curso con este ID ya está registrado.", Alert.AlertType.ERROR);
-
-                }else {
+                } else {
                     // Agregar el nuevo curso al AVL
                     Utility.cursosRegistrados.add(newCourse);
-                    System.out.println("Cursos registrados"+Utility.cursosRegistrados);
-                    System.err.println("root\n\n"+Utility.cursosRegistrados.root.data);
+                    System.out.println("Cursos registrados" + Utility.cursosRegistrados);
+                    System.err.println("root\n\n" + Utility.cursosRegistrados.root.data);
                     showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
                     clearFields();  // Limpiar los campos del formulario después del registro exitoso
                 }
-            }else  {
+            } else {
                 // Agregar el nuevo curso al AVL
                 Utility.cursosRegistrados.add(newCourse);
-                System.out.println("Cursos registrados"+Utility.cursosRegistrados);
-                System.err.println("root\n\n"+Utility.cursosRegistrados.root.data);
+                System.out.println("Cursos registrados" + Utility.cursosRegistrados);
+                System.err.println("root\n\n" + Utility.cursosRegistrados.root.data);
                 showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
                 clearFields();  // Limpiar los campos del formulario después del registro exitoso
             }
-        } catch (NumberFormatException e) {
-            showAlert("Error", "Formato de duración inválido. Use un número entero positivo.", Alert.AlertType.ERROR);
         } catch (domain.clasesBase.TreeException e) {
             throw new RuntimeException(e);
         }
     }
 
     private void clearFields() {
-        courseNameField21.clear();
-        courseNameField2.clear();
+        courseIdField.clear();
+        instructorNameRegistroCursoField.clear();
         descriptionField.clear();
-        courseNameField3.clear();
+        fechaInicioRegistroCurso.setValue(null);
+        fechaFinalRegistroCurso.setValue(null);
         courseNameField.clear();
         levelComboBox.setValue(null);
     }
