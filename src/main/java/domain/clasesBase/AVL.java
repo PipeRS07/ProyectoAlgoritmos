@@ -13,7 +13,7 @@
         @Override
         public int size() throws TreeException {
             if(isEmpty()){
-                throw new TreeException("Binary Search Tree is empty");
+                throw new TreeException("AVL Tree is empty");
             }
             return size(root);
         }
@@ -39,7 +39,7 @@
         @Override
         public boolean contains(Object element) throws TreeException {
             if(isEmpty()){
-                throw new TreeException("Binary Search Tree is empty");
+                throw new TreeException("AVL Tree is empty");
             }
             return binarySearch(root, element);
         }
@@ -155,7 +155,7 @@
         @Override
         public void remove(Object element) throws TreeException {
             if(isEmpty())
-                throw new TreeException("Binary Search Tree is empty");
+                throw new TreeException("AVLBinary Search Tree is empty");
 
             root = remove(root,element);
         }

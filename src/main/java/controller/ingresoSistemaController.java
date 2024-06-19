@@ -1,6 +1,7 @@
 package controller;
 
 import Data.EnviarEmail;
+import domain.clasesBase.AVL;
 import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.ListException;
@@ -29,11 +30,11 @@ public class ingresoSistemaController {
     @javafx.fxml.FXML
     private Label messageLabel;
     private CircularDoublyLinkedList usuarios;
-
-
+    private AVL cursos;
     @FXML
     public void initialize() {
-        usuarios= Utility.usuariosRegistrados;
+        usuarios= util.Utility.usuariosRegistrados;
+        cursos = Utility.cursosRegistrados;
     }
 
     private void loadPage(String page){

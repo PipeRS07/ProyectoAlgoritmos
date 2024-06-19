@@ -1,6 +1,8 @@
 
 package controller;
 
+import domain.clasesBase.AVL;
+import domain.list.CircularDoublyLinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,8 @@ import util.Utility;
 
 import java.io.IOException;
 
+import static util.Utility.*;
+
 public class HelloController {
 
     @FXML
@@ -21,6 +25,14 @@ public class HelloController {
     private AnchorPane ap;
     @FXML
     private Text txtMessage;
+    private CircularDoublyLinkedList usuarios;
+    private AVL cursos;
+    @FXML
+    public void initialize() {
+        usuarios= util.Utility.usuariosRegistrados;
+        cursos = Utility.cursosRegistrados;
+        //System.out.println(usuariosRegistrados);
+    }
 
     private void loadPage(String page) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
@@ -34,7 +46,14 @@ public class HelloController {
     @FXML
     public void cerrarSesionOnAction(ActionEvent actionEvent) {
         try {
-            Utility.guardar();
+            if(!(Utility.usuariosRegistrados.isEmpty())){
+                guardarCursos();
+            }
+//            if(!(Utility.usuariosRegistrados.isEmpty())){
+                guardarUsuarios();
+//            }
+
+
 
 
             showAlert("Cerrar Sesión", "Sesión cerrada correctamente. Los datos han sido guardados.");

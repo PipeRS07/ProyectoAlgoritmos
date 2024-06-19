@@ -24,8 +24,8 @@ import static java.lang.StringTemplate.STR;
 
 public  class Utility {
 
-    public static CircularDoublyLinkedList usuariosRegistrados = new CircularDoublyLinkedList();
-    public static CircularLinkedList usuariosEnELSistema = new CircularLinkedList();
+    public static CircularDoublyLinkedList usuariosRegistrados ;
+    public static CircularLinkedList usuariosEnELSistema ;
     public static AVL cursosRegistrados = new AVL();
 
     private static UserData userData;
@@ -35,12 +35,16 @@ public  class Utility {
 
     static {
         try {
+            usuariosRegistrados= new CircularDoublyLinkedList();
+            cursosRegistrados = new AVL();
+            usuariosEnELSistema = new CircularLinkedList();
+
             userData = new UserData();
             cursoData = new CursoData();
 
             // Inicialización de listas
-            userData.cargarObjetos(usuariosRegistrados);
-            cursoData.cargarObjetos(cursosRegistrados);
+            userData.cargarObjetos();
+            cursoData.cargarCursos();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -78,12 +82,14 @@ public  class Utility {
     public static void guardarCursos() throws IOException, domain.clasesBase.TreeException, TreeException {
             if(cursosRegistrados.isEmpty()){
                 System.out.println("no hay cursos ");
-            }else
+            }else {
                 cursoData.guardarCursos();
 
+            }
     }
 
     public static void guardarUsuarios() throws ListException, IOException {
+        //System.out.println("Utility.guardarUsuarios"+usuariosRegistrados);
         if (!usuariosRegistrados.isEmpty())
             userData.guardarUsuarios();
         else System.out.println("Utility.guardarUsuarios"+"está vacio");
