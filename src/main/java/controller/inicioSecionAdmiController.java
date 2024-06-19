@@ -1,8 +1,11 @@
 package controller;
 
+import domain.clasesBase.AVL;
 import domain.clasesBase.User;
+import domain.list.CircularDoublyLinkedList;
 import domain.list.ListException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -21,6 +24,13 @@ public class inicioSecionAdmiController {
     private PasswordField passwordField;
     @javafx.fxml.FXML
     private BorderPane bp;
+    private CircularDoublyLinkedList usuarios;
+    private AVL cursos;
+    @FXML
+    public void initialize() {
+        usuarios= util.Utility.usuariosRegistrados;
+        cursos = Utility.cursosRegistrados;
+    }
 
     private void loadPage(String page){
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));

@@ -1,6 +1,7 @@
 package domain.clasesBase;
 
 import domain.list.CircularLinkedList;
+import domain.list.SinglyLinkedList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,16 +11,16 @@ public class Curso {
     private String nombre;
     private int id;
     private String descripcion;
-    private LocalDate duracion; // Cambiado a String
+    private String duracion; // Cambiado a String
     private String dificultad;
     private String siglas;
     private Instructor instructor;
 
-    private AVL lecciones;
+    private SinglyLinkedList lecciones;
 
     private BST evaluaciones;
 
-    public Curso(String nombre, int id, String descripcion, LocalDate duracion, String dificultad, String siglas) {
+    public Curso(String nombre, int id, String descripcion, String duracion, String dificultad, String siglas) {
         this.nombre = nombre;
         this.id=id;
         this.descripcion = descripcion;
@@ -29,7 +30,7 @@ public class Curso {
         this.evaluaciones = new BST();
     }
 
-    public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas, BST evaluaciones) {
+    public Curso(String nombre, String descripcion, String duracion, String dificultad, String siglas, BST evaluaciones) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.duracion = duracion;
@@ -40,19 +41,32 @@ public class Curso {
 
     }
 
-    public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad) {
+    public Curso(String nombre, String descripcion, String duracion, String dificultad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.dificultad = dificultad;
     }
 
-    public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas) {
+    public Curso(String nombre, String descripcion, String duracion, String dificultad, String siglas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.dificultad = dificultad;
         this.siglas = siglas;
+    }
+    public Instructor getInstructor() {
+        return instructor;
+    }
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+    public SinglyLinkedList getLecciones() {
+        return lecciones;
+    }
+
+    public void setLecciones(SinglyLinkedList lecciones) {
+        this.lecciones = lecciones;
     }
 
     public String getNombre() {
