@@ -107,10 +107,10 @@ public class CursoData {
         return cursos;
     }
 
-    public void cargarObjetos(Object TDA) throws IOException {
+    public void cargarCursos() throws IOException {
         ArrayList<Curso> cursos = getCursos();
         for (int i = 0; i < cursos.size(); i++) {
-            Fabrica.fabricaTDA(TDA, cursos.get(i));
+           Utility.cursosRegistrados.add(cursos.get(i));
         }
     }
 

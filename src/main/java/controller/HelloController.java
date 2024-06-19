@@ -1,6 +1,8 @@
 
 package controller;
 
+import domain.clasesBase.AVL;
+import domain.list.CircularDoublyLinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +25,14 @@ public class HelloController {
     private AnchorPane ap;
     @FXML
     private Text txtMessage;
+    private CircularDoublyLinkedList usuarios;
+    private AVL cursos;
+    @FXML
+    public void initialize() {
+        usuarios= util.Utility.usuariosRegistrados;
+        cursos = Utility.cursosRegistrados;
+        //System.out.println(usuariosRegistrados);
+    }
 
     private void loadPage(String page) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
@@ -36,9 +46,9 @@ public class HelloController {
     @FXML
     public void cerrarSesionOnAction(ActionEvent actionEvent) {
         try {
-//            if(!(Utility.usuariosRegistrados.isEmpty())){
+            if(!(Utility.usuariosRegistrados.isEmpty())){
                 guardarCursos();
-//            }
+            }
 //            if(!(Utility.usuariosRegistrados.isEmpty())){
                 guardarUsuarios();
 //            }

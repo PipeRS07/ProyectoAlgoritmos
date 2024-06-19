@@ -22,12 +22,7 @@ public class Fabrica {
         return null;
     }
 
-    public static void fabricaTDA(Object usuariosEnElSistema, User user) {
-        if(usuariosEnElSistema instanceof CircularDoublyLinkedList){
-            ((CircularDoublyLinkedList) usuariosEnElSistema).add(user);
-        }
 
-    }
 
     public static User fabricaUsuarios(User usuario){
         if(usuario.getRole().equals(Ruta.USUADMIN)){
@@ -42,7 +37,7 @@ public class Fabrica {
         return null;
     }
 
-    public static Curso fabricaCursos(String nombre, String descripcion, String duracion, String dificultad, String siglas) {
+    public static Curso fabricaCursos(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas) {
         return new Curso(nombre, descripcion, duracion, dificultad, siglas);
     }
 

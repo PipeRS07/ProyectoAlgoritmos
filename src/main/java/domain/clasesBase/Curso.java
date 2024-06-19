@@ -10,14 +10,16 @@ public class Curso {
     private String nombre;
     private int id;
     private String descripcion;
-    private String duracion; // Cambiado a String
+    private LocalDate duracion; // Cambiado a String
     private String dificultad;
     private String siglas;
     private Instructor instructor;
 
+    private AVL lecciones;
+
     private BST evaluaciones;
 
-    public Curso(String nombre, int id, String descripcion, String duracion, String dificultad, String siglas) {
+    public Curso(String nombre, int id, String descripcion, LocalDate duracion, String dificultad, String siglas) {
         this.nombre = nombre;
         this.id=id;
         this.descripcion = descripcion;
@@ -27,7 +29,7 @@ public class Curso {
         this.evaluaciones = new BST();
     }
 
-    public Curso(String nombre, String descripcion, String duracion, String dificultad, String siglas, BST evaluaciones) {
+    public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas, BST evaluaciones) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.duracion = duracion;
@@ -38,14 +40,14 @@ public class Curso {
 
     }
 
-    public Curso(String nombre, String descripcion, String duracion, String dificultad) {
+    public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.dificultad = dificultad;
     }
 
-    public Curso(String nombre, String descripcion, String duracion, String dificultad, String siglas) {
+    public Curso(String nombre, String descripcion, LocalDate duracion, String dificultad, String siglas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.duracion = duracion;

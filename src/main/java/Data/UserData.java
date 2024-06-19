@@ -28,7 +28,7 @@ public class UserData {
     public void guardarUsuarios() throws ListException, IOException {
         int size= Utility.usuariosRegistrados.size();
         for (int i = 0; i < size; i++) {
-            registrarUser(i, (User) Utility.usuariosRegistrados.getNode(i).data );
+            registrarUser(i-1, (User) Utility.usuariosRegistrados.getNode(i).data );
         }
     }
 
@@ -129,11 +129,13 @@ public class UserData {
 //    }
 
 
-    public void cargarObjetos(Object TDA) throws IOException {
+    public void cargarObjetos() throws IOException {
         ArrayList<User> usuarios= getUsuarios();
         for (int i = 0; i < usuarios.size(); i++) {
-            Fabrica.fabricaTDA(TDA, usuarios.get(i));
+           Utility.usuariosRegistrados.add(usuarios.get(i));
+            System.out.println(Utility.usuariosRegistrados);
         }
+
     }
 
 }
