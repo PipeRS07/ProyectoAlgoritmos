@@ -16,7 +16,7 @@ public class Curso {
     private String siglas;
     private Instructor instructor;
 
-    private SinglyLinkedList lecciones;
+    private BST lecciones;
 
     private BST evaluaciones;
 
@@ -61,11 +61,11 @@ public class Curso {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
-    public SinglyLinkedList getLecciones() {
+    public BST getLecciones() {
         return lecciones;
     }
 
-    public void setLecciones(SinglyLinkedList lecciones) {
+    public void setLecciones(BST lecciones) {
         this.lecciones = lecciones;
     }
 
