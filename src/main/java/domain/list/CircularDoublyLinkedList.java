@@ -15,6 +15,7 @@ public class CircularDoublyLinkedList implements List {
 
     @Override
     public int size() throws ListException {
+
         int count = 0;
         Node current = first;
 
@@ -35,6 +36,7 @@ public class CircularDoublyLinkedList implements List {
 
     @Override
     public boolean isEmpty() {
+
         return this.first == null; //si es nulo está vacía
     }
 
@@ -64,6 +66,7 @@ public class CircularDoublyLinkedList implements List {
             //ponemos last a apuntar al ultimo nodo
             last = newNode;
         }
+       // System.out.println(first.data);
 
         //Se hace el enlace circular
         last.next = first;
@@ -262,7 +265,7 @@ public class CircularDoublyLinkedList implements List {
     @Override
     public Object getFirst() throws ListException {
         if(isEmpty()){
-            throw new ListException("Circular Linked List is Empty");
+            throw new ListException("CircularDoubly Linked List is Empty");
         }
         return first.data;
     }
@@ -270,7 +273,7 @@ public class CircularDoublyLinkedList implements List {
     @Override
     public Object getLast() throws ListException {
         if(isEmpty()){
-            throw new ListException("Circular Linked List is Empty");
+            throw new ListException("CircularDoubly Linked List is Empty");
         }
         return last.data;
     }
@@ -278,7 +281,7 @@ public class CircularDoublyLinkedList implements List {
     @Override
     public Object getPrev(Object element) throws ListException {
         if(isEmpty()){
-            throw new ListException("Circular Linked List is Empty");
+            throw new ListException("CircularDoubly Linked List is Empty");
         }
         if(Utility.compare(first.data, element)==0){
             return "It's the first, it has no previous";
@@ -297,13 +300,13 @@ public class CircularDoublyLinkedList implements List {
             return aux.data;
         }
 
-        return "Does not exist in Single Linked List";
+        return "Does not exist in CircularDoubly Linked List";
     }
 
     @Override
     public Object getNext(Object element) throws ListException {
         if (isEmpty()) {
-            throw new ListException("Circular Linked List is empty");
+            throw new ListException("CircularDoubly Linked List is empty");
         }
 
         Node aux = first;
@@ -330,7 +333,7 @@ public class CircularDoublyLinkedList implements List {
     @Override
     public Node getNode(int index) throws ListException {
         if (isEmpty()) {
-            throw new ListException("Circular Linked List is Empty");
+            throw new ListException("Circular doublyLinked Linked List is Empty");
         }
 
         Node aux = first;
@@ -355,7 +358,7 @@ public class CircularDoublyLinkedList implements List {
         String result = "Circular Linked List Content\n\n";
         Node aux = first;
         while(aux!=last){
-            result+= STR."\{aux.data} "+", ";
+            result+= STR."\{aux.data} "+",\n ";
             aux = aux.next;
         }
         return result+""+aux.data;//agrego la data ultimo nodo

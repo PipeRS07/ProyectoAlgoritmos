@@ -13,6 +13,8 @@ import util.Utility;
 
 import java.io.IOException;
 
+import static util.Utility.*;
+
 public class HelloController {
 
     @FXML
@@ -34,7 +36,14 @@ public class HelloController {
     @FXML
     public void cerrarSesionOnAction(ActionEvent actionEvent) {
         try {
-            Utility.guardar();
+//            if(!(Utility.usuariosRegistrados.isEmpty())){
+                guardarCursos();
+//            }
+//            if(!(Utility.usuariosRegistrados.isEmpty())){
+                guardarUsuarios();
+//            }
+
+
 
 
             showAlert("Cerrar Sesión", "Sesión cerrada correctamente. Los datos han sido guardados.");

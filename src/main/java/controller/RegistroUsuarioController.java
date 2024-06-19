@@ -53,6 +53,8 @@ public class RegistroUsuarioController {
         }
     }
 
+
+
     // Método para registrar un nuevo usuario
     public void RegisterUserOnAction(ActionEvent actionEvent) {
         // Obtener los valores del formulario
@@ -66,13 +68,24 @@ public class RegistroUsuarioController {
             showAlert("Error", "Todos los campos son obligatorios", Alert.AlertType.ERROR);
             return;
         }
+        String encryptedPassword = null;
+        try {
+            encryptedPassword = Encriptacion.obtenerContraseniaCifrada(password);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Crear un nuevo usuario
+
+        User newUser = Fabrica.fabricaUsuarios(Integer.parseInt(cedula), username, email, Ruta.USUESTUDIANTE, encryptedPassword);
+        email=this.emailField.getText();
         try {
             // Encriptar la contraseña
-            String encryptedPassword = Encriptacion.obtenerContraseniaCifrada(password);
-
-            // Crear un nuevo usuario
-
-            User newUser = Fabrica.fabricaUsuarios(Integer.parseInt(cedula), username, email, Ruta.USUESTUDIANTE, encryptedPassword);
+//            String encryptedPassword = Encriptacion.obtenerContraseniaCifrada(password);
+//
+//            // Crear un nuevo usuario
+//
+//            User newUser = Fabrica.fabricaUsuarios(Integer.parseInt(cedula), username, email, Ruta.USUESTUDIANTE, encryptedPassword);
 
             // Verificar si la lista de usuarios registrados está vacía antes de intentar acceder a un nodo
             if (Utility.usuariosRegistrados.isEmpty()) {
@@ -85,7 +98,7 @@ public class RegistroUsuarioController {
                 String formattedDate = now.format(formatter);
 
                 EnviarEmail enviarEmail = new EnviarEmail();
-                enviarEmail.enviarCorreoSinAdjunto(newUser.getEmail(),
+                enviarEmail.enviarCorreoSinAdjunto(email,
                         "Confirmacion de ingreso al sistema",
                         "¡Hola! " + newUser.getName() +
                                 "\nUsuario: " + newUser.getId() +
@@ -97,21 +110,30 @@ public class RegistroUsuarioController {
                 showAlert("Éxito", "Usuario registrado correctamente", Alert.AlertType.INFORMATION);
                 // enviarNotificacionRegistro(newUser, password);
                 clearFields();
-                return;}
+                return;
+            }
 
             // Agregar el nuevo usuario a la lista de usuarios registrados
             Utility.usuariosRegistrados.add(newUser);
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String formattedDate = now.format(formatter);
             Utility.usuariosEnELSistema.add(newUser);
             EnviarEmail enviarEmail = new EnviarEmail();
-            enviarEmail.enviarCorreoSinAdjunto(newUser.getEmail(), "Confirmacion de ingreso al sismtema", "Bienvenido a nuestra plataforma de aprendizaje");
+            enviarEmail.enviarCorreoSinAdjunto(email,
+                    "Confirmacion de ingreso al sistema",
+                    "¡Hola! " + newUser.getName() +
+                            "\nUsuario: " + newUser.getId() +
+                            "\nTu contraseña: " + password +
+                            "\nFecha y hora: " + formattedDate +
+                            "\nBienvenido a nuestra plataforma de aprendizaje!!");
+
             System.out.println("Usuario agregado correctamente a la lista de usuarios registrados: " + newUser);
             showAlert("Éxito", "Usuario registrado correctamente", Alert.AlertType.INFORMATION);
             //  enviarNotificacionRegistro(newUser, password);
 
             clearFields();
-        } catch (NoSuchAlgorithmException e) {
-            showAlert("Error", "Hubo un problema al cifrar la contraseña", Alert.AlertType.ERROR);
-        } catch (NumberFormatException e) {
+        }  catch (NumberFormatException e) {
             showAlert("Error", "La cédula debe ser un número entero", Alert.AlertType.ERROR);
         }
     }
