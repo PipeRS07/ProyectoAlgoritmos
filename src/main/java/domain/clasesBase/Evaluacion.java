@@ -2,13 +2,12 @@ package domain.clasesBase;
 
 public class Evaluacion {
     private String nombre;
-    private String tipo;
+    //private String tipo;
     private int nota;
     private String enunciado;
 
-    public Evaluacion(String nombre, String tipo, String enunciado) {
+    public Evaluacion(String nombre, String enunciado) {
         this.nombre = nombre;
-        this.tipo = tipo;
         this.enunciado = enunciado;
         this.nota =0;
     }
@@ -27,14 +26,6 @@ public class Evaluacion {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public String getEnunciado() {

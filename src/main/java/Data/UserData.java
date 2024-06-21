@@ -133,7 +133,7 @@ public class UserData {
         ArrayList<User> usuarios= getUsuarios();
         for (int i = 0; i < usuarios.size(); i++) {
            Utility.usuariosRegistrados.add(usuarios.get(i));
-            System.out.println(Utility.usuariosRegistrados);
+            //System.out.println(Utility.usuariosRegistrados);
         }
 
     }

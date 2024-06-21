@@ -1,5 +1,6 @@
 package domain.clasesBase;
 
+import domain.graph.SinglyLinkedListGraph;
 import domain.list.CircularLinkedList;
 import domain.list.SinglyLinkedList;
 
@@ -15,12 +16,13 @@ public class Curso {
     private String dificultad;
     private String siglas;
     private Instructor instructor;
-
+    SinglyLinkedListGraph inscripcionesEstudiantes;
+    private SinglyLinkedList materialesDeEstudio;
     private BST lecciones;
 
     private BST evaluaciones;
 
-    public Curso(String nombre, int id, String descripcion, String duracion, String dificultad, String siglas) {
+    public Curso(String nombre, int id, String descripcion, String duracion, String dificultad, String siglas, SinglyLinkedListGraph inscripcionesEstudiantes, SinglyLinkedList materialesDeEstudio) {
         this.nombre = nombre;
         this.id=id;
         this.descripcion = descripcion;
@@ -28,6 +30,8 @@ public class Curso {
         this.dificultad = dificultad;
         this.siglas = siglas;
         this.evaluaciones = new BST();
+        this.inscripcionesEstudiantes = inscripcionesEstudiantes;
+        this.materialesDeEstudio = materialesDeEstudio;
     }
 
     public Curso(String nombre, String descripcion, String duracion, String dificultad, String siglas, BST evaluaciones) {
@@ -37,8 +41,6 @@ public class Curso {
         this.dificultad = dificultad;
         this.siglas = siglas;
         this.evaluaciones = evaluaciones;
-
-
     }
 
     public Curso(String nombre, String descripcion, String duracion, String dificultad) {
@@ -55,6 +57,15 @@ public class Curso {
         this.dificultad = dificultad;
         this.siglas = siglas;
     }
+
+    public SinglyLinkedListGraph getInscripcionesEstudiantes() {
+        return inscripcionesEstudiantes;
+    }
+
+    public void setInscripcionesEstudiantes(SinglyLinkedListGraph inscripcionesEstudiantes) {
+        this.inscripcionesEstudiantes = inscripcionesEstudiantes;
+    }
+
     public Instructor getInstructor() {
         return instructor;
     }
@@ -67,6 +78,15 @@ public class Curso {
 
     public void setLecciones(BST lecciones) {
         this.lecciones = lecciones;
+    }
+
+    public SinglyLinkedList getMaterialesDeEstudio() {
+        return materialesDeEstudio;
+    }
+
+
+    public void setMaterialesDeEstudio(SinglyLinkedList materialesDeEstudio) {
+        this.materialesDeEstudio = materialesDeEstudio;
     }
 
     public String getNombre() {

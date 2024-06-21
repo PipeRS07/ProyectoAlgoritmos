@@ -5,7 +5,6 @@ public class Leccion {
     private String title;
     private Object context;
     private boolean estado;
-    private BST evaluaciones;
 
 
     public Leccion(int id, String title, Object context) {
@@ -14,21 +13,13 @@ public class Leccion {
         this.context = context;
     }
 
-    public Leccion(int id, String title, Object context, boolean estado, BST evaluaciones) {
+    public Leccion(int id, String title, Object context, boolean estado) {
         this.id = id;
         this.title = title;
         this.context = context;
         this.estado = estado;
-        this.evaluaciones = evaluaciones;
     }
 
-    public BST getEvaluaciones() {
-        return evaluaciones;
-    }
-
-    public void setEvaluaciones(BST evaluaciones) {
-        this.evaluaciones = evaluaciones;
-    }
 
     public boolean isEstado() {
         return estado;

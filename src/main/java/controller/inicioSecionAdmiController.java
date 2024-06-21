@@ -57,7 +57,7 @@ public class inicioSecionAdmiController {
                 if(Integer.toString(aux.getId()).equals(name) && aux.getContrasenia().equals(contrasenia)){
                     Fabrica.fabricaUsuarios(aux);
                     Utility.usuariosEnELSistema.add(aux);
-                    Utility.usuarioactivo=aux;
+                    Utility.UserActivo =aux;
                     bandera=true;
                 }
             }

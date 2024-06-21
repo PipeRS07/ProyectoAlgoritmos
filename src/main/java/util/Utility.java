@@ -27,10 +27,10 @@ public  class Utility {
     public static CircularDoublyLinkedList usuariosRegistrados ;
     public static CircularLinkedList usuariosEnELSistema ;
     public static AVL cursosRegistrados = new AVL();
-
+    public static BTree inscripcionesSolicitadas;
     private static UserData userData;
     private static CursoData cursoData;
-    public static User usuarioactivo;
+    public static User UserActivo;
 
 
     static {
@@ -38,6 +38,7 @@ public  class Utility {
             usuariosRegistrados= new CircularDoublyLinkedList();
             cursosRegistrados = new AVL();
             usuariosEnELSistema = new CircularLinkedList();
+            inscripcionesSolicitadas = new BTree();
 
             userData = new UserData();
             cursoData = new CursoData();
@@ -182,6 +183,10 @@ public  class Utility {
             case "Curso":
                 Curso cur1 = (Curso)a; Curso cur2 = (Curso) b;
                 return cur1.getNombre().equalsIgnoreCase(cur2.getNombre()) ?0: cur1.getId()==cur2.getId()?0:-1;
+            case "UserId":
+                User us = (User) a; Integer st = (Integer) b;
+                System.out.println("Utility.compare"+us+st);
+                return compare(us.getId(), st);
 
         }
         return 2; //Unknown
@@ -205,6 +210,8 @@ public  class Utility {
         if(a instanceof User && b instanceof User) return "User";
         if(a instanceof Curso && b instanceof String) return "CursoString";
         if(a instanceof Curso && b instanceof Curso) return "Curso";
+        if(a instanceof User && b instanceof Integer) return "UserId";
+
 
 
 

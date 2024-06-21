@@ -1,11 +1,9 @@
 package controller;
 
-import Data.EnviarEmail;
 import domain.clasesBase.AVL;
 import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.ListException;
-import domain.list.Node;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,7 +70,7 @@ public class ingresoSistemaController {
                 if(Integer.toString(aux.getId()).equals(idText) && aux.getContrasenia().equals(contrasenia)){
                     Fabrica.fabricaUsuarios(aux);
                     util.Utility.usuariosEnELSistema.add(aux);
-                    Utility.usuarioactivo=aux;
+                    Utility.UserActivo =aux;
                     bandera=true;
 
                 }

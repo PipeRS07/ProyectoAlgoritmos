@@ -29,7 +29,7 @@ public class MenuUsuarioController {
 
     @javafx.fxml.FXML
     public void registroOnAction(ActionEvent actionEvent) {
-        if(Utility.usuarioactivo.getRole().equals(Ruta.USUADMIN)) {
+        if(Utility.UserActivo.getRole().equals(Ruta.USUADMIN)) {
             loadPage("CrearUsuario.fxml");
         }
     }

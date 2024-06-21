@@ -1,6 +1,5 @@
 package controller;
 
-import domain.clasesBase.Administrador;
 import domain.clasesBase.User;
 import domain.list.ListException;
 import javafx.event.ActionEvent;
@@ -10,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
 import util.Fabrica;
-import util.Ruta;
 import util.Utility;
 
 import java.io.IOException;
@@ -53,7 +51,7 @@ public class inicioSecionController {
                 if(Integer.toString(aux.getId()).equals(name) && aux.getContrasenia().equals(contrasenia)){
                     Fabrica.fabricaUsuarios(aux);
                     Utility.usuariosEnELSistema.add(aux);
-                    Utility.usuarioactivo=aux;
+                    Utility.UserActivo =aux;
                     bandera=true;
                 }
             }
