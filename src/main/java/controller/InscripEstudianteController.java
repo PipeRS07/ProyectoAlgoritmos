@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import util.Ruta;
 import util.Utility;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class InscripEstudianteController {
             return;
         }
 
-        if (!(Utility.UserActivo instanceof Estudiante)) {
+        if (!(Utility.UserActivo.getRole().equals(Ruta.USUESTUDIANTE))) {
             mostrarAlerta("Error", "Solo los estudiantes pueden inscribirse en los cursos");
             return;
         }

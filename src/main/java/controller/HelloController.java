@@ -147,6 +147,6 @@ public class HelloController {
 
     @FXML
     public void inicioAdmiOnAction(ActionEvent actionEvent) {
-        loadPage("inicioSesionAdmin.fxml");
+        loadPage("inicioSesionUsuario.fxml");
     }
 }

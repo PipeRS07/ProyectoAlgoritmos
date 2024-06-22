@@ -46,6 +46,7 @@ public class inicioSecionController {
             //comparo entre todos los usuarios registrados si existe uno con la misma contraseña y el mismo usuario
             for (int i = 0; i < Utility.usuariosRegistrados.size(); i++) {
 
+
                 aux=(User) Utility.usuariosRegistrados.getNode(i+1).data;
 
                 if(Integer.toString(aux.getId()).equals(name) && aux.getContrasenia().equals(contrasenia)){

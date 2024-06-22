@@ -126,7 +126,6 @@ public class BTree implements Tree {
         if(node!=null) {
             if (util.Utility.compare(node.data, element) == 0) {
 
-
                 //caso 1 el nodo es una hoja
                 if (node.left == null && node.right == null) {
                     return null;

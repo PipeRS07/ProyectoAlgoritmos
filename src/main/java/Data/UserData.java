@@ -30,7 +30,7 @@ public class UserData {
         System.out.println(size);
 
         for (int i = 0; i < size; i++) {
-            System.out.println("UserData.guardarUsuarios"+i+util.Utility.getUsuariosRegistrados().getNode(i+1).data);
+            //System.out.println("UserData.guardarUsuarios"+i+util.Utility.getUsuariosRegistrados().getNode(i+1).data);
             if(!(Utility.usuariosRegistrados.getNode(i+1).data==null))
                 System.out.println("UserData.guardarUsuarios2"+i);
                 registrarUser(i, (User) Utility.usuariosRegistrados.getNode(i+1).data );

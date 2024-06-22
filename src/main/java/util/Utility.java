@@ -5,17 +5,16 @@ import Data.UserData;
 import domain.bTree.BTree;
 import domain.bTree.BTreeNode;
 import domain.bTree.TreeException;
-import domain.clasesBase.AVL;
-import domain.clasesBase.BST;
-import domain.clasesBase.Curso;
+import domain.clasesBase.*;
 
-import domain.clasesBase.User;
+import domain.graph.GraphException;
 import domain.list.*;
 import domain.queue.LinkedQueue;
 import domain.stack.LinkedStack;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Objects;
 import java.util.Random;
 
 import static java.lang.StringTemplate.STR;
@@ -153,10 +152,11 @@ public  class Utility {
                 return u==u1?0:-1;
             case "CursoString":
                 Curso cu1 = (Curso)a; String cu2 = (String) b;
-                return cu1.getNombre().equalsIgnoreCase(cu2)?0:-1;
+                return compare(cu1.getNombre(), cu2);
             case "Curso":
                 Curso cur1 = (Curso)a; Curso cur2 = (Curso) b;
                 //return cur1.getNombre().equalsIgnoreCase(cur2.getNombre()) ?0: cur1.getId()==cur2.getId()?0:-1;
+                System.out.println(compare(cur1.getId(), cur2.getId()));
                 return compare(cur1.getId(), cur2.getId());
             case "UserId":
                 User us = (User) a; Integer st = (Integer) b;
@@ -165,6 +165,10 @@ public  class Utility {
             case "CursoId":
                 Curso cus = (Curso) a; Integer cuid = (Integer) b;
                 return compare(cus.getId(), cuid);
+            case "InscripcionString":
+                Inscripcion ins = (Inscripcion) a; String insnm = (String) b;
+                System.out.println("Utility.compare"+ins.getCurso().getNombre()+"***********"+insnm);
+                return Objects.equals(ins.getCurso().getNombre(), insnm) ?0:-1;
 
         }
         return 2; //Unknown
@@ -190,6 +194,8 @@ public  class Utility {
         if(a instanceof Curso && b instanceof Curso) return "Curso";
         if(a instanceof User && b instanceof Integer) return "UserId";
         if(a instanceof Curso && b instanceof Integer) return "CursoId";
+        if(a instanceof Inscripcion && b instanceof String) return "InscripcionString";
+
         return "Unknown";
     }
 }
