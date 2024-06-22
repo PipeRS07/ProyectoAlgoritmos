@@ -90,25 +90,26 @@ public class CourseRegistrationController {
             Curso newCourse = new Curso(courseName, description, durationText, level, courseId);
 
             // Verificar si el curso ya está registrado en el AVL
-//            if (!Utility.cursosRegistrados.isEmpty()) {
+            if (!Utility.cursosRegistrados.isEmpty()) {
                 if (Utility.cursosRegistrados.contains(newCourse.getNombre())&&Utility.cursosRegistrados.contains(newCourse.getId())) {
                     showAlert("Error", "El curso con este ID ya está registrado.", Alert.AlertType.ERROR);
                 } else {
                     // Agregar el nuevo curso al AVL
                     cursos.add(newCourse);
+
                     System.out.println("Cursos registrados" + Utility.cursosRegistrados);
                     System.err.println("root\n\n" + Utility.cursosRegistrados.root.data);
                     showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
                     clearFields();  // Limpiar los campos del formulario después del registro exitoso
                 }
-//            } else {
+            } else {
 //                // Agregar el nuevo curso al AVL
-//                Utility.cursosRegistrados.add(newCourse);
-//                System.out.println("Cursos registrados" + Utility.cursosRegistrados);
-//                System.err.println("root\n\n" + Utility.cursosRegistrados.root.data);
-//                showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
-//                clearFields();  // Limpiar los campos del formulario después del registro exitoso
-//            }
+                Utility.cursosRegistrados.add(newCourse);
+                System.out.println("Cursos registrados" + Utility.cursosRegistrados);
+                System.err.println("root\n\n" + Utility.cursosRegistrados.root.data);
+                showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
+                clearFields();  // Limpiar los campos del formulario después del registro exitoso
+            }
         } catch (domain.clasesBase.TreeException e) {
             throw new RuntimeException(e);
         }

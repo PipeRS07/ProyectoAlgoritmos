@@ -71,8 +71,8 @@ public class UserData {
     }
 
     public boolean agregarAlFinal(User usuario) throws IOException {
-        if (registrarUser(this.cantidadDeRegistros, usuario)) {
-            ++cantidadDeRegistros;
+        if (registrarUser(this.cantidadDeRegistros++, usuario)) {
+            //++cantidadDeRegistros;
             return true;
         }
         return false;

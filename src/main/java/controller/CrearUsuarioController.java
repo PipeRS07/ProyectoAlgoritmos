@@ -4,6 +4,7 @@ import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.ListException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -36,11 +37,13 @@ public class CrearUsuarioController {
     private BorderPane bp;
 
     // Inicialización de la lista de usuarios registrados
-    {
-        Utility.usuariosRegistrados = new CircularDoublyLinkedList(); // Inicializa la lista de usuarios registrados
-    }
 
-    private CircularDoublyLinkedList circularDoublyLinkedList = new CircularDoublyLinkedList();
+
+    private CircularDoublyLinkedList usuarios ;
+    @FXML
+    public void initialize() {
+        usuarios= util.Utility.usuariosRegistrados;
+    }
 
     private void loadPage(String page) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
@@ -73,18 +76,8 @@ public class CrearUsuarioController {
 
             User newUser = Fabrica.fabricaUsuarios(Integer.parseInt(cedula), username, email, Ruta.USUESTUDIANTE, encryptedPassword);
 
-            // Verificar si la lista de usuarios registrados está vacía antes de intentar acceder a un nodo
-            if (Utility.usuariosRegistrados.isEmpty()) {
-                Utility.usuariosRegistrados.add(newUser);
-                Utility.usuariosEnELSistema.add(newUser);
-                System.out.println("Usuario agregado correctamente a la lista de usuarios registrados: " + newUser);
-                showAlert("Éxito", "Usuario registrado correctamente", Alert.AlertType.INFORMATION);
-                clearFields();
-                return;
-            }
-
             // Agregar el nuevo usuario a la lista de usuarios registrados
-            Utility.usuariosRegistrados.add(newUser);
+            usuarios.add(newUser);
             Utility.usuariosEnELSistema.add(newUser);
             System.out.println("Usuario agregado correctamente a la lista de usuarios registrados: " + newUser);
             showAlert("Éxito", "Usuario registrado correctamente", Alert.AlertType.INFORMATION);

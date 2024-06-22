@@ -51,7 +51,7 @@ public class HelloController {
     public void cerrarSesionOnAction(ActionEvent actionEvent) {
         try {
             if(!(Utility.usuariosRegistrados.isEmpty())){
-                System.out.println("HelloController.cerrarSesionOnAction"+usuarios);
+               // System.out.println("HelloController.cerrarSesionOnAction"+usuarios);
                 Utility.guardarUsuarios();
             }
             if(!(cursosRegistrados.isEmpty())){

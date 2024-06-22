@@ -71,6 +71,7 @@ public class ingresoSistemaController {
                     Fabrica.fabricaUsuarios(aux);
                     util.Utility.usuariosEnELSistema.add(aux);
                     Utility.UserActivo =aux;
+                    System.out.println(Utility.usuariosEnELSistema);
                     bandera=true;
 
                 }
