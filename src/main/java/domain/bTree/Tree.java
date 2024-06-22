@@ -23,7 +23,7 @@ public interface Tree {
     //Caso 1. El nodo a suprimir no tiene hijos
     //Caso 2. El nodo a suprimir solo tiene un hijo
     //Caso 3. El nodo a suprimir tiene dos hijos
-    public void remove(Object element) throws TreeException;
+    public boolean remove(Object element) throws TreeException;
     //private BTreeNode remove(BTreeNode node, Object element)
 
     //devuelve la altura de un nodo (el número de ancestros)

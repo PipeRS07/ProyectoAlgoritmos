@@ -1,5 +1,8 @@
 package domain.clasesBase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BTree implements Tree {
     public BTreeNode root; //unica entrada al arbol
     private Tree currentTree;
@@ -8,6 +11,21 @@ public class BTree implements Tree {
         this.currentTree = new BST(); // Default to BST
     }
 
+    // Método para obtener todas las inscripciones del árbol
+    public List<Inscripcion> getAll() {
+        List<Inscripcion> allInscriptions = new ArrayList<>();
+        getAll(root, allInscriptions);
+        return allInscriptions;
+    }
+
+    private void getAll(BTreeNode node, List<Inscripcion> list) {
+        if (node != null) {
+            getAll(node.left, list);
+            // Suponemos que node.data contiene Inscripcion
+            list.add((Inscripcion) node.data);
+            getAll(node.right, list);
+        }
+    }
     public void setTree(Tree tree) {
         this.currentTree = tree;
     }

@@ -1,5 +1,10 @@
 package domain.bTree;
 
+import domain.clasesBase.Inscripcion;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class BTree implements Tree {
     public BTreeNode root; //unica entrada al arbol
 
@@ -13,6 +18,21 @@ public class BTree implements Tree {
             throw new TreeException("Binary Tree is empty");
         }
         return size(root);
+    }
+    // Método para obtener todas las inscripciones del árbol
+    public List<Inscripcion> getAll() {
+        List<Inscripcion> allInscriptions = new ArrayList<>();
+        getAll(root, allInscriptions);
+        return allInscriptions;
+    }
+
+    private void getAll(BTreeNode node, List<Inscripcion> list) {
+        if (node != null) {
+            getAll(node.left, list);
+            // Suponemos que node.data contiene Inscripcion
+            list.add((Inscripcion) node.data);
+            getAll(node.right, list);
+        }
     }
 
     private int size(BTreeNode node){
@@ -94,11 +114,12 @@ public class BTree implements Tree {
     }
 
     @Override
-    public void remove(Object element) throws TreeException {
+    public boolean remove(Object element) throws TreeException {
         if(isEmpty())
             throw new TreeException("Binary Tree is empty");
 
         root = remove(root,element);
+        return false;
     }
 
     private BTreeNode remove(BTreeNode node, Object element){

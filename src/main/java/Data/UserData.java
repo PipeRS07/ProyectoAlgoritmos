@@ -52,7 +52,7 @@ public class UserData {
         this.users = util.Utility.usuariosRegistrados;
     }
 
-    private boolean registrarUser(int posicion, User usuario) throws IOException {
+    public boolean registrarUser(int posicion, User usuario) throws IOException {
         boolean respuesta =false;
         if(posicion>= 0 && posicion <= cantidadDeRegistros){
             //si el tamaño del registro es adecuado
@@ -71,8 +71,8 @@ public class UserData {
     }
 
     public boolean agregarAlFinal(User usuario) throws IOException {
-        if (registrarUser(this.cantidadDeRegistros, usuario)) {
-            ++cantidadDeRegistros;
+        if (registrarUser(this.cantidadDeRegistros++, usuario)) {
+            //++cantidadDeRegistros;
             return true;
         }
         return false;

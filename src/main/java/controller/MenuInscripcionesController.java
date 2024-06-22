@@ -23,9 +23,9 @@ public class MenuInscripcionesController {
     }
     @javafx.fxml.FXML
     public void handleEnrollmentCancellation(ActionEvent actionEvent) {
-        if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUESTUDIANTE))) {
+       // if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUESTUDIANTE))) {
             loadPage("cancelarInscripcion.fxml");
-        }
+        //}
 
 
     }

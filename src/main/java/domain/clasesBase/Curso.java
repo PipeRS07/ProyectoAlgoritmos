@@ -58,6 +58,9 @@ public class Curso {
         this.siglas = siglas;
     }
 
+
+
+
     public SinglyLinkedListGraph getInscripcionesEstudiantes() {
         return inscripcionesEstudiantes;
     }

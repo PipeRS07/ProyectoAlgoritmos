@@ -1,8 +1,5 @@
 package domain.bTree;
 
-import domain.bTree.BTreeNode;
-import domain.bTree.Tree;
-import domain.bTree.TreeException;
 import util.Utility;
 
 public class AVLTree implements Tree {
@@ -155,11 +152,12 @@ public class AVLTree implements Tree {
     }
 
     @Override
-    public void remove(Object element) throws TreeException {
+    public boolean remove(Object element) throws TreeException {
         if(isEmpty())
             throw new TreeException("Binary Search Tree is empty");
 
         root = remove(root,element);
+        return false;
     }
 
     private BTreeNode remove(BTreeNode node, Object element){
