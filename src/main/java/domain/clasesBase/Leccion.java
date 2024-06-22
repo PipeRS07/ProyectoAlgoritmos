@@ -38,8 +38,6 @@ public class Leccion {
         this.estado = estado;
     }
 
-
-
     public int getId() {
         return id;
     }

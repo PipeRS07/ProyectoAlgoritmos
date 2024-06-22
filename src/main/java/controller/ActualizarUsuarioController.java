@@ -90,16 +90,6 @@ public class ActualizarUsuarioController {
             int idBuscar = Integer.parseInt(buscar.getText());
             User usuarioEncontrado = (User) Utility.usuariosRegistrados.getNode(Utility.usuariosRegistrados.indexOf(idBuscar)).data;
 
-            // Buscar el usuario en la lista de usuarios registrados
-//            for (int i = 0; i < Utility.usuariosRegistrados.size(); i++) {
-//                User usuario = (User) Utility.usuariosRegistrados.getNode(i + 1).data;
-//                if (usuario.getId() == idBuscar) {
-//                    // Usuario encontrado
-//                    usuarioEncontrado = usuario;
-//                    break;
-//                }
-//            }
-
             if (usuarioEncontrado != null) {
                 // Mostrar los datos del usuario encontrado en los campos correspondientes
                 nameField.setText(usuarioEncontrado.getName());

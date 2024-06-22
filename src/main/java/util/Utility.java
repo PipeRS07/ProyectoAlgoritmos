@@ -20,7 +20,6 @@ import domain.stack.LinkedStack;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Random;
-import java.util.Stack;
 
 import static java.lang.StringTemplate.STR;
 
@@ -29,20 +28,20 @@ public  class Utility {
     public static CircularDoublyLinkedList usuariosRegistrados ;
     public static CircularLinkedList usuariosEnELSistema ;
     public static AVL cursosRegistrados = new AVL();
-    public static BTree inscripcionesSolicitadas;
     public static BST leccionesRegistradas;
+    public static BTree inscripcionesSolicitadas;
     private static UserData userData;
     private static CursoData cursoData;
     public static User UserActivo;
 
 
-    
     static {
         try {
             usuariosRegistrados= new CircularDoublyLinkedList();
             cursosRegistrados = new AVL();
             usuariosEnELSistema = new CircularLinkedList();
             inscripcionesSolicitadas = new BTree();
+            leccionesRegistradas = new BST();
 
             userData = new UserData();
             cursoData = new CursoData();
