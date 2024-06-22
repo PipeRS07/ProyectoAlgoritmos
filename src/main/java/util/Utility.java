@@ -6,6 +6,7 @@ import domain.bTree.BTree;
 import domain.bTree.BTreeNode;
 import domain.bTree.TreeException;
 import domain.clasesBase.AVL;
+import domain.clasesBase.BST;
 import domain.clasesBase.Curso;
 
 import domain.clasesBase.User;
@@ -25,6 +26,7 @@ public  class Utility {
     public static CircularLinkedList usuariosEnELSistema ;
     public static AVL cursosRegistrados = new AVL();
     public static BTree inscripcionesSolicitadas;
+    public static BST leccionesRegistradas;
     private static UserData userData;
     private static CursoData cursoData;
     public static User UserActivo;
@@ -36,6 +38,7 @@ public  class Utility {
             cursosRegistrados = new AVL();
             usuariosEnELSistema = new CircularLinkedList();
             inscripcionesSolicitadas = new BTree();
+            leccionesRegistradas = new BST();
 
             userData = new UserData();
             cursoData = new CursoData();

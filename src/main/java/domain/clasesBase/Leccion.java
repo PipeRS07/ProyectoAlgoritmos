@@ -33,11 +33,11 @@ public class Leccion {
         this.title = title;
     }
 
-    public Object getContext() {
+    public Object getContent() {
         return content;
     }
 
-    public void setContext(Object context) {
+    public void setContent(Object context) {
         this.content = context;
     }
 }
