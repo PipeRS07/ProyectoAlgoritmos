@@ -304,7 +304,7 @@
             return postOrder(root) + "\n";
         }
 
-        public BTreeNode findNode(String element) throws TreeException {
+        public BTreeNode findNode(Object element) throws TreeException {
             if (isEmpty()) {
                 throw new TreeException("Binary Search Tree is empty");
             }
@@ -312,7 +312,7 @@
         }
 
 
-        private BTreeNode findNode(BTreeNode node, String element) {
+        private BTreeNode findNode(BTreeNode node, Object element) {
             if (node == null) {
                 return null; // Si el nodo es null, el elemento no está en el árbol
             }

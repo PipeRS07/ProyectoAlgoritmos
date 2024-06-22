@@ -52,33 +52,6 @@ public  class Utility {
         }
     }
 
-//    public static CircularDoublyLinkedList getUsuariosRegistrados() {
-//        try {
-//            if (usuariosRegistrados != null) {
-//                usuariosRegistrados = new CircularDoublyLinkedList();
-//                userData.cargarObjetos(usuariosRegistrados);
-//                cursosRegistrados = new AVL();
-//                cursoData.cargarObjetos(cursosRegistrados);
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return usuariosRegistrados;
-//    }
-//
-//    public static AVL getCursosRegistrados() {
-//        try {
-//            if (cursosRegistrados != null) {
-//                usuariosRegistrados = new CircularDoublyLinkedList();
-//                userData.cargarObjetos(usuariosRegistrados);
-//                cursosRegistrados = new AVL();
-//                cursoData.cargarObjetos(cursosRegistrados);
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return cursosRegistrados;
-//    }
 
     public static void guardarCursos() throws IOException, domain.clasesBase.TreeException, TreeException {
             if(cursosRegistrados.isEmpty()){
@@ -94,11 +67,7 @@ public  class Utility {
         }else{
             userData.guardarUsuarios();
         }
-        //System.out.println("Utility.guardarUsuarios"+usuariosRegistrados);
-//        if (!usuariosRegistrados.isEmpty()) {
-//            System.out.println("Utility.guardarUsuarios" + usuariosRegistrados);
-//            userData.guardarUsuarios();
-//        }else System.out.println("Utility.guardarUsuarios"+"está vacio");
+
     }
 
     public static CircularDoublyLinkedList getUsuariosRegistrados(){

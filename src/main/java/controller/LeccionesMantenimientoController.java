@@ -1,6 +1,7 @@
 package controller;
 
 import domain.clasesBase.BST;
+import domain.clasesBase.Curso;
 import domain.clasesBase.Leccion;
 import domain.bTree.TreeException;
 import javafx.event.ActionEvent;
@@ -43,7 +44,12 @@ public class LeccionesMantenimientoController {
             String contenido = contenidoCreaNuevaLeccionField.getText();
             Leccion nuevaLeccion = new Leccion(id, nombre, contenido);
 
-            leccionesRegistradas.add(nuevaLeccion);
+            Curso curso = (Curso) Utility.cursosRegistrados.findNode(id).data;
+
+            curso.getLecciones().add(nuevaLeccion);
+
+            System.out.println(curso);
+
             tableViewLecciones.getItems().add(nuevaLeccion);
 
             clearFields();
