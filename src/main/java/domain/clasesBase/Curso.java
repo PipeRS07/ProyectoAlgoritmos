@@ -16,7 +16,7 @@ public class Curso {
     private String dificultad;
     private String siglas;
     private Instructor instructor;
-    SinglyLinkedListGraph inscripcionesEstudiantes;
+    private SinglyLinkedListGraph inscripcionesEstudiantes;
     private SinglyLinkedList materialesDeEstudio;
     private BST lecciones;
 

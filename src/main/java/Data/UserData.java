@@ -1,8 +1,8 @@
 package Data;
 
 import domain.clasesBase.User;
+import domain.list.CircularDoublyLinkedList;
 import domain.list.ListException;
-import util.Encriptacion;
 import util.Fabrica;
 import util.Ruta;
 import util.Utility;
@@ -10,7 +10,6 @@ import util.Utility;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class UserData {
@@ -19,6 +18,7 @@ public class UserData {
     private int tamanioRegistro;
     //id:4   name:100   email:100    contrasenia:100
     //4+100+100+100 =304
+    private CircularDoublyLinkedList users;
 
 
     public UserData() throws IOException {
@@ -26,10 +26,16 @@ public class UserData {
     }
 
     public void guardarUsuarios() throws ListException, IOException {
-        int size= Utility.usuariosRegistrados.size();
+        int size= util.Utility.usuariosRegistrados.size();
+        System.out.println(size);
+
         for (int i = 0; i < size; i++) {
-            registrarUser(i-1, (User) Utility.usuariosRegistrados.getNode(i).data );
+            System.out.println("UserData.guardarUsuarios"+i+util.Utility.getUsuariosRegistrados().getNode(i+1).data);
+            if(!(Utility.usuariosRegistrados.getNode(i+1).data==null))
+                System.out.println("UserData.guardarUsuarios2"+i);
+                registrarUser(i, (User) Utility.usuariosRegistrados.getNode(i+1).data );
         }
+
     }
 
     private void init() throws IOException {
@@ -43,6 +49,7 @@ public class UserData {
             //toma el tamaño del archivo == 344*cantidad de registros y lo divide entre 344
             this.cantidadDeRegistros= (int)Math.ceil(this.raf.length()/(double)this.tamanioRegistro); //Math.cel hace un redondeo para calcular la cantidad de registros
         }
+        this.users = util.Utility.usuariosRegistrados;
     }
 
     private boolean registrarUser(int posicion, User usuario) throws IOException {
@@ -57,6 +64,7 @@ public class UserData {
                 raf.writeUTF(usuario.getRole());
                 raf.writeUTF(usuario.getContrasenia());
                 respuesta=true;
+                cantidadDeRegistros++;
             }
         }
         return respuesta;
@@ -69,8 +77,6 @@ public class UserData {
         }
         return false;
     }
-
-
 
     public ArrayList<User> getUsuarios() throws IOException {
         //el metodo retorna la lista de los usuarios que están guardados en el archivo
@@ -103,39 +109,12 @@ public class UserData {
         return usuarios;
     }
 
-//    public User getUsuarioPorContrasenia(String contrasenia) throws NoSuchAlgorithmException, IOException {
-//        // El método retorna un usuario en caso de que lo encuentre
-//        // Busca un usuario por la contrasenia
-//        String contraEncriptada = Encriptacion.obtenerContraseniaCifrada(contrasenia);
-//        ArrayList<User> usuarios = this.getUsuarios();
-//        for (int i = 0; i < usuarios.size(); i++) {
-//            if (usuarios.get(i).getContrasenia().equals(contraEncriptada)) {
-//                return usuarios.get(i);
-//            }
-//        }
-//        return null;
-//    }
-//
-//    public User getUsuarioPorNombre(String nombre) throws NoSuchAlgorithmException, IOException {
-//        // El método retorna un usuario en caso de que lo encuentre
-//        // Busca un usuario por el nombre
-//        ArrayList<User> usuarios = this.getUsuarios();
-//        for (int i = 0; i < usuarios.size(); i++) {
-//            if (usuarios.get(i).getName().equals(nombre)) {
-//                return usuarios.get(i);
-//            }
-//        }
-//        return null;
-//    }
-
-
     public void cargarObjetos() throws IOException {
         ArrayList<User> usuarios= getUsuarios();
         for (int i = 0; i < usuarios.size(); i++) {
            Utility.usuariosRegistrados.add(usuarios.get(i));
             //System.out.println(Utility.usuariosRegistrados);
         }
-
     }
 
 }

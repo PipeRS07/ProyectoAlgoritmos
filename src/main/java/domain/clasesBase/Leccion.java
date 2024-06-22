@@ -3,30 +3,18 @@ package domain.clasesBase;
 public class Leccion {
     private int id;
     private String title;
-    private Object context;
-    private boolean estado;
-
+    private Object content;
 
     public Leccion(int id, String title, Object context) {
         this.id = id;
         this.title = title;
-        this.context = context;
+        this.content = context;
     }
 
     public Leccion(int id, String title, Object context, boolean estado) {
         this.id = id;
         this.title = title;
-        this.context = context;
-        this.estado = estado;
-    }
-
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+        this.content = context;
     }
 
 
@@ -48,10 +36,10 @@ public class Leccion {
     }
 
     public Object getContext() {
-        return context;
+        return content;
     }
 
     public void setContext(Object context) {
-        this.context = context;
+        this.content = context;
     }
 }

@@ -6,4 +6,8 @@ public class Administrador extends User {
         super(id, name, email, role, contrasenia);
     }
 
+    @Override
+    public String toString() {
+        return "Administrador{}"+super.toString();
+    }
 }

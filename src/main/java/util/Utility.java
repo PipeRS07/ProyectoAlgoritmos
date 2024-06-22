@@ -9,10 +9,7 @@ import domain.clasesBase.AVL;
 import domain.clasesBase.Curso;
 
 import domain.clasesBase.User;
-import domain.list.CircularDoublyLinkedList;
-import domain.list.CircularLinkedList;
-import domain.list.ListException;
-import domain.list.SinglyLinkedList;
+import domain.list.*;
 import domain.queue.LinkedQueue;
 import domain.stack.LinkedStack;
 
@@ -85,20 +82,25 @@ public  class Utility {
                 System.out.println("no hay cursos ");
             }else {
                 cursoData.guardarCursos();
-
             }
     }
 
     public static void guardarUsuarios() throws ListException, IOException {
-        //System.out.println("Utility.guardarUsuarios"+usuariosRegistrados);
-        if (!usuariosRegistrados.isEmpty())
+        if(usuariosRegistrados.isEmpty()){
+            System.err.println("La lista está vacía");
+        }else{
             userData.guardarUsuarios();
-        else System.out.println("Utility.guardarUsuarios"+"está vacio");
-
-
+        }
+        //System.out.println("Utility.guardarUsuarios"+usuariosRegistrados);
+//        if (!usuariosRegistrados.isEmpty()) {
+//            System.out.println("Utility.guardarUsuarios" + usuariosRegistrados);
+//            userData.guardarUsuarios();
+//        }else System.out.println("Utility.guardarUsuarios"+"está vacio");
     }
 
-
+    public static CircularDoublyLinkedList getUsuariosRegistrados(){
+        return usuariosRegistrados;
+    }
 
     private static String convertirAHexadecimal(byte[] digest){
         String hash="";
@@ -211,9 +213,6 @@ public  class Utility {
         if(a instanceof Curso && b instanceof String) return "CursoString";
         if(a instanceof Curso && b instanceof Curso) return "Curso";
         if(a instanceof User && b instanceof Integer) return "UserId";
-
-
-
 
         return "Unknown";
     }

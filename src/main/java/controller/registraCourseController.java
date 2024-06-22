@@ -21,7 +21,6 @@ public class registraCourseController {
     @javafx.fxml.FXML
     private BorderPane bp;
 
-
     private void loadPage(String page){
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
         try {
