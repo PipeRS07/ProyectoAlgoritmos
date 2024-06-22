@@ -37,20 +37,20 @@
                             </font>
                         </Button>
                     </VBox>
-                     <Button layoutX="47.0" layoutY="186.0" onAction="#agregarLeccionAlCursoOnAction" text="Agregar Lección al curso">
-                         <font>
-                             <Font size="11.0" />
-                         </font>
-                     </Button>
-                     <TextField fx:id="IdCursoCrearLeccionField" layoutX="47.0" layoutY="147.0" promptText="ID Curso" />
-                     <TextField fx:id="contenidoCreaNuevaLeccionField" layoutX="47.0" layoutY="111.0" promptText="Contenido" />
-               <TextField fx:id="idCrearNuevaLeccionField" layoutX="47.0" layoutY="75.0" promptText="ID Leccion" />
+                    <Button layoutX="47.0" layoutY="186.0" onAction="#agregarLeccionAlCursoOnAction" text="Agregar Lección al curso">
+                        <font>
+                            <Font size="11.0" />
+                        </font>
+                    </Button>
+                    <TextField fx:id="IdCursoCrearLeccionField" layoutX="47.0" layoutY="147.0" promptText="ID Curso" />
+                    <TextField fx:id="contenidoCreaNuevaLeccionField" layoutX="47.0" layoutY="111.0" promptText="Contenido" />
+                    <TextField fx:id="idCrearNuevaLeccionField" layoutX="47.0" layoutY="75.0" promptText="ID Leccion" />
                 </children>
             </Pane>
             <TableView fx:id="tableViewLecciones" layoutX="49.0" layoutY="275.0" prefHeight="200.0" prefWidth="437.0" />
-             <TextField fx:id="idBuscaLeccionField" layoutX="315.0" layoutY="523.0" promptText="ID a buscar" />
-             <Button layoutX="32.0" layoutY="523.0" onAction="#eliminarLeccionOnAction" text="Eliminar Lección" />
-             <Button layoutX="243.0" layoutY="523.0" onAction="#buscarLeccionOnAction" text="Buscar" />
+            <TextField fx:id="idBuscaLeccionField" layoutX="315.0" layoutY="523.0" promptText="ID a buscar" />
+            <Button layoutX="32.0" layoutY="523.0" onAction="#eliminarLeccionOnAction" text="Eliminar Lección" />
+            <Button layoutX="243.0" layoutY="523.0" onAction="#buscarLeccionOnAction" text="Buscar" />
 
         </AnchorPane>
     </center>
