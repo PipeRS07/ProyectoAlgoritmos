@@ -28,9 +28,13 @@ public class CursoData {
     }
 
     public void guardarCursos() throws TreeException, IOException, domain.bTree.TreeException {
-        for (int i = 0; i < Utility.cursosRegistrados.size(); i++) {
-            registrarCurso(i, (Curso) (Utility.cursosRegistrados.root.data));
-            Utility.cursosRegistrados.remove(Utility.cursosRegistrados.root.data);
+        int size=Utility.cursosRegistrados.size();
+        for (int i = 0; i < size; i++) {
+            if(!Utility.cursosRegistrados.isEmpty()){
+                registrarCurso(i, (Curso) (Utility.cursosRegistrados.root.data));
+                Utility.cursosRegistrados.remove(Utility.cursosRegistrados.root.data);
+            }
+
         }
     }
 

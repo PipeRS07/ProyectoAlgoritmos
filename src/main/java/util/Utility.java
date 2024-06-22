@@ -6,14 +6,10 @@ import domain.bTree.BTree;
 import domain.bTree.BTreeNode;
 import domain.bTree.TreeException;
 import domain.clasesBase.AVL;
-import domain.clasesBase.BST;
 import domain.clasesBase.Curso;
 
 import domain.clasesBase.User;
-import domain.list.CircularDoublyLinkedList;
-import domain.list.CircularLinkedList;
-import domain.list.ListException;
-import domain.list.SinglyLinkedList;
+import domain.list.*;
 import domain.queue.LinkedQueue;
 import domain.stack.LinkedStack;
 
@@ -28,7 +24,6 @@ public  class Utility {
     public static CircularDoublyLinkedList usuariosRegistrados ;
     public static CircularLinkedList usuariosEnELSistema ;
     public static AVL cursosRegistrados = new AVL();
-    public static BST leccionesRegistradas;
     public static BTree inscripcionesSolicitadas;
     private static UserData userData;
     private static CursoData cursoData;
@@ -41,7 +36,6 @@ public  class Utility {
             cursosRegistrados = new AVL();
             usuariosEnELSistema = new CircularLinkedList();
             inscripcionesSolicitadas = new BTree();
-            leccionesRegistradas = new BST();
 
             userData = new UserData();
             cursoData = new CursoData();
@@ -84,24 +78,29 @@ public  class Utility {
 //    }
 
     public static void guardarCursos() throws IOException, domain.clasesBase.TreeException, TreeException {
-        if(cursosRegistrados.isEmpty()){
-            System.out.println("no hay cursos ");
-        }else {
-            cursoData.guardarCursos();
-
-        }
+            if(cursosRegistrados.isEmpty()){
+                System.out.println("no hay cursos ");
+            }else {
+                cursoData.guardarCursos();
+            }
     }
 
     public static void guardarUsuarios() throws ListException, IOException {
-        //System.out.println("Utility.guardarUsuarios"+usuariosRegistrados);
-        if (!usuariosRegistrados.isEmpty())
+        if(usuariosRegistrados.isEmpty()){
+            System.err.println("La lista está vacía");
+        }else{
             userData.guardarUsuarios();
-        else System.out.println("Utility.guardarUsuarios"+"está vacio");
-
-
+        }
+        //System.out.println("Utility.guardarUsuarios"+usuariosRegistrados);
+//        if (!usuariosRegistrados.isEmpty()) {
+//            System.out.println("Utility.guardarUsuarios" + usuariosRegistrados);
+//            userData.guardarUsuarios();
+//        }else System.out.println("Utility.guardarUsuarios"+"está vacio");
     }
 
-
+    public static CircularDoublyLinkedList getUsuariosRegistrados(){
+        return usuariosRegistrados;
+    }
 
     private static String convertirAHexadecimal(byte[] digest){
         String hash="";
@@ -214,9 +213,6 @@ public  class Utility {
         if(a instanceof Curso && b instanceof String) return "CursoString";
         if(a instanceof Curso && b instanceof Curso) return "Curso";
         if(a instanceof User && b instanceof Integer) return "UserId";
-
-
-
 
         return "Unknown";
     }
