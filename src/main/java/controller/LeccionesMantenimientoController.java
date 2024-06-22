@@ -130,7 +130,9 @@ public class LeccionesMantenimientoController {
             for (int i = 0; i <curso.getLecciones().size(); i++) {
                 listaLecciones.add((Leccion) curso.getLecciones().getList(i));
             }
+
             tableViewLecciones.setItems(FXCollections.observableArrayList(listaLecciones));
+
         } catch (NumberFormatException e) {
             showAlert("Error", "El ID del curso debe ser un número entero.", Alert.AlertType.ERROR);
         } catch (NullPointerException e) {
