@@ -45,10 +45,10 @@ public class LeccionesMantenimientoController {
             Leccion nuevaLeccion = new Leccion(id, nombre, contenido);
 
             Curso curso = (Curso) Utility.cursosRegistrados.findNode(id).data;
+            System.out.println("LeccionesMantenimientoController.agregarLeccionAlCursoOnAction" + Utility.cursosRegistrados.findNode(id).data);
 
             curso.getLecciones().add(nuevaLeccion);
-
-            System.out.println(curso);
+            System.out.println("LeccionesMantenimientoController.agregarLeccionAlCursoOnAction" + curso);
 
             tableViewLecciones.getItems().add(nuevaLeccion);
 
