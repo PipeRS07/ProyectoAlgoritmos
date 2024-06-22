@@ -33,6 +33,7 @@ public  class Utility {
     public static User UserActivo;
 
 
+    
     static {
         try {
             usuariosRegistrados= new CircularDoublyLinkedList();

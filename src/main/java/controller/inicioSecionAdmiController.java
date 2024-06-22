@@ -69,7 +69,5 @@ public class inicioSecionAdmiController {
         //valido si el usuario y la contraseña corresponden a un usuario registrado para cargar la pagina
         if(bandera)
             loadPage("registroGeneral.fxml");
-
-
     }
 }
