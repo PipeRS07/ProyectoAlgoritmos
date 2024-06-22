@@ -152,10 +152,16 @@ public class Curso {
     public String toString() {
         return "Curso{" +
                 "nombre='" + nombre + '\'' +
+                ", id=" + id +
                 ", descripcion='" + descripcion + '\'' +
-                ", duracion=" + duracion +
+                ", duracion='" + duracion + '\'' +
                 ", dificultad='" + dificultad + '\'' +
                 ", siglas='" + siglas + '\'' +
+                ", instructor=" + instructor +
+                ", inscripcionesEstudiantes=" + inscripcionesEstudiantes +
+                ", materialesDeEstudio=" + materialesDeEstudio +
+                ", lecciones=" + lecciones +
+                ", evaluaciones=" + evaluaciones +
                 '}';
     }
 }
