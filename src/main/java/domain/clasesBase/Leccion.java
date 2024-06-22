@@ -4,41 +4,18 @@ public class Leccion {
     private int id;
     private String title;
     private Object content;
-    private boolean estado;
-    private BST evaluaciones;
-
 
     public Leccion(int id, String title, Object context) {
         this.id = id;
         this.title = title;
-        this.content= context;
+        this.content = context;
     }
 
-    public Leccion(int id, String title, Object context, boolean estado, BST evaluaciones) {
+    public Leccion(int id, String title, Object context, boolean estado) {
         this.id = id;
         this.title = title;
-        this.content= context;
-        this.estado = estado;
-        this.evaluaciones = evaluaciones;
+        this.content = context;
     }
-
-    public BST getEvaluaciones() {
-        return evaluaciones;
-    }
-
-    public void setEvaluaciones(BST evaluaciones) {
-        this.evaluaciones = evaluaciones;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-
 
     public int getId() {
         return id;
@@ -61,6 +38,6 @@ public class Leccion {
     }
 
     public void setContent(Object context) {
-        this.content= context;
+        this.content = context;
     }
 }

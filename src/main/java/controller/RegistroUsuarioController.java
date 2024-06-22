@@ -78,40 +78,35 @@ public class RegistroUsuarioController {
         // Crear un nuevo usuario
 
         User newUser = Fabrica.fabricaUsuarios(Integer.parseInt(cedula), username, email, Ruta.USUESTUDIANTE, encryptedPassword);
+        System.out.println(newUser);
         email=this.emailField.getText();
         try {
-            // Encriptar la contraseña
-//            String encryptedPassword = Encriptacion.obtenerContraseniaCifrada(password);
+
+//            // Verificar si la lista de usuarios registrados está vacía antes de intentar acceder a un nodo
+//            if (Utility.usuariosRegistrados.isEmpty()) {
+//                Utility.usuariosRegistrados.add(newUser);
+//                Utility.usuariosEnELSistema.add(newUser);
 //
-//            // Crear un nuevo usuario
+//                // Obtener la fecha y hora actual del momento en que se envía el correo
+//                LocalDateTime now = LocalDateTime.now();
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+//                String formattedDate = now.format(formatter);
 //
-//            User newUser = Fabrica.fabricaUsuarios(Integer.parseInt(cedula), username, email, Ruta.USUESTUDIANTE, encryptedPassword);
-
-            // Verificar si la lista de usuarios registrados está vacía antes de intentar acceder a un nodo
-            if (Utility.usuariosRegistrados.isEmpty()) {
-                Utility.usuariosRegistrados.add(newUser);
-                Utility.usuariosEnELSistema.add(newUser);
-
-                // Obtener la fecha y hora actual del momento en que se envía el correo
-                LocalDateTime now = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-                String formattedDate = now.format(formatter);
-
-                EnviarEmail enviarEmail = new EnviarEmail();
-                enviarEmail.enviarCorreoSinAdjunto(email,
-                        "Confirmacion de ingreso al sistema",
-                        "¡Hola! " + newUser.getName() +
-                                "\nUsuario: " + newUser.getId() +
-                                "\nTu contraseña: " + password +
-                                "\nFecha y hora: " + formattedDate +
-                                "\nBienvenido a nuestra plataforma de aprendizaje!!");
-
-                System.out.println("Usuario agregado correctamente a la lista de usuarios registrados: " + newUser);
-                showAlert("Éxito", "Usuario registrado correctamente", Alert.AlertType.INFORMATION);
-                // enviarNotificacionRegistro(newUser, password);
-                clearFields();
-                return;
-            }
+//                EnviarEmail enviarEmail = new EnviarEmail();
+//                enviarEmail.enviarCorreoSinAdjunto(email,
+//                        "Confirmacion de ingreso al sistema",
+//                        "¡Hola! " + newUser.getName() +
+//                                "\nUsuario: " + newUser.getId() +
+//                                "\nTu contraseña: " + password +
+//                                "\nFecha y hora: " + formattedDate +
+//                                "\nBienvenido a nuestra plataforma de aprendizaje!!");
+//
+//                System.out.println("Usuario agregado correctamente a la lista de usuarios registrados: " + newUser);
+//                showAlert("Éxito", "Usuario registrado correctamente", Alert.AlertType.INFORMATION);
+//                // enviarNotificacionRegistro(newUser, password);
+//                clearFields();
+//                return;
+//            }
 
             // Agregar el nuevo usuario a la lista de usuarios registrados
             Utility.usuariosRegistrados.add(newUser);

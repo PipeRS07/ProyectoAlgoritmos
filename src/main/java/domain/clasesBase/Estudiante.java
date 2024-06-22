@@ -30,5 +30,8 @@ public class Estudiante extends User{
         this.tiempoEstudiado = tiempoEstudiado;
     }
 
-
+    @Override
+    public String toString() {
+        return "Estudiante{}"+super.toString();
+    }
 }

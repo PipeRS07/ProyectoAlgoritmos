@@ -2,6 +2,7 @@
 package controller;
 
 import domain.clasesBase.AVL;
+import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import org.example.proyectoalgoritmos.HelloApplication;
+import util.Ruta;
 import util.Utility;
 
 import java.io.IOException;
@@ -27,10 +29,12 @@ public class HelloController {
     private Text txtMessage;
     private CircularDoublyLinkedList usuarios;
     private AVL cursos;
+    private User user;
     @FXML
     public void initialize() {
         usuarios= util.Utility.usuariosRegistrados;
         cursos = Utility.cursosRegistrados;
+        this.user= util.Utility.UserActivo;
         //System.out.println(usuariosRegistrados);
     }
 
@@ -47,13 +51,12 @@ public class HelloController {
     public void cerrarSesionOnAction(ActionEvent actionEvent) {
         try {
             if(!(Utility.usuariosRegistrados.isEmpty())){
-                guardarCursos();
+                System.out.println("HelloController.cerrarSesionOnAction"+usuarios);
+                Utility.guardarUsuarios();
             }
-//            if(!(Utility.usuariosRegistrados.isEmpty())){
-                guardarUsuarios();
-//            }
-
-
+            if(!(cursosRegistrados.isEmpty())){
+                Utility.guardarCursos();
+            }
 
 
             showAlert("Cerrar Sesión", "Sesión cerrada correctamente. Los datos han sido guardados.");
@@ -79,7 +82,7 @@ public class HelloController {
 
     @FXML
     private void handleUsuarios(ActionEvent event) {
-        loadPage("menuUsuario.fxml");
+            loadPage("menuUsuario.fxml");
     }
 
     @FXML
