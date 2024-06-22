@@ -26,23 +26,38 @@ public class ManagementCourseController {
     }
     @javafx.fxml.FXML
     public void searchOnAction(ActionEvent actionEvent) {
-
         loadPage("buscarCursos.fxml");
     }
 
     @javafx.fxml.FXML
     public void editOnAction(ActionEvent actionEvent) {
+//        if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUINSTRUCTOR) || UserActivo.getRole().equals(Ruta.USUADMIN))) {
       loadPage("editarCurso.fxml");
+//        } else {
+//            // Manejo del caso en que UserActivo es null o no tiene el rol esperado
+//            System.out.println("UserActivo es null o no tiene el rol adecuado.");
+//        }
+
     }
 
     @javafx.fxml.FXML
     public void removeOnAction(ActionEvent actionEvent) {
+        //if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUINSTRUCTOR) || UserActivo.getRole().equals(Ruta.USUADMIN))) {
         loadPage("eliminarCurso.fxml");
+//        } else {
+//            // Manejo del caso en que UserActivo es null o no tiene el rol esperado
+//            System.out.println("UserActivo es null o no tiene el rol adecuado.");
+//        }
     }
 
     @javafx.fxml.FXML
     public void addOnAction(ActionEvent actionEvent) {
+//        if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUINSTRUCTOR) || UserActivo.getRole().equals(Ruta.USUADMIN))) {
             loadPage("crearCurso.fxml");
+//        } else {
+            // Manejo del caso en que UserActivo es null o no tiene el rol esperado
+//            System.out.println("UserActivo es null o no tiene el rol adecuado.");
+//        }
     }
 
     @javafx.fxml.FXML
