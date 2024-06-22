@@ -13,14 +13,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
 import util.Utility;
 
 import java.io.IOException;
 
-public class MostrarCursosController {
+public class EliminarCursosController {
 
     @FXML
     private TextField searchField;
@@ -115,6 +114,32 @@ public class MostrarCursosController {
         loadPage("managementCourse.fxml");
     }
 
+    @FXML
+    public void eliminarCursosOnAction(ActionEvent actionEvent) {
+        // Obtener el curso seleccionado en el TableView
+        Curso cursoSeleccionado = tableView.getSelectionModel().getSelectedItem();
 
+        // Si no se seleccionó ningún curso, mostrar una alerta
+        if (cursoSeleccionado == null) {
+            mostrarAlerta("Error", "No se ha seleccionado ningún curso para eliminar");
+            return;
+        }
+
+        // Eliminar el curso de la lista observable
+        cursosData.remove(cursoSeleccionado);
+
+        // También puedes eliminar el curso del árbol si es necesario
+        try {
+            Utility.cursosRegistrados.remove(cursoSeleccionado);
+        } catch (TreeException e) {
+            mostrarAlerta("Error", "Ocurrió un error al eliminar el curso del árbol: " + e.getMessage());
+        }
+
+        // Refrescar el TableView
+        tableView.refresh();
+
+        // Mostrar una confirmación
+        mostrarAlerta("Información", "El curso ha sido eliminado correctamente");
+    }
 
 }

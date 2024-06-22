@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MostrarCursosController">
+<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EliminarCursosController">
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label layoutX="64.0" layoutY="21.0" text="Información de los usuarios con acceso al sistema">
+            <Label layoutX="64.0" layoutY="21.0" text="Buscar curso para eliminar">
                <font>
                   <Font name="Impact" size="19.0" />
                </font></Label>
@@ -30,6 +30,7 @@
                   <TableColumn fx:id="InstructorColumn" maxWidth="750.0" minWidth="30.0" prefWidth="135.84912109375" text="Instructor" />
                </columns>
             </TableView>
+            <Button layoutX="73.0" layoutY="307.0" mnemonicParsing="false" onAction="#eliminarCursosOnAction" prefHeight="27.0" prefWidth="82.0" text="Eliminar " />
          </children>
       </AnchorPane>
    </center>

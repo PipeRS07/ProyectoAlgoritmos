@@ -20,7 +20,7 @@
                             <Font name="Elephant" size="27.0" />
                         </font>
                     </Text>
-                  <ImageView fitHeight="55.0" fitWidth="79.0" layoutX="263.0" layoutY="119.0">
+                  <ImageView fitHeight="55.0" fitWidth="79.0" layoutX="213.0" layoutY="119.0">
                      <image>
                         <Image url="@images/noun-edit-6793061.png" />
                      </image>
@@ -30,7 +30,7 @@
                         <Image url="@images/noun-plus-53573.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="55.0" fitWidth="73.0" layoutX="493.0" layoutY="119.0">
+                  <ImageView fitHeight="55.0" fitWidth="73.0" layoutX="415.0" layoutY="119.0">
                      <image>
                         <Image url="@images/noun-search-world-2410987.png" />
                      </image>
@@ -39,10 +39,12 @@
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="64.28506660461426" />
                             <Button onAction="#addOnAction" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;" text="Agregar" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="121.3416919708252" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="76.05867195129395" />
                             <Button onAction="#editOnAction" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Modificar" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="123.15298652648926" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="88.73788642883301" />
                             <Button onAction="#showOnAction" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-size: 14px;" text="Mostrar" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="88.73788642883301" />
+                        <Button onAction="#removeOnAction" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-size: 14px;" text="Eliminar" />
                      </children>
                   </HBox>
                </children>

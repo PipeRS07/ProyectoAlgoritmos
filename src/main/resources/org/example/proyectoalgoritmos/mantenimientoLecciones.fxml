@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LeccionesMantenimientoController">
+<BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LeccionesMantenimientoController">
     <center>
 
     </center>
@@ -15,10 +15,10 @@
 
             <!-- Remove y Search -->
             <HBox spacing="10" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
-                <Button onAction="#eliminarUsuario" text="Eliminar Usuario" />
-                <TextField fx:id="busquedaField" promptText="Selecciona a eliminar" />
-                <Button onAction="#buscarUsuario" text="Buscar" />
-                <TextField fx:id="busquedaField1" promptText="Seleciona a buscar" />
+                <Button onAction="#eliminarLeccion" text="Eliminar Usuario" />
+                <TextField fx:id="busquedaLeccionField" promptText="Selecciona a eliminar" />
+                <Button onAction="#buscarLeccion" text="Buscar" />
+                <TextField fx:id="buscaLeccionField" promptText="Seleciona a buscar" />
             </HBox>
             <Label layoutX="32.0" layoutY="231.0" text="Información de las lecciones que se manejan dentro del sistema" />
          <VBox prefHeight="29.0" prefWidth="537.0">
@@ -32,10 +32,10 @@
                   <!-- Crear nuevo usuario -->
                   <VBox layoutX="47.0" layoutY="14.0" spacing="10">
                       <Label text="Crear Nueva lecciones" />
-                      <TextField fx:id="nombreField" promptText="Nombre" />
-                      <TextField fx:id="correoField" promptText="Contenido " />
-                      <TextField fx:id="contraseñaField" promptText="ID Curso" />
-                      <Button onAction="#agregarUsuario" text="Agregar Lecciones al curso">
+                      <TextField fx:id="nombreCreaLeccionesField" promptText="Nombre" />
+                      <TextField fx:id="contenidoCreaLeccionesField" promptText="Contenido " />
+                      <TextField fx:id="IdCrearLeccionField" promptText="ID Curso" />
+                      <Button onAction="#agregarLeccion" text="Agregar Lecciones al curso">
                      <font>
                         <Font size="11.0" />
                      </font>
@@ -45,10 +45,10 @@
                   <!-- Gestión de perfil -->
                   <VBox layoutX="264.0" layoutY="15.0" spacing="10">
                       <Label text="Gestión de Lecciones" />
-                      <TextField fx:id="nombrePerfilField" promptText="Nuevo Nombre" />
-                      <PasswordField fx:id="contraseñaPerfilField" promptText="Contenido" />
-                      <TextField fx:id="correoPerfilField" promptText="ID Curso" />
-                      <Button onAction="#actualizarPerfil" text="Actualizar ">
+                      <TextField fx:id="nombreModificarLeccionesField" promptText="Nuevo Nombre" />
+                      <PasswordField fx:id="contenidoModificarLeccionesField" promptText="Contenido" />
+                      <TextField fx:id="idModificarLeccionesField" promptText="ID Curso" />
+                      <Button onAction="#actualizarLeccion" text="Actualizar ">
                      <font>
                         <Font size="11.0" />
                      </font>
@@ -56,7 +56,7 @@
                   </VBox>
             </children>
          </Pane>
-         <TableView fx:id="tableView" layoutX="28.0" layoutY="249.0" prefHeight="200.0" prefWidth="437.0" />
+         <TableView fx:id="tableViewLecciones" layoutX="28.0" layoutY="249.0" prefHeight="200.0" prefWidth="437.0" />
 
         </AnchorPane>
     </center>
