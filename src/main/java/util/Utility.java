@@ -6,6 +6,7 @@ import domain.bTree.BTree;
 import domain.bTree.BTreeNode;
 import domain.bTree.TreeException;
 import domain.clasesBase.AVL;
+import domain.clasesBase.BST;
 import domain.clasesBase.Curso;
 
 import domain.clasesBase.User;
@@ -19,6 +20,7 @@ import domain.stack.LinkedStack;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Random;
+import java.util.Stack;
 
 import static java.lang.StringTemplate.STR;
 
@@ -28,6 +30,7 @@ public  class Utility {
     public static CircularLinkedList usuariosEnELSistema ;
     public static AVL cursosRegistrados = new AVL();
     public static BTree inscripcionesSolicitadas;
+    public static BST leccionesRegistradas;
     private static UserData userData;
     private static CursoData cursoData;
     public static User UserActivo;
@@ -81,12 +84,12 @@ public  class Utility {
 //    }
 
     public static void guardarCursos() throws IOException, domain.clasesBase.TreeException, TreeException {
-            if(cursosRegistrados.isEmpty()){
-                System.out.println("no hay cursos ");
-            }else {
-                cursoData.guardarCursos();
+        if(cursosRegistrados.isEmpty()){
+            System.out.println("no hay cursos ");
+        }else {
+            cursoData.guardarCursos();
 
-            }
+        }
     }
 
     public static void guardarUsuarios() throws ListException, IOException {

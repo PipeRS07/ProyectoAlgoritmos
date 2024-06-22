@@ -3,23 +3,32 @@ package domain.clasesBase;
 public class Leccion {
     private int id;
     private String title;
-    private Object context;
+    private Object content;
     private boolean estado;
+    private BST evaluaciones;
 
 
     public Leccion(int id, String title, Object context) {
         this.id = id;
         this.title = title;
-        this.context = context;
+        this.content= context;
     }
 
-    public Leccion(int id, String title, Object context, boolean estado) {
+    public Leccion(int id, String title, Object context, boolean estado, BST evaluaciones) {
         this.id = id;
         this.title = title;
-        this.context = context;
+        this.content= context;
         this.estado = estado;
+        this.evaluaciones = evaluaciones;
     }
 
+    public BST getEvaluaciones() {
+        return evaluaciones;
+    }
+
+    public void setEvaluaciones(BST evaluaciones) {
+        this.evaluaciones = evaluaciones;
+    }
 
     public boolean isEstado() {
         return estado;
@@ -47,11 +56,11 @@ public class Leccion {
         this.title = title;
     }
 
-    public Object getContext() {
-        return context;
+    public Object getContent() {
+        return content;
     }
 
-    public void setContext(Object context) {
-        this.context = context;
+    public void setContent(Object context) {
+        this.content= context;
     }
 }

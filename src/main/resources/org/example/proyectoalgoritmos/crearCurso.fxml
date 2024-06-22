@@ -1,16 +1,19 @@
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+
 <BorderPane fx:id="bp" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseRegistrationController">
     <center>
         <GridPane>
@@ -77,6 +80,7 @@
                 <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
                 <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
                 <RowConstraints maxHeight="20.8302016837099" minHeight="12.679261742303652" prefHeight="12.679261742303652" />
+            <RowConstraints />
             </rowConstraints>
         </GridPane>
     </center>
