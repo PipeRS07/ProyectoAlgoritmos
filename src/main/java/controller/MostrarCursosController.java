@@ -57,7 +57,6 @@ public class MostrarCursosController {
 
     @FXML
     public void initialize() {
-        // Bind the columns to the attributes of Curso
         idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getSiglas())));
         nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         DescripcionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescripcion()));
@@ -65,7 +64,7 @@ public class MostrarCursosController {
         nivelColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDificultad()));
         InstructorColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
 
-        // Set the items of the TableView to the observable list
+
         tableView.setItems(cursosData);
     }
 

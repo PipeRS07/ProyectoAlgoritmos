@@ -52,38 +52,38 @@ public class ingresoSistemaController {
     @javafx.fxml.FXML
     public void inicioSecionnAction(ActionEvent actionEvent) throws ListException {
 
-        //la bandera permite saber si el usuario esta registrado para poder cargarle la pagina
-        boolean bandera=false;
-        try {
-            String contrasenia = util.Encriptacion.obtenerContraseniaCifrada(passwordField.getText());
-            String idText = this.usernameField.getText();
-
-            User aux ;
-            int size =usuarios.size();
-
-
-       //comparo entre todos los usuarios registrados si existe uno con la misma contraseña y el mismo usuario
-            for (int i = 0; i < size; i++) {
-
-                aux=(User) usuarios.getNode(i+1).data;
-
-                if(Integer.toString(aux.getId()).equals(idText) && aux.getContrasenia().equals(contrasenia)){
-                    Fabrica.fabricaUsuarios(aux);
-                    util.Utility.usuariosEnELSistema.add(aux);
-                    Utility.UserActivo =aux;
-                    bandera=true;
-
-                }
-            }
-        }catch (ListException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-        //valido si el usuario y la contraseña corresponden a un usuario registrado para cargar la pagina
-        if(bandera) {
+//        //la bandera permite saber si el usuario esta registrado para poder cargarle la pagina
+//        boolean bandera=false;
+//        try {
+//            String contrasenia = util.Encriptacion.obtenerContraseniaCifrada(passwordField.getText());
+//            String idText = this.usernameField.getText();
+//
+//            User aux ;
+//            int size =usuarios.size();
+//
+//
+//       //comparo entre todos los usuarios registrados si existe uno con la misma contraseña y el mismo usuario
+//            for (int i = 0; i < size; i++) {
+//
+//                aux=(User) usuarios.getNode(i+1).data;
+//
+//                if(Integer.toString(aux.getId()).equals(idText) && aux.getContrasenia().equals(contrasenia)){
+//                    Fabrica.fabricaUsuarios(aux);
+//                    util.Utility.usuariosEnELSistema.add(aux);
+//                    Utility.UserActivo =aux;
+//                    bandera=true;
+//
+//                }
+//            }
+//        }catch (ListException e) {
+//            throw new RuntimeException(e);
+//        } catch (NoSuchAlgorithmException e) {
+//            throw new RuntimeException(e);
+//        }
+//        //valido si el usuario y la contraseña corresponden a un usuario registrado para cargar la pagina
+//        if(bandera) {
             loadPage("hello-view.fxml");
-        }
+//        }
 
 
     }
