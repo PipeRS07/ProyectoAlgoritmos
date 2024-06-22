@@ -20,8 +20,6 @@ public class LeccionesAprendizajeEnLineaController
     }
     @javafx.fxml.FXML
     public void buscarDeLeccionesAprendizajeOnAction(ActionEvent actionEvent) {
-        for (int i = 0; i <; i++) {
 
-        }
     }
 }
