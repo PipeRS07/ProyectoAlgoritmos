@@ -14,8 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminInscripcionController">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GestionAdminInscripcionController">
    <bottom>
       <Pane prefHeight="444.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
@@ -54,7 +53,7 @@
                                             <Label text="Filtrar por Estado:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                     <ComboBox fx:id="statusFilterComboBox" prefHeight="25.0" prefWidth="87.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             
-                                            <Button onAction="#handleFilterInscriptions" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px;" text="Filtrar" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                                            <Button onAction="#filtrarOnAction" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px;" text="Filtrar" GridPane.columnIndex="5" GridPane.rowIndex="2" />
             
                                             <!-- Tabla -->
                     <TableView fx:id="inscriptionsTable" prefHeight="197.0" prefWidth="494.0" GridPane.columnSpan="6" GridPane.rowIndex="3">
@@ -67,8 +66,8 @@
                     </TableView>
             
                                             <!-- Botones -->
-                    <Button onAction="#handleApprove" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-size: 14px;" text="Aprobar" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                    <Button onAction="#handleReject" style="-fx-background-color: #E53935; -fx-text-fill: white; -fx-font-size: 14px;" text="Rechazar" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                    <Button onAction="#ApproveOnAction" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-size: 14px;" text="Aprobar" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                    <Button onAction="#rechazarOnAction" style="-fx-background-color: #E53935; -fx-text-fill: white; -fx-font-size: 14px;" text="Rechazar" GridPane.columnIndex="5" GridPane.rowIndex="4" />
                   <DatePicker fx:id="dateFilterTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 </children>
             </GridPane>
