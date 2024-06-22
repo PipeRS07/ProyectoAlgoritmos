@@ -52,9 +52,9 @@ public class ManagementCourseController {
 
     @javafx.fxml.FXML
     public void addOnAction(ActionEvent actionEvent) {
-        //if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUINSTRUCTOR) || UserActivo.getRole().equals(Ruta.USUADMIN))) {
+//        if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUINSTRUCTOR) || UserActivo.getRole().equals(Ruta.USUADMIN))) {
             loadPage("crearCurso.fxml");
-     //   } else {
+//        } else {
             // Manejo del caso en que UserActivo es null o no tiene el rol esperado
 //            System.out.println("UserActivo es null o no tiene el rol adecuado.");
 //        }

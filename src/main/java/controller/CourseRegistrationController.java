@@ -1,6 +1,7 @@
 package controller;
 
 import domain.bTree.TreeException;
+import domain.clasesBase.AVL;
 import domain.clasesBase.Curso;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,9 +35,11 @@ public class CourseRegistrationController {
     private TextField instructorNameRegistroCursoField;
     @FXML
     private Label durationLabel;
+    private AVL cursos ;
 
     @FXML
     public void initialize() {
+        this.cursos=Utility.cursosRegistrados;
         levelComboBox.getItems().addAll("low", "medium", "high");
     }
 
@@ -82,6 +85,7 @@ public class CourseRegistrationController {
         }
 
         try {
+
             // Crear un nuevo curso
             Curso newCourse = new Curso(courseName, description, durationText, level, courseId);
 
@@ -91,14 +95,15 @@ public class CourseRegistrationController {
                     showAlert("Error", "El curso con este ID ya está registrado.", Alert.AlertType.ERROR);
                 } else {
                     // Agregar el nuevo curso al AVL
-                    Utility.cursosRegistrados.add(newCourse);
+                    cursos.add(newCourse);
+
                     System.out.println("Cursos registrados" + Utility.cursosRegistrados);
                     System.err.println("root\n\n" + Utility.cursosRegistrados.root.data);
                     showAlert("Éxito", "Curso registrado exitosamente.", Alert.AlertType.INFORMATION);
                     clearFields();  // Limpiar los campos del formulario después del registro exitoso
                 }
             } else {
-                // Agregar el nuevo curso al AVL
+//                // Agregar el nuevo curso al AVL
                 Utility.cursosRegistrados.add(newCourse);
                 System.out.println("Cursos registrados" + Utility.cursosRegistrados);
                 System.err.println("root\n\n" + Utility.cursosRegistrados.root.data);

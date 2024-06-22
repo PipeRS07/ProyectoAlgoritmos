@@ -1,14 +1,12 @@
 package controller;
 
 import domain.clasesBase.BST;
+import domain.clasesBase.Curso;
 import domain.clasesBase.Leccion;
 import domain.bTree.TreeException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import util.Utility;
@@ -16,106 +14,138 @@ import util.Utility;
 import static util.Utility.leccionesRegistradas;
 
 public class LeccionesMantenimientoController {
-    @FXML
-    private BorderPane bp;
-    @FXML
-    private TextField nombreCreaLeccionesField;
-    @FXML
-    private TextField contenidoCreaLeccionesField;
-    @FXML
-    private TextField nombreModificarLeccionesField;
-    @FXML
-    private PasswordField contenidoModificarLeccionesField;
-    @FXML
-    private TextField idModificarLeccionesField;
+
     @FXML
     private TableView<Leccion> tableViewLecciones;
     @FXML
-    private TextField busquedaLeccionField;
+    private TextField idModificarLeccionField;
     @FXML
-    private TextField buscaLeccionField;
+    private TextField contenidoCreaNuevaLeccionField;
     @FXML
-    private TextField IdCrearLeccionField;
+    private TextField nombreModificarLeccionField;
+    @FXML
+    private PasswordField contenidoModificarLeccionField;
+    @FXML
+    private TextField IdCursoCrearLeccionField;
+    @FXML
+    private TextField idBuscaLeccionField;
+    @FXML
+    private BorderPane bp;
+    @FXML
+    private TextField nombreCreaNuevaLeccionField;
+    @FXML
+    private TextField idCrearNuevaLeccionField;
 
-    private void showAlert(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
+    @FXML
+    public void agregarLeccionAlCursoOnAction(ActionEvent actionEvent) {
+        try {
+            int id = Integer.parseInt(idCrearNuevaLeccionField.getText());
+            String nombre = nombreCreaNuevaLeccionField.getText();
+            String contenido = contenidoCreaNuevaLeccionField.getText();
+            Leccion nuevaLeccion = new Leccion(id, nombre, contenido);
+
+            Curso curso = (Curso) Utility.cursosRegistrados.findNode(id).data;
+            System.out.println("LeccionesMantenimientoController.agregarLeccionAlCursoOnAction" + Utility.cursosRegistrados.findNode(id).data);
+
+            curso.getLecciones().add(nuevaLeccion);
+            System.out.println("LeccionesMantenimientoController.agregarLeccionAlCursoOnAction" + curso);
+
+            tableViewLecciones.getItems().add(nuevaLeccion);
+
+            clearFields();
+            showAlert("Lección agregada", "La lección se ha agregado correctamente.", Alert.AlertType.INFORMATION);
+        } catch (NumberFormatException e) {
+            showAlert("Error", "El ID debe ser un número entero.", Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            showAlert("Error", "Ha ocurrido un error al agregar la lección.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
     public void eliminarLeccionOnAction(ActionEvent actionEvent) {
         try {
-            int id = Integer.parseInt(idModificarLeccionesField.getText());
-            Leccion leccion = new Leccion(id, "", ""); // Creamos una lección solo con el ID para buscarla
+            int id = Integer.parseInt(idBuscaLeccionField.getText());
+            Leccion leccion = findLeccionById(id);
 
-            if (leccionesRegistradas.contains(leccion)) {
+            if (leccion != null) {
                 leccionesRegistradas.remove(leccion);
-                showAlert("Eliminación Exitosa", "La lección se eliminó correctamente.");
+                tableViewLecciones.getItems().remove(leccion);
+                showAlert("Lección eliminada", "La lección se ha eliminado correctamente.", Alert.AlertType.INFORMATION);
             } else {
-                showAlert("Error", "La lección no existe.");
+                showAlert("No encontrado", "No se encontró una lección con ese ID.", Alert.AlertType.WARNING);
             }
         } catch (NumberFormatException e) {
-            showAlert("Error", "No se pudo eliminar la lección: " + e.getMessage());
-        } catch (domain.clasesBase.TreeException e) {
-            throw new RuntimeException(e);
+            showAlert("Error", "El ID debe ser un número entero.", Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            showAlert("Error", "Ha ocurrido un error al eliminar la lección.", Alert.AlertType.ERROR);
         }
     }
 
     @FXML
     public void actualizarLeccionOnAction(ActionEvent actionEvent) {
         try {
-            int id = Integer.parseInt(idModificarLeccionesField.getText());
-            String nuevoNombre = nombreModificarLeccionesField.getText();
-            String nuevoContenido = contenidoModificarLeccionesField.getText();
+            int id = Integer.parseInt(idModificarLeccionField.getText());
+            Leccion leccion = findLeccionById(id);
 
-            Leccion leccion = new Leccion(id, nuevoNombre, nuevoContenido);
-            leccionesRegistradas.remove(leccion); // Eliminamos la lección actual
-            leccionesRegistradas.add(leccion);    // Agregamos la lección actualizada
-
-            showAlert("Actualización Exitosa", "La lección se actualizó correctamente.");
+            if (leccion != null) {
+                leccion.setTitle(nombreModificarLeccionField.getText());
+                leccion.setContent(contenidoModificarLeccionField.getText());
+                tableViewLecciones.refresh();
+                showAlert("Lección actualizada", "La lección se ha actualizado correctamente.", Alert.AlertType.INFORMATION);
+            } else {
+                showAlert("No encontrado", "No se encontró una lección con ese ID.", Alert.AlertType.WARNING);
+            }
         } catch (NumberFormatException e) {
-            showAlert("Error", "No se pudo actualizar la lección: " + e.getMessage());
-        } catch (domain.clasesBase.TreeException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void agregarLeccionOnAction(ActionEvent actionEvent) {
-        try {
-            int id = Integer.parseInt(IdCrearLeccionField.getText());
-            String nombre = nombreCreaLeccionesField.getText();
-            String contenido = contenidoCreaLeccionesField.getText();
-
-            Leccion leccion = new Leccion(id, nombre, contenido);
-            leccionesRegistradas.add(leccion);
-
-            showAlert("Lección Agregada", "La lección se agregó correctamente.");
-        } catch (NumberFormatException e) {
-            showAlert("Error", "No se pudo agregar la lección: " + e.getMessage());
+            showAlert("Error", "El ID debe ser un número entero.", Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            showAlert("Error", "Ha ocurrido un error al actualizar la lección.", Alert.AlertType.ERROR);
         }
     }
 
     @FXML
     public void buscarLeccionOnAction(ActionEvent actionEvent) {
         try {
-            int id = Integer.parseInt(idModificarLeccionesField.getText());
-            Leccion leccion = new Leccion(id, "", ""); // Creamos una lección solo con el ID para buscarla
+            int id = Integer.parseInt(idBuscaLeccionField.getText());
+            Leccion leccion = findLeccionById(id);
 
-            if (leccionesRegistradas.contains(leccion)) {
-                nombreModificarLeccionesField.setText(leccion.getTitle());
-                contenidoModificarLeccionesField.setText(String.valueOf(leccion.getContent()));
-                showAlert("Búsqueda Exitosa", "Se encontró la lección.");
+            if (leccion != null) {
+                tableViewLecciones.getItems().clear();
+                tableViewLecciones.getItems().add(leccion);
             } else {
-                showAlert("Error", "No se encontró la lección.");
+                showAlert("No encontrado", "No se encontró una lección con ese ID.", Alert.AlertType.WARNING);
             }
         } catch (NumberFormatException e) {
-            showAlert("Error", "No se pudo realizar la búsqueda: " + e.getMessage());
-        } catch (domain.clasesBase.TreeException e) {
-            throw new RuntimeException(e);
+            showAlert("Error", "El ID debe ser un número entero.", Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            showAlert("Error", "Ha ocurrido un error al buscar la lección.", Alert.AlertType.ERROR);
         }
+    }
+
+    private Leccion findLeccionById(int id) throws TreeException, domain.clasesBase.TreeException {
+        for (Object obj : leccionesRegistradas.inOrder().split(", ")) {
+            Leccion leccion = (Leccion) obj;
+            if (leccion.getId() == id) {
+                return leccion;
+            }
+        }
+        return null;
+    }
+
+    private void clearFields() {
+        idCrearNuevaLeccionField.clear();
+        nombreCreaNuevaLeccionField.clear();
+        contenidoCreaNuevaLeccionField.clear();
+        IdCursoCrearLeccionField.clear();
+        idModificarLeccionField.clear();
+        nombreModificarLeccionField.clear();
+        contenidoModificarLeccionField.clear();
+        idBuscaLeccionField.clear();
+    }
+
+    private void showAlert(String title, String content, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

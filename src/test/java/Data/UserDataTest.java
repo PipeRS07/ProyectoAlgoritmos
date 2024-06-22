@@ -15,16 +15,16 @@ class UserDataTest {
     @Test
     void test1(){
         UserData data;
-        try {
-            data = new UserData();
-            data.agregarAlFinal(new User(12, "A", "email", Ruta.USUADMIN, util.Encriptacion.obtenerContraseniaCifrada("12")));
-            System.out.println(Utility.usuariosRegistrados);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+            try {
+                data = new UserData();
+                data.agregarAlFinal(new User(12, "A", "email", Ruta.USUADMIN, util.Encriptacion.obtenerContraseniaCifrada("12")));
+              System.out.println(Utility.usuariosRegistrados);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException(e);
+            }
 
     }
 

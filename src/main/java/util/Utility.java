@@ -24,7 +24,7 @@ public  class Utility {
 
     public static CircularDoublyLinkedList usuariosRegistrados ;
     public static CircularLinkedList usuariosEnELSistema ;
-    public static AVL cursosRegistrados = new AVL();
+    public static AVL cursosRegistrados ;
     public static BTree inscripcionesSolicitadas;
     public static BST leccionesRegistradas;
     private static UserData userData;
@@ -52,33 +52,6 @@ public  class Utility {
         }
     }
 
-//    public static CircularDoublyLinkedList getUsuariosRegistrados() {
-//        try {
-//            if (usuariosRegistrados != null) {
-//                usuariosRegistrados = new CircularDoublyLinkedList();
-//                userData.cargarObjetos(usuariosRegistrados);
-//                cursosRegistrados = new AVL();
-//                cursoData.cargarObjetos(cursosRegistrados);
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return usuariosRegistrados;
-//    }
-//
-//    public static AVL getCursosRegistrados() {
-//        try {
-//            if (cursosRegistrados != null) {
-//                usuariosRegistrados = new CircularDoublyLinkedList();
-//                userData.cargarObjetos(usuariosRegistrados);
-//                cursosRegistrados = new AVL();
-//                cursoData.cargarObjetos(cursosRegistrados);
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return cursosRegistrados;
-//    }
 
     public static void guardarCursos() throws IOException, domain.clasesBase.TreeException, TreeException {
             if(cursosRegistrados.isEmpty()){
@@ -94,11 +67,7 @@ public  class Utility {
         }else{
             userData.guardarUsuarios();
         }
-        //System.out.println("Utility.guardarUsuarios"+usuariosRegistrados);
-//        if (!usuariosRegistrados.isEmpty()) {
-//            System.out.println("Utility.guardarUsuarios" + usuariosRegistrados);
-//            userData.guardarUsuarios();
-//        }else System.out.println("Utility.guardarUsuarios"+"está vacio");
+
     }
 
     public static CircularDoublyLinkedList getUsuariosRegistrados(){
@@ -187,11 +156,15 @@ public  class Utility {
                 return cu1.getNombre().equalsIgnoreCase(cu2)?0:-1;
             case "Curso":
                 Curso cur1 = (Curso)a; Curso cur2 = (Curso) b;
-                return cur1.getNombre().equalsIgnoreCase(cur2.getNombre()) ?0: cur1.getId()==cur2.getId()?0:-1;
+                //return cur1.getNombre().equalsIgnoreCase(cur2.getNombre()) ?0: cur1.getId()==cur2.getId()?0:-1;
+                return compare(cur1.getId(), cur2.getId());
             case "UserId":
                 User us = (User) a; Integer st = (Integer) b;
-                System.out.println("Utility.compare"+us+st);
+
                 return compare(us.getId(), st);
+            case "CursoId":
+                Curso cus = (Curso) a; Integer cuid = (Integer) b;
+                return compare(cus.getId(), cuid);
 
         }
         return 2; //Unknown
@@ -216,7 +189,7 @@ public  class Utility {
         if(a instanceof Curso && b instanceof String) return "CursoString";
         if(a instanceof Curso && b instanceof Curso) return "Curso";
         if(a instanceof User && b instanceof Integer) return "UserId";
-
+        if(a instanceof Curso && b instanceof Integer) return "CursoId";
         return "Unknown";
     }
 }

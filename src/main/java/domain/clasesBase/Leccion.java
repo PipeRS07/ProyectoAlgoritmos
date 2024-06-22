@@ -5,16 +5,16 @@ public class Leccion {
     private String title;
     private Object content;
 
-    public Leccion(int id, String title, Object context) {
+    public Leccion(int id, String title, Object content) {
         this.id = id;
         this.title = title;
-        this.content = context;
+        this.content = content;
     }
 
-    public Leccion(int id, String title, Object context, boolean estado) {
+    public Leccion(int id, String title, Object content, boolean estado) {
         this.id = id;
         this.title = title;
-        this.content = context;
+        this.content = content;
     }
 
     public int getId() {
@@ -37,7 +37,7 @@ public class Leccion {
         return content;
     }
 
-    public void setContent(Object context) {
-        this.content = context;
+    public void setContent(Object content) {
+        this.content = content;
     }
 }

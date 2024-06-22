@@ -76,10 +76,13 @@
                 node = new BTreeNode(element,"Added as" + sequence);
             }else{
                 //debemos establecer algun criterio de insercion
-                if(Utility.compare(element,node.data)<0) //si es par inserte por la izq
-                    node.left = add(node.left, element, sequence+"/left" );
-                else if (Utility.compare(element,node.data)>0)//si es impart inserte por la der
-                    node.right = add(node.right, element, sequence +"/right");
+                if(Utility.compare(element,node.data)<0) { //si es par inserte por la izq
+                    node.left = add(node.left, element, sequence + "/left");
+                    System.out.println("AVL.add" + "derecha");
+                }else if (Utility.compare(element,node.data)>0) {//si es impart inserte por la der
+                    node.right = add(node.right, element, sequence + "/right");
+                    System.out.println("AVL.add"+"izquierda");
+                }
             }
             //se determina si se requiere rebalanceo
             node = reBalance(node, element);
@@ -301,7 +304,7 @@
             return postOrder(root) + "\n";
         }
 
-        public BTreeNode findNode(String element) throws TreeException {
+        public BTreeNode findNode(Object element) throws TreeException {
             if (isEmpty()) {
                 throw new TreeException("Binary Search Tree is empty");
             }
@@ -309,7 +312,7 @@
         }
 
 
-        private BTreeNode findNode(BTreeNode node, String element) {
+        private BTreeNode findNode(BTreeNode node, Object element) {
             if (node == null) {
                 return null; // Si el nodo es null, el elemento no está en el árbol
             }
