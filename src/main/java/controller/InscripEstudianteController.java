@@ -3,12 +3,15 @@ package controller;
 import Data.EnviarEmail;
 import domain.bTree.BTree;
 import domain.clasesBase.*;
+import domain.graph.GraphException;
+import domain.list.ListException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import util.Ruta;
 import util.Utility;
 
 import java.util.ArrayList;
@@ -71,7 +74,7 @@ public class InscripEstudianteController {
             return;
         }
 
-        if (!(Utility.UserActivo instanceof Estudiante)) {
+        if (!(Utility.UserActivo.getRole().equals(Ruta.USUESTUDIANTE))) {
             mostrarAlerta("Error", "Solo los estudiantes pueden inscribirse en los cursos");
             return;
         }
@@ -79,12 +82,21 @@ public class InscripEstudianteController {
         Estudiante estudiante = (Estudiante) Utility.UserActivo;
         Inscripcion inscripcion = new Inscripcion(estudiante, curso);
         inscripcionesSolicitadas.add(inscripcion);
+        try {
+            curso.getInscripcionesEstudiantes().addVertex(inscripcion);
+            curso.getInscripcionesEstudiantes().addEdge(curso, estudiante);
+        } catch (GraphException e) {
+            throw new RuntimeException(e);
+        } catch (ListException e) {
+            throw new RuntimeException(e);
+        }
 
         // Envío de correo al estudiante
         enviarCorreoEstudiante(estudiante, curso);
 
         // Envío de notificación a administradores
         enviarNotificacionAdministradores(estudiante, curso);
+
 
         mostrarAlerta("Éxito", "Se ha inscrito correctamente en el curso: " + curso.getNombre());
     }

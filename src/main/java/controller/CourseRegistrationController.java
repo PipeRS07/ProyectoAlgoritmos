@@ -90,7 +90,7 @@ public class CourseRegistrationController {
             // Crear un nuevo curso
             //Curso newCourse = new Curso(courseName, description, durationText, level, courseId);
             Curso newCourse = new Curso(courseName, courseId, description, durationText, level, "");
-//
+
             // Verificar si el curso ya está registrado en el AVL
             if (!Utility.cursosRegistrados.isEmpty()) {
                 if (Utility.cursosRegistrados.contains(newCourse.getNombre())&&Utility.cursosRegistrados.contains(newCourse.getId())) {

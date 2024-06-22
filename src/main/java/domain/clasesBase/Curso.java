@@ -35,6 +35,20 @@ public class Curso {
         this.materialesDeEstudio = new SinglyLinkedList();
     }
 
+    public Curso(String nombre, int id, String descripcion, String duracion, String dificultad, String siglas, Instructor instructor) {
+        this.nombre = nombre;
+        this.id=id;
+        this.descripcion = descripcion;
+        this.duracion = duracion;
+        this.dificultad = dificultad;
+        this.siglas = siglas;
+        this.evaluaciones = new BST();
+        this.lecciones=new BST();
+        this.inscripcionesEstudiantes = new SinglyLinkedListGraph();
+        this.materialesDeEstudio = new SinglyLinkedList();
+        this.instructor= instructor;
+    }
+
     public Curso(String nombre, String descripcion, String duracion, String dificultad, String siglas, BST evaluaciones) {
         this.nombre = nombre;
         this.descripcion = descripcion;

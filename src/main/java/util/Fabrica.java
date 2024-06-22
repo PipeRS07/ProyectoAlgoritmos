@@ -3,6 +3,7 @@ package util;
 import domain.bTree.AVLTree;
 import domain.clasesBase.*;
 import domain.list.CircularDoublyLinkedList;
+import domain.list.ListException;
 
 
 import java.time.LocalDate;
@@ -33,6 +34,13 @@ public class Fabrica {
         }
         if(usuario.getRole().equals(Ruta.USUESTUDIANTE)){
             return new Estudiante(usuario.getId(), usuario.getName(), usuario.getEmail(), usuario.getRole(), usuario.getContrasenia());
+        }
+        return null;
+    }
+    public static Instructor fabricaUsuarios(int Idusuario) throws ListException {
+        int n = Utility.usuariosRegistrados.size();
+        for (int i = 0; i <n; i++) {
+            return (Instructor) fabricaUsuarios((User) Utility.usuariosRegistrados.getNode(Utility.usuariosRegistrados.indexOf(Idusuario)).data);
         }
         return null;
     }

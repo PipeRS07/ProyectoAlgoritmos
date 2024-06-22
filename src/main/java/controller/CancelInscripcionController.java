@@ -16,7 +16,7 @@ public class CancelInscripcionController {
     @FXML
     public void handleCancelEnrollment(ActionEvent actionEvent) {
         // Método para manejar la cancelación de la inscripción
-        String inscripcionSeleccionada = getSelectedInscripcion();
+        String inscripcionSeleccionada = this.cursoTextField.getText();
 
         if (inscripcionSeleccionada == null) {
             // Si no se ha seleccionado ninguna inscripción

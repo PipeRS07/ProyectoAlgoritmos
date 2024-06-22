@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import util.Utility;
@@ -28,7 +29,7 @@ public class LeccionesMantenimientoController {
     @FXML
     private TextField nombreModificarLeccionField;
     @FXML
-    private PasswordField contenidoModificarLeccionField;
+    private TextField  contenidoModificarLeccionField;
     @FXML
     private TextField IdCursoCrearLeccionField;
     @FXML
@@ -41,6 +42,23 @@ public class LeccionesMantenimientoController {
     private TextField idBuscaCursoField;
 
     @FXML
+    private TableColumn<Leccion, Integer> colId;
+    @FXML
+    private TableColumn<Leccion, String> colNombre;
+    @FXML
+    private TableColumn<Leccion, String> colContenido;
+    @FXML
+    private TableColumn<Leccion, String> colCursoNombre; // Nueva columna para el nombre del curso
+
+    @FXML
+    public void initialize() {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("title"));
+        colContenido.setCellValueFactory(new PropertyValueFactory<>("content"));
+        colCursoNombre.setCellValueFactory(new PropertyValueFactory<>("cursoNombre")); // Configurar la nueva columna
+    }
+
+    @FXML
     public void agregarLeccionAlCursoOnAction(ActionEvent actionEvent) {
         try {
             int idLeccion = Integer.parseInt(idCrearNuevaLeccionField.getText());
@@ -48,9 +66,10 @@ public class LeccionesMantenimientoController {
             String nombre = nombreCreaNuevaLeccionField.getText();
             String contenido = contenidoCreaNuevaLeccionField.getText();
 
-            Leccion nuevaLeccion = new Leccion(idLeccion, nombre, contenido);
-
             Curso curso = (Curso) Utility.cursosRegistrados.findNode(idCurso).data;
+            String cursoNombre = curso.getNombre(); // Obtener el nombre del curso
+
+            Leccion nuevaLeccion = new Leccion(idLeccion, nombre, contenido, cursoNombre); // Pasar el nombre del curso
             curso.getLecciones().add(nuevaLeccion);
 
             clearFields();
@@ -73,6 +92,10 @@ public class LeccionesMantenimientoController {
                 if (curso != null) {
                     curso.getLecciones().remove(leccionSeleccionada);
                     tableViewLecciones.getItems().remove(leccionSeleccionada);
+
+                    // Refrescar el TableView
+                    tableViewLecciones.refresh();
+
                     showAlert("Lección eliminada", "La lección se ha eliminado correctamente.", Alert.AlertType.INFORMATION);
                 } else {
                     showAlert("Error", "Curso no encontrado.", Alert.AlertType.ERROR);
@@ -104,6 +127,9 @@ public class LeccionesMantenimientoController {
                     leccionSeleccionada.setTitle(nombre);
                     leccionSeleccionada.setContent(contenido);
 
+                    // Refrescar el TableView
+                    tableViewLecciones.refresh();
+
                     showAlert("Lección actualizada", "La lección se ha actualizado correctamente.", Alert.AlertType.INFORMATION);
                 } else {
                     showAlert("Error", "Curso no encontrado.", Alert.AlertType.ERROR);
@@ -118,19 +144,21 @@ public class LeccionesMantenimientoController {
         }
     }
 
-
     @FXML
     public void buscarLeccionOnAction(ActionEvent actionEvent) {
         try {
             int idCurso = Integer.parseInt(idBuscaCursoField.getText());
             Curso curso = (Curso) Utility.cursosRegistrados.findNode(idCurso).data;
+            String cursoNombre = curso.getNombre(); // Obtener el nombre del curso
 
             List<Leccion> listaLecciones = new ArrayList<>();
 
-            for (int i = 0; i <curso.getLecciones().size(); i++) {
-                listaLecciones.add((Leccion) curso.getLecciones().getList(i));
+            for (int i = 0; i < curso.getLecciones().size(); i++) {
+                Leccion leccion = (Leccion) curso.getLecciones().getList(i);
+                leccion.setCursoNombre(cursoNombre); // Asignar el nombre del curso a cada lección
+                listaLecciones.add(leccion);
             }
-
+            System.out.println("si busca" + listaLecciones);
             tableViewLecciones.setItems(FXCollections.observableArrayList(listaLecciones));
 
         } catch (NumberFormatException e) {
@@ -149,6 +177,7 @@ public class LeccionesMantenimientoController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     private void clearFields() {
         idCrearNuevaLeccionField.clear();
         IdCursoCrearLeccionField.clear();
@@ -158,6 +187,5 @@ public class LeccionesMantenimientoController {
         nombreModificarLeccionField.clear();
         contenidoModificarLeccionField.clear();
         idBuscaCursoField.clear();
-
     }
 }

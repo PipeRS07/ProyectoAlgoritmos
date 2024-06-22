@@ -21,6 +21,7 @@ public class SinglyLinkedListGraph implements Graph {
 
     private void initObjects() {
         this.vertexList = new SinglyLinkedList();
+
         this.stack = new LinkedStack();
         this.queue = new LinkedQueue();
     }
@@ -260,6 +261,39 @@ public class SinglyLinkedListGraph implements Graph {
         return null;
     }
 
+    public SinglyLinkedList getEdges1(Object element) throws GraphException, ListException {
+        SinglyLinkedList edges = new SinglyLinkedList();
+
+        // Verificamos si el vértice está presente en el grafo
+        if (!containsVertex(element)) {
+            throw new GraphException("Vertex not found in the graph");
+        }
+
+        // Buscamos el vértice en la lista de vértices
+        Vertex vertex = null;
+        for (int i = 1; i <= vertexList.size(); i++) {
+            Vertex v = (Vertex) vertexList.getNode(i).data;
+            if (util.Utility.compare(v.data, element) == 0) {
+                vertex = v;
+                break;
+            }
+        }
+
+        // Si encontramos el vértice, obtenemos sus aristas
+        if (vertex != null) {
+            SinglyLinkedList edgeList = vertex.edgesList;
+            for (int i = 1; i <= edgeList.size(); i++) {
+                EdgeWeight edge = (EdgeWeight) edgeList.getNode(i).data;
+                edges.add(edge); // Agregamos la arista a la lista de resultado
+            }
+        }
+
+        return edges;
+    }
+
+
+
+
     //setteamos el atributo visitado del vertice respectivo
     private void setVisited(boolean value) throws ListException {
         for (int i=1; i<=vertexList.size(); i++) {
@@ -280,24 +314,61 @@ public class SinglyLinkedListGraph implements Graph {
         return -1;
     }
 
-    @Override
-    public String toString() {
-        String result = "SINGLY LINKED LIST GRAPH CONTENT...\n";
-        try {
-            for(int i=1; i<=vertexList.size(); i++){
-                Vertex vertex = (Vertex)vertexList.getNode(i).data;
-                result+="\nThe vertex in the position "+i+" is: "+vertex+"\n";
-                if(!vertex.edgesList.isEmpty()){
-                    result+="........EDGES AND WEIGHTS: "+vertex.edgesList+"\n";
-                }//if
+//    @Override
+//    public String toString() {
+//        String result = "SINGLY LINKED LIST GRAPH CONTENT...\n";
+//        try {
+//            for(int i=1; i<=vertexList.size(); i++){
+//                Vertex vertex = (Vertex)vertexList.getNode(i).data;
+//                result+="\nThe vertex in the position "+i+" is: "+vertex+"\n";
+//                if(!vertex.edgesList.isEmpty()){
+//                    result+="........EDGES AND WEIGHTS: "+vertex.edgesList+"\n";
+//                }//if
+//
+//            }//for
+//        } catch (ListException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//
+//        return result;
+//    }
+@Override
+public String toString() {
+    StringBuilder result = new StringBuilder();
 
-            }//for
-        } catch (ListException ex) {
-            System.out.println(ex.getMessage());
+    try {
+        // Iterar sobre cada vértice en la lista
+        for (int i = 1; i <= vertexList.size(); i++) {
+            Vertex vertex = (Vertex) vertexList.getNode(i).data;
+            result.append(vertex).append(";"); // Agregar el vértice
+
+            // Verificar si el vértice tiene aristas
+            if (!vertex.edgesList.isEmpty()) {
+                // Iterar sobre cada arista del vértice
+                for (int j = 1; j <= vertex.edgesList.size(); j++) {
+                    EdgeWeight edge = (EdgeWeight) vertex.edgesList.getNode(j).data;
+                    result.append(edge).append(","); // Agregar cada arista
+                }
+            }
+            result.append("\n"); // Nueva línea para el siguiente vértice
         }
-
-        return result;
+    } catch (ListException ex) {
+        System.out.println(ex.getMessage());
     }
+
+    return result.toString();
+}
+
+    public Object getVertex(int index) throws GraphException, ListException {
+        if (isEmpty()) {
+            throw new GraphException("Singly Linked List Graph is empty");
+        }
+        if (index < 1 || index > vertexList.size()) {
+            throw new GraphException("Index out of bounds");
+        }
+        return (Vertex) vertexList.getNode(index).data;
+    }
+
 
 
 

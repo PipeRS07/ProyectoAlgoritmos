@@ -78,10 +78,10 @@
                 //debemos establecer algun criterio de insercion
                 if(Utility.compare(element,node.data)<0) { //si es par inserte por la izq
                     node.left = add(node.left, element, sequence + "/left");
-                    System.out.println("AVL.add" + "derecha");
+                    //System.out.println("AVL.add" + "derecha");
                 }else if (Utility.compare(element,node.data)>0) {//si es impart inserte por la der
                     node.right = add(node.right, element, sequence + "/right");
-                    System.out.println("AVL.add"+"izquierda");
+                   // System.out.println("AVL.add"+"izquierda");
                 }
             }
             //se determina si se requiere rebalanceo
