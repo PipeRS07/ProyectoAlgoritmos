@@ -1,5 +1,8 @@
 package controller;
 
+import domain.bTree.TreeException;
+import domain.clasesBase.Leccion;
+import domain.clasesBase.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,64 +12,98 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
+import util.Utility;
 
 import java.io.IOException;
 
 public class LeccionesMantenimientoController {
-    @FXML
-    private TextField correoPerfilField;
-    @FXML
-    private TextField busquedaField;
-    @FXML
-    private TextField nombrePerfilField;
-    @FXML
-    private TextField busquedaField1;
-    @FXML
-    private PasswordField contraseñaPerfilField;
-    @FXML
-    private TextField correoField;
-    @FXML
-    private TextField contraseñaField;
-    @FXML
-    private TableView tableView;
-    @FXML
-    private TextField nombreField;
-    @FXML
-    private BorderPane bp;
-
-    @Deprecated
-    private void loadPage(String page){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(page));
-        try {
-            this.bp.setCenter(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    @FXML
-    public void actualizarPerfil(ActionEvent actionEvent) {
-
-
-    }
-
-    @FXML
-    public void buscarUsuario(ActionEvent actionEvent) {
-    }
-
-    @FXML
-    public void agregarUsuario(ActionEvent actionEvent) {
-    }
-
-    @FXML
-    public void eliminarUsuario(ActionEvent actionEvent) {
-    }
-
-    private void showAlert(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
-
+//    @FXML
+//    private BorderPane bp;
+//    @FXML
+//    private TextField nombreCreaLeccionesField;
+//    @FXML
+//    private TextField contenidoCreaLeccionesField;
+//    @FXML
+//    private TextField IdCrearLeccionField;
+//    @FXML
+//    private TextField nombreModificarLeccionesField;
+//    @FXML
+//    private PasswordField contenidoModificarLeccionesField;
+//    @FXML
+//    private TextField idModificarLeccionesField;
+//    @FXML
+//    private TextField busquedaLeccionField;
+//    @FXML
+//    private TextField buscaLeccionField;
+//    @FXML
+//    private TableView<Leccion> tableViewLecciones;
+//
+//    private void showAlert(String title, String content) {
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.setTitle(title);
+//        alert.setHeaderText(null);
+//        alert.setContentText(content);
+//        alert.showAndWait();
+//    }
+//
+//    @FXML
+//    public void actualizarLeccion(ActionEvent actionEvent) {
+//        try {
+//            int id = Integer.parseInt(idModificarLeccionesField.getText());
+//            Leccion leccion = (Leccion) Utility.leccionesRegistradas.(id);
+//            if (leccion != null) {
+//                leccion.setTitle(nombreModificarLeccionesField.getText());
+//                leccion.setContent(contenidoModificarLeccionesField.getText());
+//                showAlert("Éxito", "Lección actualizada correctamente");
+//            } else {
+//                showAlert("Error", "Lección no encontrada");
+//            }
+//        } catch (TreeException | NumberFormatException e) {
+//            showAlert("Error", "ID inválido o lección no encontrada");
+//        }
+//    }
+//
+//    @FXML
+//    public void agregarLeccion(ActionEvent actionEvent) {
+//        try {
+//            int id = Integer.parseInt(IdCrearLeccionField.getText());
+//            String nombre = nombreCreaLeccionesField.getText();
+//            String contenido = contenidoCreaLeccionesField.getText();
+//
+//            Leccion nuevaLeccion = new Leccion(id, nombre, contenido);
+//            Utility.leccionesRegistradas.add(nuevaLeccion);
+//
+//            showAlert("Éxito", "Lección agregada correctamente");
+//        } catch (NumberFormatException e) {
+//            showAlert("Error", "Error al agregar la lección");
+//        }
+//    }
+//
+//    @FXML
+//    public void eliminarLeccion(ActionEvent actionEvent) {
+//        try {
+//            int id = Integer.parseInt(busquedaLeccionField.getText());
+//            Utility.leccionesRegistradas.remove(id);
+//            showAlert("Éxito", "Lección eliminada correctamente");
+//        } catch (NumberFormatException e) {
+//            showAlert("Error", "ID inválido o lección no encontrada");
+//        } catch (domain.clasesBase.TreeException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @FXML
+//    public void buscarLeccion(ActionEvent actionEvent) {
+//        try {
+//            int id = Integer.parseInt(buscaLeccionField.getText());
+//            Leccion leccion = (Leccion) Utility.leccionesRegistradas.search(id);
+//            if (leccion != null) {
+//                showAlert("Resultado de la búsqueda", "Lección encontrada: " + leccion.getTitle() + " - " + leccion.getContent());
+//            } else {
+//                showAlert("Resultado de la búsqueda", "Lección no encontrada");
+//            }
+//        } catch (TreeException | NumberFormatException e) {
+//            showAlert("Error", "ID inválido o lección no encontrada");
+//        }
+//    }
 }

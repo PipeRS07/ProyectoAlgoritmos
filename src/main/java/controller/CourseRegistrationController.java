@@ -32,6 +32,8 @@ public class CourseRegistrationController {
     private TextField courseIdField;
     @FXML
     private TextField instructorNameRegistroCursoField;
+    @FXML
+    private Label durationLabel;
 
     @FXML
     public void initialize() {
@@ -85,7 +87,7 @@ public class CourseRegistrationController {
 
             // Verificar si el curso ya está registrado en el AVL
             if (!Utility.cursosRegistrados.isEmpty()) {
-                if (Utility.cursosRegistrados.contains(newCourse)) {
+                if (Utility.cursosRegistrados.contains(newCourse.getNombre())&&Utility.cursosRegistrados.contains(newCourse.getId())) {
                     showAlert("Error", "El curso con este ID ya está registrado.", Alert.AlertType.ERROR);
                 } else {
                     // Agregar el nuevo curso al AVL
