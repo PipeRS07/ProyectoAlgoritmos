@@ -48,7 +48,7 @@
                 </children>
             </Pane>
             <TableView fx:id="tableViewLecciones" layoutX="49.0" layoutY="275.0" prefHeight="200.0" prefWidth="437.0" />
-            <TextField fx:id="idBuscaLeccionField" layoutX="315.0" layoutY="523.0" promptText="ID a buscar" />
+            <TextField fx:id="idBuscaCursoField" layoutX="315.0" layoutY="523.0" promptText="ID a buscar" />
             <Button layoutX="32.0" layoutY="523.0" onAction="#eliminarLeccionOnAction" text="Eliminar Lección" />
             <Button layoutX="243.0" layoutY="523.0" onAction="#buscarLeccionOnAction" text="Buscar" />
 

@@ -41,6 +41,43 @@ public class BST implements Tree {
         }
         return binarySearch(root, element);
     }
+    public Object getList(int index) throws TreeException {
+        if (isEmpty()) {
+            throw new TreeException("Binary Search Tree is empty");
+        }
+        Counter counter = new Counter();
+        BTreeNode result = getList(root, index, counter);
+        if (result == null) {
+            throw new TreeException("Index out of bounds");
+        }
+        return result.data;
+    }
+
+    // Clase interna para mantener un contador mutable
+    private class Counter {
+        int count = 0;
+    }
+
+    // Método auxiliar recursivo para obtener el elemento en el índice dado en preorden
+    private BTreeNode getList(BTreeNode node, int index, Counter counter) {
+        if (node == null) {
+            return null;
+        }
+        // Verifica si el nodo actual es el que buscamos según el contador
+        if (counter.count == index) {
+            return node;
+        }
+        counter.count++; // Incrementa el contador antes de llamar recursivamente
+
+        // Busca en el subárbol izquierdo
+        BTreeNode leftResult = getList(node.left, index, counter);
+        if (leftResult != null) {
+            return leftResult;
+        }
+
+        // Si no se encontró en el subárbol izquierdo, busca en el subárbol derecho
+        return getList(node.right, index, counter);
+    }
 
     //método interno
     private boolean binarySearch(BTreeNode node, Object element){
