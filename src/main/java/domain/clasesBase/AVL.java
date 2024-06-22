@@ -317,6 +317,7 @@
                 return null; // Si el nodo es null, el elemento no está en el árbol
             }
             if (Utility.compare(node.data, element) == 0) {
+                System.out.println("AVL.findNode"+node.data);
                 return node; // Nodo encontrado
             }
             if (Utility.compare(element, node.data) < 0) {

@@ -39,15 +39,18 @@ public class LeccionesMantenimientoController {
     @FXML
     public void agregarLeccionAlCursoOnAction(ActionEvent actionEvent) {
         try {
-            int id = Integer.parseInt(idCrearNuevaLeccionField.getText());
+            int idLeccion = Integer.parseInt(idCrearNuevaLeccionField.getText());
+            int idCurso = Integer.parseInt(this.IdCursoCrearLeccionField.getText());
             String nombre = nombreCreaNuevaLeccionField.getText();
             String contenido = contenidoCreaNuevaLeccionField.getText();
-            Leccion nuevaLeccion = new Leccion(id, nombre, contenido);
 
-            Curso curso = (Curso) Utility.cursosRegistrados.findNode(id).data;
-            System.out.println("LeccionesMantenimientoController.agregarLeccionAlCursoOnAction" + Utility.cursosRegistrados.findNode(id).data);
+            Leccion nuevaLeccion = new Leccion(idLeccion, nombre, contenido);
+
+            Curso curso = (Curso) Utility.cursosRegistrados.findNode(idCurso).data;
+            System.out.println("LeccionesMantenimientoController.agregarLeccionAlCursoOnAction" + Utility.cursosRegistrados.findNode(idCurso).data);
 
             curso.getLecciones().add(nuevaLeccion);
+
             System.out.println("LeccionesMantenimientoController.agregarLeccionAlCursoOnAction" + curso);
 
             tableViewLecciones.getItems().add(nuevaLeccion);

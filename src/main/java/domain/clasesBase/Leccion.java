@@ -40,4 +40,13 @@ public class Leccion {
     public void setContent(Object content) {
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "Leccion{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content=" + content +
+                '}';
+    }
 }

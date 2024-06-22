@@ -22,7 +22,7 @@ public class Curso {
 
     private BST evaluaciones;
 
-    public Curso(String nombre, int id, String descripcion, String duracion, String dificultad, String siglas, SinglyLinkedListGraph inscripcionesEstudiantes, SinglyLinkedList materialesDeEstudio) {
+    public Curso(String nombre, int id, String descripcion, String duracion, String dificultad, String siglas) {
         this.nombre = nombre;
         this.id=id;
         this.descripcion = descripcion;
@@ -30,8 +30,9 @@ public class Curso {
         this.dificultad = dificultad;
         this.siglas = siglas;
         this.evaluaciones = new BST();
-        this.inscripcionesEstudiantes = inscripcionesEstudiantes;
-        this.materialesDeEstudio = materialesDeEstudio;
+        this.lecciones=new BST();
+        this.inscripcionesEstudiantes = new SinglyLinkedListGraph();
+        this.materialesDeEstudio = new SinglyLinkedList();
     }
 
     public Curso(String nombre, String descripcion, String duracion, String dificultad, String siglas, BST evaluaciones) {
@@ -41,6 +42,7 @@ public class Curso {
         this.dificultad = dificultad;
         this.siglas = siglas;
         this.evaluaciones = evaluaciones;
+        this.lecciones = new BST();
     }
 
     public Curso(String nombre, String descripcion, String duracion, String dificultad) {
@@ -48,6 +50,8 @@ public class Curso {
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.dificultad = dificultad;
+        this.lecciones = new BST();
+
     }
 
     public Curso(String nombre, String descripcion, String duracion, String dificultad, String siglas) {
@@ -56,6 +60,8 @@ public class Curso {
         this.duracion = duracion;
         this.dificultad = dificultad;
         this.siglas = siglas;
+        this.lecciones = new BST();
+
     }
 
 
