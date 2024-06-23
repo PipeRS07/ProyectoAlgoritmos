@@ -107,15 +107,26 @@ public class EvaluacionesController {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
-
     @FXML
     public void atrasBuscarCursosOnAction(ActionEvent actionEvent) {
         loadPage("managementCourse.fxml");
     }
 
-
     @FXML
     public void comboBoxOnAction(ActionEvent actionEvent) {
+        String selectedEvaluation = (String) comboBox.getValue();
+        if (selectedEvaluation == null || selectedEvaluation.isEmpty()) {
+            mostrarAlerta("Error", "Seleccione una evaluación de la lista");
+            return;
+        }
+        // Simulate action on selection
+        mostrarAlerta("Éxito", "Has seleccionado la evaluación: " + selectedEvaluation);
 
+        // Show a couple of evaluation options
+        mostrarEvaluacionesDisponibles();
+    }
+
+    private void mostrarEvaluacionesDisponibles() {
+        cursosData.clear();
     }
 }
