@@ -1,6 +1,10 @@
     package domain.clasesBase;
 
+    import domain.list.List;
+    import domain.list.ListException;
     import util.Utility;
+
+    import java.util.ArrayList;
 
     public class AVL implements Tree {
         public BTreeNode root; //unica entrada al arbol
@@ -194,6 +198,27 @@
                 node = reBalance(node,element);
             }
             return node;
+        }
+
+        public BTreeNode getElementAtPosition(int index) throws TreeException, ListException {
+            if (isEmpty()) {
+                throw new TreeException("Binary Search Tree is empty");
+            }
+            ArrayList<Object> elements = new ArrayList<>();
+            inOrderTraversal(root, elements);
+            if (index < 0 || index >= elements.size()) {
+                throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + elements.size());
+            }
+            BTreeNode b = new BTreeNode(elements.get(index));
+            return b;
+        }
+
+        private void inOrderTraversal(BTreeNode node, ArrayList<Object> elements) {
+            if (node != null) {
+                inOrderTraversal(node.left, elements);
+                elements.add(node.data);
+                inOrderTraversal(node.right, elements);
+            }
         }
 
 

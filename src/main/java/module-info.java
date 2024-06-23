@@ -11,6 +11,7 @@ module org.example.proyectoalgoritmos {
     opens controller to javafx.fxml;
 
     requires javafx.graphics;
+    requires itextpdf;
 
     opens domain.clasesBase to javafx.base;
 

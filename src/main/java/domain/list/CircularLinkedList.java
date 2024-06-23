@@ -1,6 +1,7 @@
 package domain.list;
 
 public class CircularLinkedList implements List {
+    
     private Node first; //apuntador al inicio de la lista
     private Node last;
 

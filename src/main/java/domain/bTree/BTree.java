@@ -28,9 +28,13 @@ public class BTree implements Tree {
 
     private void getAll(BTreeNode node, List<Inscripcion> list) {
         if (node != null) {
+            // Primero recorrer la izquierda
             getAll(node.left, list);
-            // Suponemos que node.data contiene Inscripcion
-            list.add((Inscripcion) node.data);
+            // Agregar la inscripción actual
+            if (node.data instanceof Inscripcion) {
+                list.add((Inscripcion) node.data);
+            }
+            // Luego recorrer la derecha
             getAll(node.right, list);
         }
     }

@@ -28,12 +28,8 @@ public class EnviarEmail {
         this.puerto = "587";
     }
 
-    public void enviarCorreo(String correoDestinatario1, String asunto1, String contenido1, String nombrePDF) {
-        String correoDestinatario = correoDestinatario1;
-        String asunto = asunto1;
-        String contenido = contenido1;
-        String rutaPDF = "pdfs/" + "Parcial 2 Solución" + ".pdf";
-
+    public void enviarCorreo(String correoDestinatario, String asunto, String contenido, String nombrePDF) {
+        String rutaPDF = "pdfs/" + nombrePDF;
         enviarCorreoConAdjunto(correoDestinatario, asunto, contenido, rutaPDF);
     }
 
@@ -58,12 +54,19 @@ public class EnviarEmail {
             mensaje.setSubject(asunto);
             mensaje.setText(contenido);
 
+            // Verificar si el archivo adjunto existe
+            File archivoAdjunto = new File(rutaAdjunto);
+            if (!archivoAdjunto.exists()) {
+                System.err.println("El archivo adjunto no existe: " + rutaAdjunto);
+                return;
+            }
+
             // Añadir el archivo adjunto
             MimeBodyPart cuerpoMensaje = new MimeBodyPart();
             cuerpoMensaje.setText(contenido);
             MimeBodyPart adjunto = new MimeBodyPart();
             adjunto.setDataHandler(new DataHandler(new FileDataSource(rutaAdjunto)));
-            adjunto.setFileName(new File(rutaAdjunto).getName());
+            adjunto.setFileName(archivoAdjunto.getName());
 
             MimeMultipart multipart = new MimeMultipart();
             multipart.addBodyPart(cuerpoMensaje);
@@ -90,12 +93,8 @@ public class EnviarEmail {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(correoRemitente, contraseñaRemitente);
-
-
-
             }
         });
-
 
         try {
             MimeMessage mensaje = new MimeMessage(sesion);
