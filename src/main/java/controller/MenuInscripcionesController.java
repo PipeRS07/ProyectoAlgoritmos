@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
 import util.Ruta;
+import util.Utility;
 
 import java.io.IOException;
 
@@ -23,16 +24,17 @@ public class MenuInscripcionesController {
     }
     @javafx.fxml.FXML
     public void handleEnrollmentCancellation(ActionEvent actionEvent) {
-       // if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUESTUDIANTE))) {
             loadPage("cancelarInscripcion.fxml");
-        //}
+
 
 
     }
 
     @javafx.fxml.FXML
     public void handleAdminEnrollmentManagement(ActionEvent actionEvent) {
-        loadPage("gestionAdmin.fxml");
+        if(Utility.UserActivo.getRole().equals(Ruta.USUINSTRUCTOR)) {
+            loadPage("gestionAdmin.fxml");
+        }
     }
 
     @javafx.fxml.FXML

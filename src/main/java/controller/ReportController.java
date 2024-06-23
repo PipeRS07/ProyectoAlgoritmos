@@ -34,9 +34,9 @@ public class ReportController {
 //
 //            }
         }
-        PdfData pdf = new PdfData("informe");
-
+        PdfData pdf = new PdfData("informe Inscripciones");
         pdf.generarYEnviarPDF((new Reporte("Informe de inscripciones por curso", result, Utility.UserActivo.getEmail())));
+
 
     }
 
@@ -51,11 +51,9 @@ public class ReportController {
             result+= c.getEvaluaciones().toString();
 //
         }
-        PdfData pdf = new PdfData("informe");
+        PdfData pdf = new PdfData("informe Evaluaciones");
 
         pdf.generarYEnviarPDF((new  Reporte("Informe de evaluaciones y calificaciones", result, Utility.UserActivo.getEmail())));
-
-
     }
 
     @javafx.fxml.FXML

@@ -35,11 +35,13 @@ public class MenuUsuarioController {
     }
 
     @Deprecated
-    public void inicioSesionOnAction(ActionEvent actionEvent) {loadPage("inicioSesionUsuario.fxml");
+    public void inicioSesionOnAction(ActionEvent actionEvent) {
+        loadPage("inicioSesionUsuario.fxml");
     }
 
     @javafx.fxml.FXML
     public void actualizaPerfilOnAction(ActionEvent actionEvent) {
+
         loadPage("actualizarUsuario.fxml");
     }
 }

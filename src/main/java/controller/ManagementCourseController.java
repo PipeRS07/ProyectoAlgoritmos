@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import org.example.proyectoalgoritmos.HelloApplication;
 import util.Ruta;
+import util.Utility;
 
 import java.io.IOException;
 import java.nio.file.attribute.UserDefinedFileAttributeView;
@@ -31,33 +32,33 @@ public class ManagementCourseController {
 
     @javafx.fxml.FXML
     public void editOnAction(ActionEvent actionEvent) {
-//        if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUINSTRUCTOR) || UserActivo.getRole().equals(Ruta.USUADMIN))) {
+        if(Utility.UserActivo.getRole().equals(Ruta.USUINSTRUCTOR)) {
       loadPage("editarCurso.fxml");
-//        } else {
-//            // Manejo del caso en que UserActivo es null o no tiene el rol esperado
-//            System.out.println("UserActivo es null o no tiene el rol adecuado.");
-//        }
+        } else {
+            // Manejo del caso en que UserActivo es null o no tiene el rol esperado
+            System.out.println("UserActivo es null o no tiene el rol adecuado.");
+        }
 
     }
 
     @javafx.fxml.FXML
     public void removeOnAction(ActionEvent actionEvent) {
-        //if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUINSTRUCTOR) || UserActivo.getRole().equals(Ruta.USUADMIN))) {
+        if(Utility.UserActivo.getRole().equals(Ruta.USUINSTRUCTOR)) {
         loadPage("eliminarCurso.fxml");
-//        } else {
-//            // Manejo del caso en que UserActivo es null o no tiene el rol esperado
-//            System.out.println("UserActivo es null o no tiene el rol adecuado.");
-//        }
+        } else {
+            // Manejo del caso en que UserActivo es null o no tiene el rol esperado
+            System.out.println("UserActivo es null o no tiene el rol adecuado.");
+        }
     }
 
     @javafx.fxml.FXML
     public void addOnAction(ActionEvent actionEvent) {
-//        if (UserActivo != null && (UserActivo.getRole().equals(Ruta.USUINSTRUCTOR) || UserActivo.getRole().equals(Ruta.USUADMIN))) {
+        if(Utility.UserActivo.getRole().equals(Ruta.USUINSTRUCTOR) ) {
             loadPage("crearCurso.fxml");
-//        } else {
-            // Manejo del caso en que UserActivo es null o no tiene el rol esperado
-//            System.out.println("UserActivo es null o no tiene el rol adecuado.");
-//        }
+        } else {
+             //Manejo del caso en que UserActivo es null o no tiene el rol esperado
+            System.out.println("UserActivo es null o no tiene el rol adecuado.");
+        }
     }
 
     @javafx.fxml.FXML

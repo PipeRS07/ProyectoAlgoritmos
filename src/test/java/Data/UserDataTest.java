@@ -16,18 +16,22 @@ class UserDataTest {
     @Test
     void test1(){
         PdfData pdfData = new PdfData("informe");
-        pdfData.generarYEnviarPDF(new Reporte("Hola", "content", "jfelipe070703@gmail.com"));
-//        UserData data;
-//            try {
-//                data = new UserData();
-//                data.agregarAlFinal(new User(12, "A", "email", Ruta.USUADMIN, util.Encriptacion.obtenerContraseniaCifrada("12")));
-             // System.out.println(Utility.usuariosRegistrados);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//            catch (NoSuchAlgorithmException e) {
-//                throw new RuntimeException(e);
-//            }
+        pdfData.generarYEnviarPDF(new Reporte("Hola", "content", "veronicaAgueroAguilar@gmail.com"));
+
+
+                UserData data;
+            try {
+                data = new UserData();
+              //  data.agregarAlFinal(new User(14, "A", "email", Ruta.USUINSTRUCTOR, util.Encriptacion.obtenerContraseniaCifrada("14")));
+                data.agregarAlFinal(new User(16, "A", "email", Ruta.USUESTUDIANTE, util.Encriptacion.obtenerContraseniaCifrada("16")));
+
+                System.out.println(Utility.usuariosRegistrados);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException(e);
+            }
 
     }
 
