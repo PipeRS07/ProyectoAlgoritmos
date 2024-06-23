@@ -3,6 +3,7 @@ package controller;
 import domain.clasesBase.User;
 import domain.list.DoublyLinkedList;
 import domain.list.ListException;
+import domain.queue.QueueException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import util.Utility;
+
+import static util.Utility.Bitacora;
 
 public class MostrarUsuarioController {
     @FXML
@@ -49,7 +52,9 @@ public class MostrarUsuarioController {
     }
 
     @FXML
-    public void eliminarUsuario(ActionEvent actionEvent) {
+    public void eliminarUsuario(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "Se ha eliminado un Usuario");
+
         // Obtener el usuario seleccionado en el TableView
         User usuarioSeleccionado = tableView.getSelectionModel().getSelectedItem();
         if (usuarioSeleccionado != null) {

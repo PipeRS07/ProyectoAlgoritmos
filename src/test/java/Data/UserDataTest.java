@@ -16,7 +16,7 @@ class UserDataTest {
     @Test
     void test1(){
         PdfData pdfData = new PdfData("informe");
-        pdfData.generarYEnviarPDF(new Reporte("Hola", "content", "jfelipe070703@gmail.com"));
+        pdfData.generarYEnviarPDF(new Reporte("Hola", "content", "nigeljcm011@gmail.com"));
 //        UserData data;
 //            try {
 //                data = new UserData();
@@ -30,7 +30,5 @@ class UserDataTest {
 //            }
 
     }
-
-
 
 }

@@ -2,6 +2,7 @@ package controller;
 
 import domain.clasesBase.Curso;
 import domain.clasesBase.Leccion;
+import domain.queue.QueueException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -11,6 +12,8 @@ import util.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static util.Utility.Bitacora;
 
 public class LeccionesAprendizajeEnLineaController {
 
@@ -26,7 +29,9 @@ public class LeccionesAprendizajeEnLineaController {
     }
 
     @FXML
-    public void buscarDeLeccionesAprendizajeOnAction(ActionEvent actionEvent) {
+    public void buscarDeLeccionesAprendizajeOnAction(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "Se buscó una Leccion");
+
         try {
             int idCurso = Integer.parseInt(idDeLeccionApredizaje.getText());
             Curso curso = (Curso) Utility.cursosRegistrados.findNode(idCurso).data;

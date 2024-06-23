@@ -5,6 +5,7 @@ import domain.bTree.BTree;
 import domain.clasesBase.*;
 import domain.graph.GraphException;
 import domain.list.ListException;
+import domain.queue.QueueException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,6 +17,8 @@ import util.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static util.Utility.Bitacora;
 
 public class InscripEstudianteController {
     @FXML
@@ -61,7 +64,9 @@ public class InscripEstudianteController {
     }
 
     @FXML
-    public void inscribirseOnAction(ActionEvent actionEvent) {
+    public void inscribirseOnAction(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "Se ha inscrito a un curso.");
+
         String cursoSeleccionado = courseComboBox.getValue();
         if (cursoSeleccionado == null) {
             mostrarAlerta("Error", "Debe seleccionar un curso para inscribirse");
@@ -101,8 +106,10 @@ public class InscripEstudianteController {
         mostrarAlerta("Éxito", "Se ha inscrito correctamente en el curso: " + curso.getNombre());
     }
 
-    private void enviarCorreoEstudiante(Estudiante estudiante, Curso curso) {
-        String correoEstudiante = estudiante.getEmail(); // Suponiendo que Estudiante tiene un método getCorreo()
+    private void enviarCorreoEstudiante(Estudiante estudiante, Curso curso) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "Se ha enviado un correo");
+
+        String correoEstudiante = estudiante.getEmail();
         String asunto = "Confirmación de Inscripción";
         String contenido = "Hola " + estudiante.getName() + ",\n\n"
                 + "Te has inscrito correctamente en el curso " + curso.getNombre() + ".\n\n"
@@ -113,12 +120,14 @@ public class InscripEstudianteController {
         emailSender.enviarCorreoSinAdjunto(correoEstudiante, asunto, contenido);
     }
 
-    private void enviarNotificacionAdministradores(Estudiante estudiante, Curso curso) {
+    private void enviarNotificacionAdministradores(Estudiante estudiante, Curso curso) throws QueueException {
+
+
         String asunto = "Nueva Inscripción en Curso";
         String contenido = "El estudiante " + estudiante.getName() + " se ha inscrito en el curso "
                 + curso.getNombre() + ". Por favor, revisar y aprobar.";
 
-        // Suponiendo que tienes una lista de correos de administradores
+
         List<String> correosAdministradores = obtenerCorreosAdministradores();
 
         EnviarEmail emailSender = new EnviarEmail();
@@ -128,9 +137,7 @@ public class InscripEstudianteController {
     }
 
     private List<String> obtenerCorreosAdministradores() {
-        // Aquí deberías implementar la lógica para obtener los correos de los administradores
-        // Puedes tenerlos en una base de datos, en un archivo de configuración, etc.
-        // Por simplicidad, retornaremos una lista estática en este ejemplo.
+
         List<String> correos = new ArrayList<>();
         correos.add("admin1@example.com");
         correos.add("admin2@example.com");

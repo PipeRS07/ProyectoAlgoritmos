@@ -4,6 +4,7 @@ import Data.EnviarEmail;
 import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.ListException;
+import domain.queue.QueueException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -24,6 +25,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
+
+import static util.Utility.Bitacora;
 
 public class RegistroUsuarioController {
     @javafx.fxml.FXML
@@ -56,7 +59,9 @@ public class RegistroUsuarioController {
 
 
     // Método para registrar un nuevo usuario
-    public void RegisterUserOnAction(ActionEvent actionEvent) {
+    public void RegisterUserOnAction(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "Se ha registrado un Usuario Nuevo");
+
         // Obtener los valores del formulario
         String cedula = cedulaField.getText();
         String username = usernameField.getText();

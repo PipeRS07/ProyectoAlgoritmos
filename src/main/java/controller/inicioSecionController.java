@@ -37,6 +37,7 @@ public class inicioSecionController {
 
     @javafx.fxml.FXML
     public void RegisterUserOnAction(ActionEvent actionEvent) {
+
         //la bandera permite saber si el usuario esta registrado para poder cargarle la pagina
         boolean bandera=false;
         try {
@@ -65,9 +66,6 @@ public class inicioSecionController {
         //valido si el usuario y la contraseña corresponden a un usuario registrado para cargar la pagina
         if(bandera)
             loadPage("hello-view.fxml");
-
-
-
     }
 
 }

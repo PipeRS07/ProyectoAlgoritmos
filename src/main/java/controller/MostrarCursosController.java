@@ -3,6 +3,7 @@ package controller;
 import domain.clasesBase.BTreeNode;
 import domain.clasesBase.Curso;
 import domain.clasesBase.TreeException;
+import domain.queue.QueueException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +20,8 @@ import org.example.proyectoalgoritmos.HelloApplication;
 import util.Utility;
 
 import java.io.IOException;
+
+import static util.Utility.Bitacora;
 
 public class MostrarCursosController {
 
@@ -70,7 +73,9 @@ public class MostrarCursosController {
 
 
     @FXML
-    public void buscarMostrarCursos(ActionEvent actionEvent) {
+    public void buscarMostrarCursos(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "Se ha buscado un curso");
+
         String cursoNombre = searchField.getText().trim();
         if (cursoNombre.isEmpty()) {
             mostrarAlerta("Error", "El campo de búsqueda está vacío");

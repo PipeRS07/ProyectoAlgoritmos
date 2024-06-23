@@ -3,6 +3,7 @@ package controller;
 import domain.clasesBase.BTreeNode;
 import domain.clasesBase.Curso;
 import domain.clasesBase.TreeException;
+import domain.queue.QueueException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,8 @@ import org.example.proyectoalgoritmos.HelloApplication;
 import util.Utility;
 
 import java.io.IOException;
+
+import static util.Utility.Bitacora;
 
 public class EliminarCursosController {
 
@@ -115,7 +118,9 @@ public class EliminarCursosController {
     }
 
     @FXML
-    public void eliminarCursosOnAction(ActionEvent actionEvent) {
+    public void eliminarCursosOnAction(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "ha eliminado un Curso.");
+
         // Obtener el curso seleccionado en el TableView
         Curso cursoSeleccionado = tableView.getSelectionModel().getSelectedItem();
 

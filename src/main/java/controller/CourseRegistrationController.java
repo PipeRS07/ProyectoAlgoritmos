@@ -3,6 +3,7 @@ package controller;
 import domain.bTree.TreeException;
 import domain.clasesBase.AVL;
 import domain.clasesBase.Curso;
+import domain.queue.QueueException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+
+import static util.Utility.Bitacora;
 
 public class CourseRegistrationController {
     @javafx.fxml.FXML
@@ -54,7 +57,9 @@ public class CourseRegistrationController {
     }
 
     @FXML
-    public void handleRegisterCourse(ActionEvent actionEvent) {
+    public void handleRegisterCourse(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "ha registrado el Usuario.");
+
         int courseId = Integer.parseInt(courseIdField.getText());
         String courseName = courseNameField.getText();
         String description = descriptionField.getText();

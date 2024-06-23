@@ -29,6 +29,7 @@ public  class Utility {
     private static UserData userData;
     private static CursoData cursoData;
     public static User UserActivo;
+    public static LinkedQueue Bitacora;
 
 
     static {
@@ -38,6 +39,7 @@ public  class Utility {
             usuariosEnELSistema = new CircularLinkedList();
             inscripcionesSolicitadas = new BTree();
             leccionesRegistradas = new BST();
+
 
             userData = new UserData();
             cursoData = new CursoData();
