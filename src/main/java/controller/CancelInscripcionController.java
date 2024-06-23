@@ -1,6 +1,7 @@
 package controller;
 
 import domain.bTree.TreeException;
+import domain.queue.QueueException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -8,13 +9,18 @@ import javafx.scene.control.TextField;
 import domain.clasesBase.Inscripcion;
 import util.Utility;
 
+import static util.Utility.Bitacora;
+
 public class CancelInscripcionController {
 
     @FXML
     private TextField cursoTextField;
 
     @FXML
-    public void handleCancelEnrollment(ActionEvent actionEvent) {
+    public void handleCancelEnrollment(ActionEvent actionEvent) throws QueueException {
+
+        Bitacora.enQueue(Utility.UserActivo.getName() + "ha cancelado la Inscripcion.");
+
         // Método para manejar la cancelación de la inscripción
         String inscripcionSeleccionada = this.cursoTextField.getText();
 

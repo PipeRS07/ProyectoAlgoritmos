@@ -3,6 +3,7 @@ package controller;
 import Data.EnviarEmail;
 import domain.clasesBase.User;
 import domain.list.ListException;
+import domain.queue.QueueException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,8 @@ import util.Utility;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+
+import static util.Utility.Bitacora;
 
 public class ActualizarUsuarioController {
     @FXML
@@ -38,6 +41,11 @@ public class ActualizarUsuarioController {
 
     @FXML
     public void actualizarUsuarioOnAction(ActionEvent actionEvent) {
+        try {
+            Bitacora.enQueue(Utility.UserActivo.getName() + "ha actualizado el Usuario.");
+        } catch (QueueException e) {
+            throw new RuntimeException(e);
+        }
         // La bandera permite saber si el usuario está registrado para poder cargarle la página
         boolean bandera = false;
         try {

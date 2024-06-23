@@ -4,6 +4,7 @@ import domain.clasesBase.AVL;
 import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
 import domain.list.ListException;
+import domain.queue.QueueException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,8 @@ import util.Utility;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+
+import static util.Utility.Bitacora;
 
 public class ingresoSistemaController {
     @javafx.fxml.FXML
@@ -50,9 +53,11 @@ public class ingresoSistemaController {
     }
 
     @javafx.fxml.FXML
-    public void inicioSecionnAction(ActionEvent actionEvent) throws ListException {
+    public void inicioSecionnAction(ActionEvent actionEvent) throws ListException, QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "ha Iniciado Sesión.");
 
-     //la bandera permite saber si el usuario esta registrado para poder cargarle la pagina
+
+        //la bandera permite saber si el usuario esta registrado para poder cargarle la pagina
         boolean bandera=false;
         try {
             String contrasenia = util.Encriptacion.obtenerContraseniaCifrada(passwordField.getText());

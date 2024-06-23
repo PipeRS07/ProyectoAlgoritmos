@@ -4,6 +4,7 @@ package controller;
 import domain.clasesBase.AVL;
 import domain.clasesBase.User;
 import domain.list.CircularDoublyLinkedList;
+import domain.queue.QueueException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +49,9 @@ public class HelloController {
     }
 
     @FXML
-    public void cerrarSesionOnAction(ActionEvent actionEvent) {
+    public void cerrarSesionOnAction(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "ha Cerrado Sesión.");
+
         try {
             if(!(Utility.usuariosRegistrados.isEmpty())){
                // System.out.println("HelloController.cerrarSesionOnAction"+usuarios);

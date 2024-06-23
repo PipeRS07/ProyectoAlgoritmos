@@ -4,6 +4,7 @@ import domain.clasesBase.BST;
 import domain.clasesBase.Curso;
 import domain.clasesBase.Leccion;
 import domain.bTree.TreeException;
+import domain.queue.QueueException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import util.Utility;
 import java.util.ArrayList;
 import java.util.List;
 
+import static util.Utility.Bitacora;
 import static util.Utility.leccionesRegistradas;
 
 public class LeccionesMantenimientoController {
@@ -59,7 +61,9 @@ public class LeccionesMantenimientoController {
     }
 
     @FXML
-    public void agregarLeccionAlCursoOnAction(ActionEvent actionEvent) {
+    public void agregarLeccionAlCursoOnAction(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "Se Agregó una Leccion al curso");
+
         try {
             int idLeccion = Integer.parseInt(idCrearNuevaLeccionField.getText());
             int idCurso = Integer.parseInt(this.IdCursoCrearLeccionField.getText());
@@ -82,7 +86,9 @@ public class LeccionesMantenimientoController {
     }
 
     @FXML
-    public void eliminarLeccionOnAction(ActionEvent actionEvent) {
+    public void eliminarLeccionOnAction(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "Se ha eliminado una Leccion");
+
         Leccion leccionSeleccionada = tableViewLecciones.getSelectionModel().getSelectedItem();
         if (leccionSeleccionada != null) {
             try {
@@ -111,7 +117,9 @@ public class LeccionesMantenimientoController {
     }
 
     @FXML
-    public void actualizarLeccionOnAction(ActionEvent actionEvent) {
+    public void actualizarLeccionOnAction(ActionEvent actionEvent) throws QueueException {
+        Bitacora.enQueue(Utility.UserActivo.getName() + "Se ha actualizado Una leccion");
+
         Leccion leccionSeleccionada = tableViewLecciones.getSelectionModel().getSelectedItem();
         if (leccionSeleccionada != null) {
             try {
